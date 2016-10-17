@@ -14,8 +14,8 @@ import java.util.Set;
 public class User {
 
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "creator")
-    private Set<Bill> bills;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "creator")
+//    private Set<Bill> bills;
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
@@ -120,13 +120,13 @@ public class User {
     public User() {
     }
 
-    public Set<Bill> getBills() {
-        return bills;
-    }
-
-    public void setBills(Set<Bill> bills) {
-        this.bills = bills;
-    }
+//    public Set<Bill> getBills() {
+//        return bills;
+//    }
+//
+//    public void setBills(Set<Bill> bills) {
+//        this.bills = bills;
+//    }
 
     public String getPassportSeries() {
         return passportSeries;
