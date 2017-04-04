@@ -1,11 +1,5 @@
 package by.bsuir.travel.controller;
 
-import by.bsuir.travel.entity.User;
-import by.bsuir.travel.service.UserService;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,19 +8,13 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.validation.Valid;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping
 public class UserController {
 
-    private static final Logger LOGGER = Logger.getLogger(UserController.class);
+    /*private static final Logger LOGGER = Logger.getLogger(UserController.class);
 
     @Autowired
     UserService userService;
@@ -45,7 +33,7 @@ public class UserController {
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
 
-        List<User> users = userService.findAllSortedUsers();
+        List<UserOld> users = userService.findAllSortedUsers();
 
         model.addAttribute("users", users);
         return "userslist";
@@ -53,14 +41,14 @@ public class UserController {
 
     @RequestMapping(value = {"/sign-in"}, method = RequestMethod.GET)
     public String newUser(ModelMap model) {
-        User user = new User();
+        UserOld user = new UserOld();
         model.addAttribute("user", user);
         model.addAttribute("edit", false);
         return "create-user";
     }
 
     @RequestMapping(value = {"/create-user"}, method = RequestMethod.POST)
-    public String saveUser(@Valid User user, BindingResult result,
+    public String saveUser(@Valid UserOld user, BindingResult result,
                            ModelMap model) {
         if (result.hasErrors()) {
             return "create-user";
@@ -72,13 +60,13 @@ public class UserController {
 
         userService.saveUser(user);
 
-        model.addAttribute("success", "User " + user.getFirstName() + " " + user.getLastName() + " registered successfully");
+        model.addAttribute("success", "UserOld " + user.getFirstName() + " " + user.getLastName() + " registered successfully");
         return "home";
     }
 
     @RequestMapping(value = {"/edit-user-{passportSeriesAndNumber}"}, method = RequestMethod.GET)
     public String editUser(@PathVariable String passportSeriesAndNumber, ModelMap model) {
-        User user = userService.findByPassport(passportSeriesAndNumber);
+        UserOld user = userService.findByPassport(passportSeriesAndNumber);
 
         model.addAttribute("user", user);
         model.addAttribute("edit", true);
@@ -86,7 +74,7 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/edit-user-{passportSeriesAndNumber}"}, method = RequestMethod.POST)
-    public String updateUsers(@Valid User user, BindingResult result,
+    public String updateUsers(@Valid UserOld user, BindingResult result,
                               ModelMap model, @PathVariable String passportSeriesAndNumber) {
         if (result.hasErrors()) {
             return "create-user";
@@ -97,7 +85,7 @@ public class UserController {
             }
             userService.updateUser(user);
 
-        model.addAttribute("success", "User " + user.getFirstName() + " " + user.getLastName() + " updated successfully");
+        model.addAttribute("success", "UserOld " + user.getFirstName() + " " + user.getLastName() + " updated successfully");
         return "home";
     }
 
@@ -108,7 +96,7 @@ public class UserController {
         return "redirect:/list";
     }
 
-    private boolean validateUser(User user, BindingResult result, UserService userService){
+    private boolean validateUser(UserOld user, BindingResult result, UserService userService){
 
 //        if (!userService.isUserEmailUnique(user.getId(), user.getIdNumber())) {
 //            FieldError ssoError = new FieldError("user", "email", messageSource.getMessage("non.unique.PassportSeriesAndNumber", new String[]{user.getIdNumber()}, Locale.getDefault()));
@@ -180,5 +168,5 @@ public class UserController {
 
 
         return true;
-    }
+    }*/
 }

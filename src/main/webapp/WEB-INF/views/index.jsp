@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
@@ -15,6 +15,14 @@
         <div>
                 Hello!
         </div>
+
+
+        <nav>
+            <ul>
+                <li><a href="<c:url value='/newslist' />">Show News</a></li>
+                <li><a href="<c:url value='/logout' />">Logout</a></li>
+            </ul>
+        </nav>
 
     </div>
 

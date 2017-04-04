@@ -1,98 +1,137 @@
 package by.bsuir.travel.entity;
 
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
-
-
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "creator")
-//    private Set<Bill> bills;
-
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
-    @Column(name = "firstname")
-    @NotEmpty(message = "Please fill the field.")
-    @Size(min = 2, max = 25, message = "Value must be between 2 and 25 characters")
-    private String firstName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "lastname")
-    @NotEmpty(message = "Please fill the field.")
-    @Size(min = 2, max = 25, message = "Value must be between 2 and 25 characters")
-    private String lastName;
-
-    @Column(name = "middlename")
-    @NotEmpty(message = "Please fill the field.")
-    @Size(min = 2, max = 25, message = "Value must be between 2 and 25 characters")
-    private String middleName;
+    @Column(name = "surname")
+    private String surname;
 
     @Column(name = "birthday")
-    @NotEmpty(message = "Please fill the field.")
-    private Date birthday;
+    private Timestamp bithday;
 
     @Column(name = "gender")
-    @NotEmpty(message = "Please fill the field.")
-    private String gender;
+    private String gender;//male, female, none
 
-    //private String passportSeriesAndNumber;
+    @Column(name = "passport")
+    private String passport;
 
-    @Column(name = "whomgranted")
-    @NotEmpty(message = "Please fill the field.")
-    private String whomGranted;
+    @Column(name = "phone")
+    private String phone;
 
-    @Column(name = "granteddate")
-    @NotEmpty(message = "Please fill the field.")
-    private Date grantedDate;
+    @Column(name = "marital_status")
+    private Boolean maritalStatus;
 
-    @Column(name = "idnumber")
-    @NotEmpty(message = "Please fill the field.")
-    @Size(min = 2, max = 25, message = "Value must be between 2 and 25 characters")
-    private String idNumber;
+    @Column(name = "role")
+    private String role;
 
-    @Column(name = "birthplace")
-    @NotEmpty(message = "Please fill the field.")
-    private String birthPlace;
-
-    @Column(name = "accommodationaddres")
-    @NotEmpty(message = "Please fill the field.")
-    private String accommodationAddress;
-
-    @Column(name = "homephone")
-    private String homePhone;
-    @Column(name = "cellphone")
-    private String cellPhone;
-
-    @Email
     @Column(name = "email")
     private String email;
 
-    @Column(name="workplace")
-    private String workPlace;
-    @Column(name="position")
-    private String position;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name="pensioner")
-    private Boolean pensioner;
-    @Column(name="monthincome")
-    private Double monthIncome;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference
+    private Set<Feedback> feedbacks;
 
-    @Column(name = "passportseries")
-    private String passportSeries;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference
+    private Set<Booking> bookings;
 
-    @Column(name = "passportnumber")
-    private String passportNumber;
+    public User(){}
 
-    public User() {
+    public Integer getId() {
+        return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public Timestamp getBithday() {
+        return bithday;
+    }
+
+    public void setBithday(Timestamp bithday) {
+        this.bithday = bithday;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Boolean getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(Boolean maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public Set<Feedback> getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(Set<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
 }
