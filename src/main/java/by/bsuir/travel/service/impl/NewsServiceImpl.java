@@ -20,7 +20,7 @@ public class NewsServiceImpl implements NewsService{
     public NewsServiceImpl(){}
     public NewsServiceImpl(MysqlNewsDao dao){ this.newsDao = dao;}
 
-    public List<News> getAll() {
+    public List<News> findAll() {
         return newsDao.readAll();
     }
 }

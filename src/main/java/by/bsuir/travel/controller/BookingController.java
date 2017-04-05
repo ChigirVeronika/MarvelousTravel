@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class BookingController {
 
-    @Autowired
+    /*@Autowired
     private BookingService bookingService;
 
     @Autowired
@@ -22,4 +22,5 @@ public class BookingController {
 
     @Autowired
     private TourService tourService;
+    */
 }

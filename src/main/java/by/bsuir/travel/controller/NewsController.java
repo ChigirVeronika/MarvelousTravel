@@ -19,7 +19,7 @@ public class NewsController {
 
     @RequestMapping(value = {"/news-list"}, method = RequestMethod.GET)
     public String tasksList(ModelMap model) {
-        List<News> news = newsService.getAll();
+        List<News> news = newsService.findAll();
         model.addAttribute("news", news);
         return "news-list";
     }
