@@ -7,17 +7,17 @@ import java.util.List;
 
 public interface UserDao {
 
-    User findById(Integer id);
+    User readById(Integer id);
 
-    User findByPassport(String passport);
+    User readByPassport(String passport);
 
-    User findByEmail(String email);
+    User readByEmail(String email);
 
-	User findByFullName(String name, String surname) ;
+	User readByFullName(String name, String surname) ;
 
-    void saveUser(User user);
+    void create(User user);
 
-    void updateUser(User user);
+    void update(User user);
 
     void deleteByPassport(String passport);
 
@@ -25,7 +25,7 @@ public interface UserDao {
 
     List<User> findAllSortedUsers();
 
-    boolean isUserUnique(Long id, String passport, String name, String surname);
+    boolean isUserUnique(Integer id, String passport, String name, String surname);
 
 }
 
