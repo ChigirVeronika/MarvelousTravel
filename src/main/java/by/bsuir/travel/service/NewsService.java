@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface NewsService {
-    List<News> getAll();
+    List<News> findAll();
 
 
 }

@@ -19,7 +19,7 @@
 
         <nav>
             <ul>
-                <li><a href="<c:url value='/newslist' />">Show News</a></li>
+                <li><a href="<c:url value='/news-list' />">Show News</a></li>
                 <li><a href="<c:url value='/logout' />">Logout</a></li>
             </ul>
         </nav>

@@ -17,10 +17,10 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
 
-    @RequestMapping(value = {"/newslist"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/news-list"}, method = RequestMethod.GET)
     public String tasksList(ModelMap model) {
         List<News> news = newsService.getAll();
         model.addAttribute("news", news);
-        return "newslist";
+        return "news-list";
     }
 }
