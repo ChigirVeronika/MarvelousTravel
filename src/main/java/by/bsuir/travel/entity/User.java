@@ -45,6 +45,15 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name="income")
+    private Double income;
+
+    @Column(name="is_parent")
+    private Boolean isParent;
+
+    //todo
+    private City home;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     @JsonManagedReference
     private Set<Feedback> feedbacks;
