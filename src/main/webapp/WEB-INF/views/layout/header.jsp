@@ -12,24 +12,25 @@
     </h3>
     <nav>
         <ul class="nav trendhead-nav">
-            <li><a href="../index.jsp"><fmt:message key="header.home" bundle="${lang}"/></a> </li>
+            <li><a href="<c:url value='/main' />"><spring:message code="header.home"/></a> </li>
 
-            <li><a href="/main?command=menu_command"><fmt:message key="header.catalog" bundle="${lang}"/></a></li>
+            <li><a href="<c:url value='/region/map' />"><spring:message code="header.counrties"/></a></li>
 
-            <li><a href="<c:url value='/news/list' />"><fmt:message key="header.news" bundle="${lang}"/></a></li>
+            <li><a href="<c:url value='/tour/pannel' />"><spring:message code="header.findtour"/></a></li>
 
-            <li><a href="../order.jsp"><spring:message code="header.news"/></a></li>
+            <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
+
+            <li><a href="<c:url value='/feedback/list' />"><spring:message code="header.feedback"/></a></li>
+
+
 
             <c:if test="${user != null && user.role == 'ADMIN'}">
-                <li><a href="../users.jsp"><fmt:message key="header.users" bundle="${lang}"/></a></li>
-            </c:if>
-
-            <c:if test="${user == null}">
-                <li><a href="../login.jsp"><fmt:message key="header.login" bundle="${lang}"/></a></li>
+                <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
+                <li><a href="<c:url value='/statistics/list' />"><spring:message code="header.statistics"/></a></li>
             </c:if>
 
             <c:if test="${user != null}">
-                <li><a href="/main?command=logout_command"><fmt:message key="header.logout" bundle="${lang}"/></a></li>
+                <li><a href="<c:url value='/logout' />"><fmt:message key="header.logout" bundle="${lang}"/></a></li>
             </c:if>
 
         </ul>

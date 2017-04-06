@@ -12,4 +12,9 @@ public class DefaultController {
     public String goToIndex() {
         return "index";
     }
+
+    @RequestMapping(value = {"/main"}, method = RequestMethod.GET)
+    public String goToMain() {
+        return "main";
+    }
 }

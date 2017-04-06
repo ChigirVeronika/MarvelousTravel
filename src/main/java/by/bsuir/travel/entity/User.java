@@ -1,5 +1,6 @@
 package by.bsuir.travel.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -37,7 +38,7 @@ public class User {
     private Boolean maritalStatus;
 
     @Column(name = "role")
-    private String role;
+    private String role;//user, admin
 
     @Column(name = "email")
     private String email;
@@ -51,7 +52,9 @@ public class User {
     @Column(name="is_parent")
     private Boolean isParent;
 
-    //todo
+    @ManyToOne
+    @JoinColumn(name = "home_id")
+    @JsonBackReference
     private City home;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
@@ -142,5 +145,53 @@ public class User {
 
     public void setBookings(Set<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Double getIncome() {
+        return income;
+    }
+
+    public void setIncome(Double income) {
+        this.income = income;
+    }
+
+    public Boolean getParent() {
+        return isParent;
+    }
+
+    public void setParent(Boolean parent) {
+        isParent = parent;
+    }
+
+    public City getHome() {
+        return home;
+    }
+
+    public void setHome(City home) {
+        this.home = home;
     }
 }

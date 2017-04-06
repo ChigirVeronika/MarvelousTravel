@@ -15,13 +15,13 @@ import java.util.Map;
 @Controller
 @RequestMapping
 public class RegionController {
-    /*@Autowired
+    @Autowired
     private RegionService regionService;
 
-    @RequestMapping(value = {"/news-list"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/region/map"}, method = RequestMethod.GET)
     public String countriesList(ModelMap model) {
         Map<Region, List<Country>> map = regionService.getRegionsWithCountries();
-        model.addAttribute("regionMap", map);
-        return "countries-list";
-    }*/
+        model.addAttribute("map", map);
+        return "region-map";
+    }
 }

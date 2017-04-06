@@ -16,8 +16,8 @@ import java.util.Map;
 
 @Service("regionService")
 @Transactional
-public class RegionServiceImpl {//implements RegionService {
-    /*@Autowired
+public class RegionServiceImpl implements RegionService {
+    @Autowired
     private RegionDao regionDao;
 
     @Autowired
@@ -38,5 +38,5 @@ public class RegionServiceImpl {//implements RegionService {
             map.put(r, properCountries);
         }
         return map;
-    }*/
+    }
 }

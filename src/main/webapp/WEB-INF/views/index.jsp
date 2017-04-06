@@ -2,34 +2,89 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <fmt:setLocale value="ru"/>
 <fmt:setBundle basename="i18n.marvelous_travel" var="lang"/>
 
 <html lang="${language}">
 <head>
-    <jsp:include page="layout/resources.jsp" />
+    <jsp:include page="layout/resources.jsp"/>
 </head>
 
 <body onkeydown="return Disable()">
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
         <div class="cover-container">
+
             <div class="trendhead clearfix">
-                <jsp:include page="layout/header.jsp" />
+                <div class="inner">
+                    <h3 class="trendhead-brand">
+                        <fmt:message key="header.title" bundle="${lang}"/>
+                    </h3>
+                    <nav>
+                        <ul class="nav trendhead-nav">
+                            <li></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
 
-            <div>
-                <h1 class="cover-heading"><fmt:message key="index.welcome" bundle="${lang}"/></h1>
-                <p class="lead"><fmt:message key="common.take" bundle="${lang}"/></p>
-                <p class="lead"><a href="/main?command=menu_command" class="btn btn-lg btn-default"><fmt:message key="index.start" bundle="${lang}"/></a></p>
+            <div class="inner cover">
+                <form action="/main" method="POST">
+                    <input type="hidden" name="command" value="login_command"/>
+                    <c:if test="${message ne null}">
+                        <div class="row"><h4><span class="label label-danger">
+							<c:out value='${message}'/>
+						</span></h4></div>
+                        <br/>
+                    </c:if>
+                    <c:if test="${sessionMessage ne null}">
+                        <div class="row"><h4><span class="label label-danger">
+							<c:out value='${sessionMessage}'/>
+						</span></h4></div>
+                        <br/>
+                    </c:if>
+
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-5">
+                            <input type="text" name="login" class="form-control"
+                                   placeholder="<fmt:message key="login.login" bundle="${lang}"/>"/>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-5">
+                            <input type="password" name="password" class="form-control"
+                                   placeholder="<fmt:message key="login.password" bundle="${lang}"/>"/>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2">
+                            <input type="submit" value="<fmt:message key="login.signin" bundle="${lang}"/>"
+                                   class="btn btn-default btn-block"/>
+                        </div>
+                        <div class="col-md-3">
+                             <a href="<c:url value='/main' />" class="btn btn-default btn-block"><fmt:message key="login.signup"
+                                                                                              bundle="${lang}"/></a>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <br>
+                </form>
             </div>
-            <br><br><br><br>
+
             <div class="trendfoot">
                 <jsp:include page="layout/footer.jsp"/>
             </div>
+
         </div>
     </div>
 </div>
 </body>
+
 </html>

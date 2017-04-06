@@ -15,7 +15,7 @@ public class Hotel {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "starts")
+    @Column(name = "stars")
     private Integer stars;
 
     @ManyToOne

@@ -34,6 +34,10 @@ public class City {
     @JsonManagedReference
     private Set<Ticket> ticketsTo;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "home")
+    @JsonManagedReference
+    private Set<User> citizens;
+
     public City(){}
 
     public Integer getId() {
@@ -82,5 +86,13 @@ public class City {
 
     public void setTicketsTo(Set<Ticket> ticketsTo) {
         this.ticketsTo = ticketsTo;
+    }
+
+    public Set<User> getCitizens() {
+        return citizens;
+    }
+
+    public void setCitizens(Set<User> citizens) {
+        this.citizens = citizens;
     }
 }

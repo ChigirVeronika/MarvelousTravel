@@ -20,18 +20,20 @@
             </div>
             <div class="col-sm-8">
 
-                <c:forEach items="${news}" var="lnews">
-                    <div class="row">
-                        <h5 class="trendhead-brand">
-                                ${lnews.name}   ${lnews.date}<br>
-                        </h5>
-                        <h6>${lnews.content}</h6><br><br>
-                    </div>
-                </c:forEach>
+                <table>
+                    <c:forEach items="${map}" var="mapElement">
+                        <tr>
+                            <td><h4>${mapElement.key}</h4></td>
+                            <c:forEach items="${mapElement.value}" var="listElement">
+                                <td><h6>${listElement}</h6></td>
+                            </c:forEach>
+                        </tr>
+                    </c:forEach>
+                </table>
 
                 <div class="row">
                     <h3 class="trendhead-brand">
-                        <a href="<c:url value='/news/create' />" class="btn btn-success custom-width">Новость</a>
+                        <a href="<c:url value='' />" class="btn btn-success custom-width">Регион</a>
                     </h3>
                 </div>
             </div>
