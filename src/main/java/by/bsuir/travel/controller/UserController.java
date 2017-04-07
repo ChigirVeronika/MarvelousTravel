@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class UserController {
 
-    /*private static final Logger LOGGER = Logger.getLogger(UserController.class);
+    /*
 
     @Autowired
     UserService userService;

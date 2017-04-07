@@ -29,34 +29,19 @@
             </div>
 
             <div class="inner cover">
-                <form action="/main" method="POST">
-                    <input type="hidden" name="command" value="login_command"/>
-                    <c:if test="${message ne null}">
-                        <div class="row"><h4><span class="label label-danger">
-							<c:out value='${message}'/>
-						</span></h4></div>
-                        <br/>
-                    </c:if>
-                    <c:if test="${sessionMessage ne null}">
-                        <div class="row"><h4><span class="label label-danger">
-							<c:out value='${sessionMessage}'/>
-						</span></h4></div>
-                        <br/>
-                    </c:if>
-
+                <form action="login" method="POST">
                     <div class="row">
-                        <div class="col-md-3"></div>
+                        <div class="col-md-3"><label for="email">Email</label></div>
                         <div class="col-md-5">
-                            <input type="text" name="login" class="form-control"
-                                   placeholder="<fmt:message key="login.login" bundle="${lang}"/>"/>
+                            <input type="text" id="email" placeholder="<fmt:message key="login.login" bundle="${lang}"/>" name="email">
                         </div>
                         <div class="col-md-4"></div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-md-3"></div>
+                        <div class="col-md-3"><label for="password">Пароль</label></div>
                         <div class="col-md-5">
-                            <input type="password" name="password" class="form-control"
+                            <input type="password" id="password" name="password" class="form-control"
                                    placeholder="<fmt:message key="login.password" bundle="${lang}"/>"/>
                         </div>
                         <div class="col-md-4"></div>
@@ -65,6 +50,7 @@
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-2">
+                            <!--<button type="submit">Login</button>-->
                             <input type="submit" value="<fmt:message key="login.signin" bundle="${lang}"/>"
                                    class="btn btn-default btn-block"/>
                         </div>
