@@ -20,25 +20,11 @@
             </div>
             <div class="col-sm-8">
 
-                <c:forEach items="${news}" var="lnews">
                     <div class="row">
-                        <h4 class="trendhead-brand">
-                                ${lnews.name}   ${lnews.date}<br>
-                        </h4>
-                    </div>
-                    <div class="row">
-                        <h5>${lnews.content}</h5>
-                    </div>
-                    <div class="row">
-                        <hr>
-                    </div>
-                </c:forEach>
 
-                <div class="row">
-                    <h3 class="trendhead-brand">
-                        <a href="<c:url value='/news/create' />" class="btn btn-success custom-width">Новость</a>
-                    </h3>
-                </div>
+
+                    </div>
+
             </div>
 
             <div class="trendfoot">

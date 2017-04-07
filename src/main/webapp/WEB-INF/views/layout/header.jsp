@@ -16,12 +16,11 @@
 
             <li><a href="<c:url value='/region/map' />"><spring:message code="header.counrties"/></a></li>
 
-            <li><a href="<c:url value='/tour/pannel' />"><spring:message code="header.findtour"/></a></li>
+            <li><a href="<c:url value='/tour/panel' />"><spring:message code="header.findtour"/></a></li>
 
             <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
 
             <li><a href="<c:url value='/feedback/list' />"><spring:message code="header.feedback"/></a></li>
-
 
 
             <c:if test="${user != null && user.role == 'ADMIN'}">
