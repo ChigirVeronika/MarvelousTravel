@@ -27,7 +27,7 @@
                         </h4>
                     </div>
                     <div class="row">
-                        <h5>${lnews.content}</h5>
+                        <h5 class="trendhead-brand">${lnews.content}</h5>
                     </div>
                     <div class="row">
                         <hr>
