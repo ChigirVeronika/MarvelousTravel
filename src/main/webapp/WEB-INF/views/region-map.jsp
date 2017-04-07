@@ -22,12 +22,14 @@
 
                 <table>
                     <c:forEach items="${map}" var="mapElement">
+                    <div class="row">
                         <tr>
-                            <td><h4>${mapElement.key}</h4></td>
-                            <c:forEach items="${mapElement.value}" var="listElement">
+                            <td><h4>${mapElement.key.name}</h4></td>
+                            <c:forEach items="${mapElement.value.name}" var="listElement">
                                 <td><h6>${listElement}</h6></td>
                             </c:forEach>
                         </tr>
+                    </div>
                     </c:forEach>
                 </table>
 
