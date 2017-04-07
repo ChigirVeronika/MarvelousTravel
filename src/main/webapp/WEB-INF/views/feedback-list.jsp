@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <fmt:setLocale value="ru"/>
 <fmt:setBundle basename="i18n.marvelous_travel" var="lang"/>
@@ -39,7 +39,7 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="mark">Оценка</label>
                                 <div class="col-md-7">
-                                    <form:input type="text" path="mark" id="mark" class="form-control input-sm" />
+                                    <form:input type="number" path="mark" id="mark" class="form-control input-sm" />
                                     <div class="has-error">
                                         <form:errors path="mark" class="help-inline"/>
                                     </div>

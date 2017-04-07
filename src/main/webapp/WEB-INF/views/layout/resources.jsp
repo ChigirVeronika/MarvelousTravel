@@ -12,6 +12,7 @@
 
 <!-- Custom styles for this template -->
 <link href="/res/css/style.css" rel="stylesheet">
+
 <script src="/res/js/registrationValidation.js"></script>
 <script src="/res/js/categoryValidation.js"></script>
 <script src="/res/js/dishValidation.js"></script>
@@ -29,7 +30,7 @@
 <![endif]-->
 
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

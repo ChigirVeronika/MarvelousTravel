@@ -24,9 +24,9 @@
                     <c:forEach items="${map}" var="mapElement">
                     <div class="row">
                         <tr>
-                            <td><h4>${mapElement.key.name}</h4></td>
-                            <c:forEach items="${mapElement.value.name}" var="listElement">
-                                <td><h6>${listElement}</h6></td>
+                            <td><h4>${mapElement.key.getName()}</h4></td>
+                            <c:forEach items="${mapElement.value}" var="listElement">
+                                <td><h6><a href="<c:url value='/country/get/${listElement.getId()}' />">${listElement.getName()}</a></h6></td>
                             </c:forEach>
                         </tr>
                     </div>

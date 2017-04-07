@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping
 public class CountryController {
 
-    /*@Autowired
+    @Autowired
     private CountryService countryService;
 
-    @RequestMapping(value = {"/country-get-{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/country/get/{id}"}, method = RequestMethod.GET)
     public String tasksList(@PathVariable Integer id, ModelMap model) {
         Country country = countryService.find(id);
         model.addAttribute("country", country);
         return "country";
-    }*/
+    }
 }

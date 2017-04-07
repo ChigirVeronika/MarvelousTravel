@@ -20,11 +20,17 @@
             </div>
             <div class="col-sm-8">
 
+                <div class="row">
+                    <hr>
+                </div>
+
                 <c:forEach items="${news}" var="lnews">
                     <div class="row">
                         <h4 class="trendhead-brand">
-                                ${lnews.name}   ${lnews.date}<br>
+                                ${lnews.name}
                         </h4>
+                        <h5 class="trendhead-brand">${lnews.date}</h5><br>
+
                     </div>
                     <div class="row">
                         <h5 class="trendhead-brand">${lnews.content}</h5>

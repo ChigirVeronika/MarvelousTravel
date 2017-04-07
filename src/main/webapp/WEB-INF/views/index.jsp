@@ -33,7 +33,8 @@
                     <div class="row">
                         <div class="col-md-3"><label for="email">Email</label></div>
                         <div class="col-md-5">
-                            <input type="text" id="email" placeholder="<fmt:message key="login.login" bundle="${lang}"/>" name="email">
+                            <input type="text" id="email" placeholder="<fmt:message key="login.login" bundle="${lang}"/>"
+                                   name="email" class="form-control">
                         </div>
                         <div class="col-md-4"></div>
                     </div>

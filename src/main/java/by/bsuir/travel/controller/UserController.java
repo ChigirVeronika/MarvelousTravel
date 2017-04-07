@@ -30,13 +30,13 @@ public class UserController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
-    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/user/list"}, method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
 
         List<UserOld> users = userService.findAllSortedUsers();
 
         model.addAttribute("users", users);
-        return "userslist";
+        return "user-list";
     }
 
     @RequestMapping(value = {"/sign-in"}, method = RequestMethod.GET)
@@ -61,31 +61,6 @@ public class UserController {
         userService.saveUser(user);
 
         model.addAttribute("success", "UserOld " + user.getFirstName() + " " + user.getLastName() + " registered successfully");
-        return "home";
-    }
-
-    @RequestMapping(value = {"/edit-user-{passportSeriesAndNumber}"}, method = RequestMethod.GET)
-    public String editUser(@PathVariable String passportSeriesAndNumber, ModelMap model) {
-        UserOld user = userService.findByPassport(passportSeriesAndNumber);
-
-        model.addAttribute("user", user);
-        model.addAttribute("edit", true);
-        return "create-user";
-    }
-
-    @RequestMapping(value = {"/edit-user-{passportSeriesAndNumber}"}, method = RequestMethod.POST)
-    public String updateUsers(@Valid UserOld user, BindingResult result,
-                              ModelMap model, @PathVariable String passportSeriesAndNumber) {
-        if (result.hasErrors()) {
-            return "create-user";
-        }
-
-            if (!validateUser(user, result, userService)) {
-                return "create-user";
-            }
-            userService.updateUser(user);
-
-        model.addAttribute("success", "UserOld " + user.getFirstName() + " " + user.getLastName() + " updated successfully");
         return "home";
     }
 

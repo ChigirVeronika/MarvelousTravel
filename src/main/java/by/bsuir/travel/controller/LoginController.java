@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginUser(@RequestParam("email") String email,

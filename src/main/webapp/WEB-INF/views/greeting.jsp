@@ -20,10 +20,9 @@
             </div>
 
             <div>
-                <h1 class="cover-heading"><fmt:message key="index.welcome" bundle="${lang}"/></h1>
-                <p class="lead"><fmt:message key="common.take" bundle="${lang}"/></p>
-                <p class="lead"><a href="<c:url value='/tour/panel' />"><fmt:message key="index.start" bundle="${lang}"/></a></p>
+                <h1 class="cover-heading">Спасибо за ваш выбор!</h1>
             </div>
+
             <br><br><br><br>
             <div class="trendfoot">
                 <jsp:include page="layout/footer.jsp"/>
