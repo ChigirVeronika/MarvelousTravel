@@ -31,16 +31,16 @@
             <div class="inner cover">
                 <form action="login" method="POST">
                     <div class="row">
-                        <div class="col-md-3"><label for="email">Email</label></div>
+                        <div class="col-md-3"><label for="email"></label></div>
                         <div class="col-md-5">
-                            <input type="text" id="email" placeholder="<fmt:message key="login.login" bundle="${lang}"/>"
+                            <input type="text" id="email" placeholder="Email"
                                    name="email" class="form-control">
                         </div>
                         <div class="col-md-4"></div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-md-3"><label for="password">Пароль</label></div>
+                        <div class="col-md-3"><label for="password"></label></div>
                         <div class="col-md-5">
                             <input type="password" id="password" name="password" class="form-control"
                                    placeholder="<fmt:message key="login.password" bundle="${lang}"/>"/>

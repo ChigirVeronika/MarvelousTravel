@@ -6,6 +6,7 @@ import by.bsuir.travel.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,7 +42,7 @@ public class TourController {
     }
 
     @RequestMapping(value = {"/tour/get/{id}"}, method = RequestMethod.GET)
-    public String getTour(){
+    public String getTour(@PathVariable Integer id){
         //TODO add to statistics IMPORTANT!!!
         return "greeting";
     }

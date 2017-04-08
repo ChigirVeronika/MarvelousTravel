@@ -17,4 +17,9 @@ public class DefaultController {
     public String goToMain() {
         return "main";
     }
+
+    @RequestMapping(value={"/google/map"}, method = RequestMethod.GET)
+    public String showGoogleMap() {
+        return "google-map";
+    }
 }
