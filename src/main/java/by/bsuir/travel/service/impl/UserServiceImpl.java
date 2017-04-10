@@ -28,7 +28,7 @@ public class UserServiceImpl  implements UserService{
     }
 
     public User findByEmail(String email) {
-        return null;
+        return userDao.readByEmail(email);
     }
 
     public User findByIdNumber(String idNumber) {

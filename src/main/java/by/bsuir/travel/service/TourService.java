@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TourService {
     List<Tour> findAll();
+
+    List<Tour> findAllForCitiesAndDates(Tour tour);
 }

@@ -29,7 +29,7 @@
             </div>
 
             <div class="inner cover">
-                <form action="login" method="POST">
+                <form action="index" method="POST">
                     <div class="row">
                         <div class="col-md-3"><label for="email"></label></div>
                         <div class="col-md-5">

@@ -18,6 +18,7 @@
             <div class="trendhead clearfix">
                 <jsp:include page="layout/header.jsp"/>
             </div>
+            <div class="inner cover">
             <div class="col-sm-8">
 
                 <table>
@@ -25,9 +26,12 @@
                     <div class="row">
                         <tr>
                             <td><h4>${mapElement.key.getName()}</h4></td>
+                        </tr>
+                        <tr>
                             <c:forEach items="${mapElement.value}" var="listElement">
                                 <td><h6><a href="<c:url value='/country/get/${listElement.getId()}' />">${listElement.getName()}</a></h6></td>
                             </c:forEach>
+
                         </tr>
                     </div>
                     </c:forEach>
@@ -38,6 +42,7 @@
                         <a href="<c:url value='' />" class="btn btn-success custom-width">Регион</a>
                     </h3>
                 </div>
+            </div>
             </div>
 
             <div class="trendfoot">

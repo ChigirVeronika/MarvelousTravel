@@ -12,6 +12,7 @@
     </h3>
     <nav>
         <ul class="nav trendhead-nav">
+
             <li><a href="<c:url value='/main' />"><spring:message code="header.home"/></a> </li>
 
             <li><a href="<c:url value='/region/map' />"><spring:message code="header.counrties"/></a></li>
@@ -31,7 +32,7 @@
             </c:if>
 
             <c:if test="${user != null}">
-                <li><a href="<c:url value='/logout' />"><fmt:message key="header.logout" bundle="${lang}"/></a></li>
+                <li><a href="<c:url value='/index' />"><fmt:message key="header.logout" bundle="${lang}"/></a></li>
             </c:if>
 
         </ul>

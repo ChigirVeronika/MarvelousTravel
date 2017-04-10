@@ -47,7 +47,7 @@
 
                 <div class="row">
                     <h3 class="trendhead-brand">
-                        <a href="<c:url value='/tour/create' />" class="btn btn-success custom-width">Новость</a>
+                        <a href="<c:url value='/tour/panel' />" class="btn btn-success custom-width">Заново!</a>
                     </h3>
                 </div>
             </div>

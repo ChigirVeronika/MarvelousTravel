@@ -18,7 +18,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/index", method = RequestMethod.POST)
     public String loginUser(@RequestParam("email") String email,
                             @RequestParam("password") String password, Model model, HttpSession session) {
 

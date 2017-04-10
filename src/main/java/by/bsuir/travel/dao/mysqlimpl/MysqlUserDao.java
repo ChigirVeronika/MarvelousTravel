@@ -3,6 +3,8 @@ package by.bsuir.travel.dao.mysqlimpl;
 import by.bsuir.travel.dao.AbstractDao;
 import by.bsuir.travel.dao.UserDao;
 import by.bsuir.travel.entity.User;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,7 +20,11 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao{
     }
 
     public User readByEmail(String email) {
-        return null;
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("email", email));
+        User user = (User) criteria.uniqueResult();
+        return user;
     }
 
     public User readByFullName(String name, String surname) {

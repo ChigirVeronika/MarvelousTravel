@@ -17,8 +17,8 @@ import java.util.Map;
 @Controller
 @RequestMapping
 public class TourController {
-    //@Autowired
-    //private TourService tourService;
+    @Autowired
+    private TourService tourService;
 
     @Autowired
     private CityService cityService;
@@ -36,9 +36,9 @@ public class TourController {
 
     @RequestMapping(value = {"/tour/panel"}, method = RequestMethod.POST)
     public String getTours(@Valid Tour tour, ModelMap model) {
-        //List<Tour> tours = tourService.findAllForCitiesAndDates();
-        //model.addAttribute("tours", tours);
-        return "tour-panel";
+        List<Tour> tours = tourService.findAllForCitiesAndDates(tour);
+        model.addAttribute("tours", tours);
+        return "tour-list";
     }
 
     @RequestMapping(value = {"/tour/get/{id}"}, method = RequestMethod.GET)

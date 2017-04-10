@@ -18,6 +18,7 @@
             <div class="trendhead clearfix">
                 <jsp:include page="layout/header.jsp"/>
             </div>
+            <div class="inner cover">
             <div class="col-sm-8">
 
                 <div class="row">
@@ -45,6 +46,7 @@
                         <a href="<c:url value='/news/create' />" class="btn btn-success custom-width">Новость</a>
                     </h3>
                 </div>
+            </div>
             </div>
 
             <div class="trendfoot">
