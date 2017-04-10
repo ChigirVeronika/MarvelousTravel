@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class TourController {
     }
 
     @RequestMapping(value = {"/tour/panel"}, method = RequestMethod.POST)
-    public String getTours(@Valid Tour tour, ModelMap model) {
+    public String getTours(@Valid Tour tour, ModelMap model, @PathVariable Integer id) {
         List<Tour> tours = tourService.findAllForCitiesAndDates(tour);
         model.addAttribute("tours", tours);
         return "tour-list";

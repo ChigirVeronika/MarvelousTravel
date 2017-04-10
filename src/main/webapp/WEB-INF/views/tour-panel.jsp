@@ -22,42 +22,17 @@
 
                     <div class="row">
 
-                    <form:form method="POST" modelAttribute="tour" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="tour" action="/tour/panel" class="form-horizontal">
+                        <form:input type="hidden" path="id" id="id"/>
 
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="startDate">С</label>
-                                <div class="col-md-7">
-                                    <form:input type="date" path="startDate" id="startDate" class="form-control input-sm" />
-                                    <div class="has-error">
-                                        <form:errors path="startDate" class="help-inline"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="startDate">По</label>
-                                <div class="col-md-7">
-                                    <form:input type="date" path="endDate" id="endDate" class="form-control input-sm" />
-                                    <div class="has-error">
-                                        <form:errors path="endDate" class="help-inline"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="cityFrom">Откуда</label>
                                 <div class="col-md-7">
                                     <form:select path="cityFrom" id="cityFrom" class="form-control input-sm">
-                                        <form:option value="NONE" label="--- Select ---"/>
-                                        <c:forEach var="item" items="${cities}">
-                                            <form:option value="${item}" label="${item.name}"/>
-                                        </c:forEach>
+
+                                        <form:options items="${cities}" />
                                     </form:select>
                                     <div class="has-error">
                                         <form:errors path="cityFrom" class="help-inline"/>
@@ -71,10 +46,8 @@
                                 <label class="col-md-3 control-lable" for="cityFrom">Куда</label>
                                 <div class="col-md-7">
                                     <form:select path="cityTo" id="cityTo" class="form-control input-sm">
-                                        <form:option value="NONE" label="--- Select ---"/>
-                                        <c:forEach var="item" items="${cities}">
-                                            <form:option value="${item}" label="${item.name}"/>
-                                        </c:forEach>
+
+                                        <form:options items="${cities}" />
                                     </form:select>
                                     <div class="has-error">
                                         <form:errors path="cityTo" class="help-inline"/>
@@ -85,7 +58,7 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Найти" class="btn btn-primary btn-sm"/> или <a href="<c:url value='/main' />">Отменить</a>
+                                <input type="submit" value="Найти" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/main' />">Отменить</a>
                             </div>
                         </div>
                     </form:form>
