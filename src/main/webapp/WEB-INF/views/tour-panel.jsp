@@ -25,13 +25,37 @@
                     <form:form method="POST" modelAttribute="tour" action="/tour/panel" class="form-horizontal">
                         <form:input type="hidden" path="id" id="id"/>
 
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="startDate">С</label>
+                                <div class="col-md-7">
+                                    <form:input type="date" path="startDate" id="startDate" class="form-control input-sm" />
+                                    <div class="has-error">
+                                        <form:errors path="startDate" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="startDate">Дата окончания</label>
+                                <div class="col-md-7">
+                                    <form:input type="date" path="endDate" id="endDate" class="form-control input-sm" />
+                                    <div class="has-error">
+                                        <form:errors path="endDate" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="cityFrom">Откуда</label>
                                 <div class="col-md-7">
-                                    <form:select path="cityFrom" id="cityFrom" class="form-control input-sm">
 
+                                    <form:select path="cityFrom" id="cityFrom" class="form-control input-sm">
+                                        <form:option value="--Город--"/>
                                         <form:options items="${cities}" />
                                     </form:select>
                                     <div class="has-error">
@@ -46,7 +70,7 @@
                                 <label class="col-md-3 control-lable" for="cityFrom">Куда</label>
                                 <div class="col-md-7">
                                     <form:select path="cityTo" id="cityTo" class="form-control input-sm">
-
+                                        <form:option value="--Город--"/>
                                         <form:options items="${cities}" />
                                     </form:select>
                                     <div class="has-error">
@@ -58,7 +82,8 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Найти" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/main' />">Отменить</a>
+                                <input type="submit" value="Найти" class="btn btn-success btn-sm"/> или
+                                <input type="submit" value="Очистить" class="btn btn-success btn-sm"/>
                             </div>
                         </div>
                     </form:form>

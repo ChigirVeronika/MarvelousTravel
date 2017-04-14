@@ -49,7 +49,9 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Оставить отзыв" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/feedback/list' />">Отменить</a>
+                                <input type="submit" value="Оставить отзыв" class="btn btn-success btn-sm"/> или
+                                <input type="submit" value="Очистить" class="btn btn-success btn-sm"/>
+
                             </div>
                         </div>
                     </form:form>
@@ -61,7 +63,7 @@
                 <c:forEach items="${feedbacks}" var="feedback">
                     <div class="row">
                         <h4 class="trendhead-brand">
-                            ${feedback.user}
+                            ${feedback.user.name}   ${feedback.user.surname}
                         </h4>
                     </div>
                     <div class="row">

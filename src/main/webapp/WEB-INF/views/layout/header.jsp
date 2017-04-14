@@ -12,19 +12,23 @@
     </h3>
     <nav>
         <ul class="nav trendhead-nav">
-
+            <c:if test="${user != null && user.role == 'USER'}">
             <li><a href="<c:url value='/main' />"><spring:message code="header.home"/></a> </li>
+
+
 
             <li><a href="<c:url value='/region/map' />"><spring:message code="header.counrties"/></a></li>
 
+
             <li><a href="<c:url value='/tour/panel' />"><spring:message code="header.findtour"/></a></li>
+            </c:if>
 
             <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
 
             <li><a href="<c:url value='/feedback/list' />"><spring:message code="header.feedback"/></a></li>
-
+            <c:if test="${user != null && user.role == 'USER'}">
             <li><a href="<c:url value='/google/map' />">Карта</a></li>
-
+            </c:if>
 
             <c:if test="${user != null && user.role == 'ADMIN'}">
                 <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
