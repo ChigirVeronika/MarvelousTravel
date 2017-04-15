@@ -26,6 +26,7 @@
             <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
 
             <li><a href="<c:url value='/feedback/list' />"><spring:message code="header.feedback"/></a></li>
+
             <c:if test="${user != null && user.role == 'USER'}">
             <li><a href="<c:url value='/google/map' />">Карта</a></li>
             </c:if>
