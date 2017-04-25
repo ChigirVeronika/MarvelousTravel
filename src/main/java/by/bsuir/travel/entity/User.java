@@ -52,6 +52,14 @@ public class User {
     @Column(name="is_parent")
     private Boolean isParent;
 
+    @Column(name="favourite_activity")
+    private String favouriteActivity;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    @JsonBackReference
+    private Group group;
+
     @ManyToOne
     @JoinColumn(name = "home_id")
     @JsonBackReference
@@ -193,5 +201,21 @@ public class User {
 
     public void setHome(City home) {
         this.home = home;
+    }
+
+    public String getFavouriteActivity() {
+        return favouriteActivity;
+    }
+
+    public void setFavouriteActivity(String favouriteActivity) {
+        this.favouriteActivity = favouriteActivity;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

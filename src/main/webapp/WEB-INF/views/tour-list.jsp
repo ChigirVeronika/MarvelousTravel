@@ -50,6 +50,14 @@
                         <a href="<c:url value='/tour/panel' />" class="btn btn-success custom-width">Заново!</a>
                     </h3>
                 </div>
+
+                <c:if test="${user != null && user.role == 'ADMIN'}"></c:if>
+                <div class="row">
+                    <h3 class="trendhead-brand">
+                        <a href="<c:url value='/tour/create' />" class="btn btn-success custom-width">Тур</a>
+                    </h3>
+                </div>
+                <c:if test="${user != null && user.role == 'ADMIN'}"></c:if>
             </div>
 
             <div class="trendfoot">

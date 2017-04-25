@@ -25,9 +25,7 @@
                 <p class="lead"><a href="<c:url value='/tour/panel' />"><fmt:message key="index.start" bundle="${lang}"/></a></p>
             </div>
             <br><br><br><br>
-            <div class="trendfoot">
-                <jsp:include page="layout/footer.jsp"/>
-            </div>
+
         </div>
     </div>
 </div>

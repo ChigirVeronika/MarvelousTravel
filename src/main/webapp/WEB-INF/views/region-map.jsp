@@ -45,9 +45,7 @@
             </div>
             </div>
 
-            <div class="trendfoot">
-                <jsp:include page="layout/footer.jsp"/>
-            </div>
+
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@ import java.util.Date;
 public class Tour {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -35,6 +35,14 @@ public class Tour {
 
     @Column(name = "price")
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    @JsonBackReference
+    private Group group;
+
+    public Tour() {
+    }
 
     public Integer getId() {
         return id;
@@ -90,5 +98,13 @@ public class Tour {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

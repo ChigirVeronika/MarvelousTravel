@@ -11,14 +11,9 @@ import java.util.List;
  * Info is in data/fann_training_set.docx
  */
 public class Training {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.setProperty("jna.library.path", "D:\\_D\\MarvelousTravel\\src\\main\\resources\\ann\\");
-        //System.setProperty("fannj.library.path", "C:\\Users\\Veranika\\IdeaProjects\\TravelFANN\\src\\main\\resources\\fannj-0.6.jar\\");
-        //System.out.println( System.getProperty("jna.library.path") ); //maybe the path is malformed
         File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
-        //System.out.println("Is the dll file there:" + file.exists());
-        //System.load(file.getAbsolutePath());
-
 
         //Для сборки новой ИНС необходимо создасть список слоев
         List<Layer> layerList = new ArrayList<Layer>();
@@ -35,6 +30,17 @@ public class Training {
         ошибки меньше 0.0001 */
         trainer.train(new File("D:\\_D\\MarvelousTravel\\data\\training_set.data").getAbsolutePath(), 100000, 100, 0.0001f);
         fann.save("D:\\_D\\MarvelousTravel\\data\\result.data");
+
+//        float[][] tests = {
+//                {26, 1, 0, 0.5f, 0, 1},//1
+//                {37, 1, 1, 0.8f, 1, 1},//5
+//                {26, 0, 1, 0.8f, 0, 3},//7
+//                {25, 1, 0, 0.5f, 0, 2},//2
+//                {23, 0, 0, 0.9f, 0, 1} //6
+//        };
+//        for (float[] test:tests){
+//            System.out.println(Check.getAction(fann.run(test)));
+//        }
     }
 
 }

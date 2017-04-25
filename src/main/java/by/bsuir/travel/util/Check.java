@@ -2,36 +2,48 @@ package by.bsuir.travel.util;
 
 import com.googlecode.fannj.Fann;
 
+import java.io.File;
+
 /**
- * TODO change logic
+ *
  */
 public class Check {
     public static void main(String[] args) {
-        Fann fann = new Fann("ann");
+
+        System.setProperty("jna.library.path", "D:\\_D\\MarvelousTravel\\src\\main\\resources\\ann\\");
+        //System.setProperty("fannj.library.path", "C:\\Users\\Veranika\\IdeaProjects\\TravelFANN\\src\\main\\resources\\fannj-0.6.jar\\");
+        //System.out.println( System.getProperty("jna.library.path") ); //maybe the path is malformed
+        File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
+        //System.out.println("Is the dll file there:" + file.exists());
+        //System.load(file.getAbsolutePath());
+
+        Fann fann = new Fann("D:\\_D\\MarvelousTravel\\data\\result.data");
         float[][] tests = {
-                {1.0f, 0, 1},
-                {0.9f, 1, 3},
-                {0.3f, 0, 8},
-                {1, 1, 8},
-                {0.1f, 0, 0},
+                {26, 1, 0, 0.5f, 0, 1},
+                {37, 1, 1, 0.8f, 1, 1},
+                {26, 0, 0, 0.7f, 0, 3},
+                {25, 1, 0, 0.5f, 0, 2}
         };
         for (float[] test:tests){
             System.out.println(getAction(fann.run(test)));
         }
     }
 
-    private static String getAction(float[] out){
+    public static String getAction(float[] out){
         int i = 0;
-        for (int j = 1; j < 4; j++) {
+        for (int j = 1; j < 7; j++) {
             if(out[i]<out[j]){
                 i = j;
             }
         }
         switch (i){
-            case 0:return "атаковать";
-            case 1:return "прятаться";
-            case 2:return "бежать";
-            case 3:return "ничего не делать";
+            case 0:return "1";
+            case 1:return "2";
+            case 2:return "3";
+            case 3:return "4";
+            case 4:return "5";
+            case 5:return "6";
+            case 6:return "7";
         }
         return "";
     }

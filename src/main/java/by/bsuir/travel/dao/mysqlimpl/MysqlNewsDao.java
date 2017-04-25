@@ -14,7 +14,7 @@ public class MysqlNewsDao extends AbstractDao<Integer, News> implements NewsDao 
 
 
     public void create(News news) {
-
+        persist(news);
     }
 
     public News read(Integer id) {

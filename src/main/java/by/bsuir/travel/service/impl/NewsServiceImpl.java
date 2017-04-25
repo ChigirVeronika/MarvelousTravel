@@ -23,4 +23,8 @@ public class NewsServiceImpl implements NewsService{
     public List<News> findAll() {
         return newsDao.readAll();
     }
+
+    public void save(News news) {
+        newsDao.create(news);
+    }
 }
