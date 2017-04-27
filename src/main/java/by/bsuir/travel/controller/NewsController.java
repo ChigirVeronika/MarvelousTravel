@@ -47,16 +47,18 @@ public class NewsController {
         return "news-list";
     }
 
-    @RequestMapping(value = {"/news/create"}, method = RequestMethod.POST)
-    public String createNews2(@Valid News news, ModelMap model, BindingResult result) {
-        newsService.save(news);
-        return "redirect:/news/list";
-    }
-
     @RequestMapping(value = {"/news/create"}, method = RequestMethod.GET)
-    public String createNews(ModelMap model) {
+    public String showNewsCreateionPage(ModelMap model) {
         News news = new News();
         model.addAttribute("news",news);
         return "news-create";
     }
+
+    @RequestMapping(value = {"/news/create"}, method = RequestMethod.POST)
+    public String createNews(@Valid News news, ModelMap model, BindingResult result) {
+        newsService.save(news);
+        return "redirect:/news/list";
+    }
+
+
 }
