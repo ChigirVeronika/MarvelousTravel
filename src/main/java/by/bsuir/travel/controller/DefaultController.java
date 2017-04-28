@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
 
 @RequestMapping("/")
 @Controller
@@ -16,6 +17,11 @@ public class DefaultController {
         if (session != null) {
             session = null;
         }
+
+
+        System.setProperty("jna.library.path", "D:\\_D\\MarvelousTravel\\src\\main\\resources\\ann\\");
+        File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
+
         return "index";
     }
 
