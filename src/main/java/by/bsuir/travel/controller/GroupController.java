@@ -43,6 +43,7 @@ public class GroupController {
         return "group-create";
     }
 
+    //TODO!!!ПЕРЕПИСАТЬ! смысл групп теряется, если не создавать их с параметрами
     @RequestMapping(value = {"/group-create"}, method = RequestMethod.POST)
     public String createGroup(@Valid Group group, ModelMap model, BindingResult result) {
         groupService.save(group);
@@ -61,6 +62,7 @@ public class GroupController {
     public String updateGroup(@Valid Group group, ModelMap model,
                               BindingResult result, @PathVariable Integer id) {
         groupService.update(group);
+        
         return "redirect:/group-list";
     }
 
