@@ -19,8 +19,8 @@ public class DefaultController {
         }
 
 
-        System.setProperty("jna.library.path", "D:\\_D\\MarvelousTravel\\src\\main\\resources\\ann\\");
-        File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
+        //System.setProperty("jna.library.path", "D:\\_D\\MarvelousTravel\\src\\main\\resources\\ann\\");
+        //File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
 
         return "index";
     }

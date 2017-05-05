@@ -41,13 +41,11 @@
                     </div>
                 </c:forEach>
 
-                <c:if test="${user != null && user.role == 'ADMIN'}"></c:if>
                 <div class="row">
                     <h3 class="trendhead-brand">
                         <a href="<c:url value='/news/create' />" class="btn btn-success custom-width">Новость</a>
                     </h3>
                 </div>
-                <c:if test="${user != null && user.role == 'ADMIN'}"></c:if>
             </div>
             </div>
 

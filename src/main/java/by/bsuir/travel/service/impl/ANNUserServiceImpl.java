@@ -26,17 +26,17 @@ public class ANNUserServiceImpl implements ANNUserService {
         Fann fann = buildANN(trainFileName, resultFileName);
 
         //4)по этим результатам обновить группу каждого юзера
-        List<User> users = userService.findAll();
-        for (User u : users) {
-            float age = 1l;
-            float gender =2l;
-            float maritalStatus = 3l;
-            float income = (float) 0.4;
-            float isParent = 5l;
-            float favoriteActivity = 6l;
-
-
-        }
+//        List<User> users = userService.findAll();
+//        for (User u : users) {
+//            float age = 1l;
+//            float gender =2l;
+//            float maritalStatus = 3l;
+//            float income = (float) 0.4;
+//            float isParent = 5l;
+//            float favoriteActivity = 6l;
+//
+//
+//        }
     }
 
     private String creteResultFile() {
@@ -50,13 +50,13 @@ public class ANNUserServiceImpl implements ANNUserService {
         //создать файл
         String name = "D:\\_D\\MarvelousTravel\\data\\training_set_" + new Date(0).toString() + ".data";
         File file = new File(name);
-
-        List<Group> groups = groupService.findAll();
-        for (Group group: groups){
-            //найти всех юзеров этой группы
-            //найти среднее для каждого параметра
-            //записать строчку в файл
-        }
+//
+//        List<Group> groups = groupService.findAll();
+//        for (Group group: groups){
+//            //найти всех юзеров этой группы
+//            //найти среднее для каждого параметра
+//            //записать строчку в файл
+//        }
 
         //сохранить файл
         return "ИМЯ_ФАЙЛА";

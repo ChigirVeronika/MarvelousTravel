@@ -15,31 +15,14 @@
 
             <li><a href="<c:url value='/main' />"><spring:message code="header.home"/></a></li>
 
-            <li><a href="<c:url value='/region/map' />"><spring:message code="header.counrties"/></a></li>
-
-            <li><a href="<c:url value='/tour/panel' />"><spring:message code="header.findtour"/></a></li>
-
-            <li><a href="<c:url value='/feedback/list' />"><spring:message code="header.feedback"/></a></li>
-
-            <li><a href="<c:url value='/google/map' />">Карта</a></li>
-
-
-
             <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
 
-
+            <li><a href="<c:url value='/group/list' />">Группы</a></li>
 
             <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
 
             <li><a href="<c:url value='/statistics/list' />"><spring:message code="header.statistics"/></a></li>
 
-            <li><a href="<c:url value='/user/get' />">Поиск пользователя</a></li>
-
-
-
-
-
-            <li><a href="<c:url value='/index' />"><fmt:message key="header.logout" bundle="${lang}"/></a></li>
 
         </ul>
     </nav>

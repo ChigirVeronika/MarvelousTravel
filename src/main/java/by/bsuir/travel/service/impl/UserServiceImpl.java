@@ -49,7 +49,7 @@ public class UserServiceImpl  implements UserService{
     }
 
     public List<User> findAllSortedUsers() {
-        return null;
+        return userDao.findAllSortedUsers();
     }
 
     public boolean isUserUnique(Long id, String passport) {

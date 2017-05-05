@@ -48,7 +48,11 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao{
     }
 
     public List<User> findAllSortedUsers() {
-        return null;
+
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        List<User> users = criteria.list();
+        return users;
     }
 
     public boolean isUserUnique(Integer id, String passport, String name, String surname) {

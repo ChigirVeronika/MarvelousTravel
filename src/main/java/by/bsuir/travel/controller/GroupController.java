@@ -2,6 +2,7 @@ package by.bsuir.travel.controller;
 
 import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.service.GroupService;
+import by.bsuir.travel.util.GroupN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,7 +39,7 @@ public class GroupController {
     //creating
     @RequestMapping(value = {"/group-create"}, method = RequestMethod.GET)
     public String showGroupCreatePage(ModelMap model) {
-        Group group = new Group();
+        GroupN group = new GroupN();
         model.addAttribute("group", group);
         return "group-create";
     }
