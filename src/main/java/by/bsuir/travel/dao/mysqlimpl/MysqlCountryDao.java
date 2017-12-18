@@ -13,7 +13,7 @@ import java.util.List;
 @Repository("countryDao")
 public class MysqlCountryDao extends AbstractDao<Integer, Country> implements CountryDao {
     public void create(Country country) {
-
+        persist(country);
     }
 
     public Country read(Integer id) {
@@ -21,11 +21,12 @@ public class MysqlCountryDao extends AbstractDao<Integer, Country> implements Co
     }
 
     public void update(Country country) {
-
+        updateEntity(country);
     }
 
     public void delete(Integer id) {
-
+        Country country = getByKey(id);
+        delete(country);
     }
 
     public List<Country> readAll() {

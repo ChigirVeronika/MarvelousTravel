@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface UserDao {
 
+    void create(User user);
+
     User readById(Integer id);
 
     User readByPassport(String passport);
@@ -15,15 +17,13 @@ public interface UserDao {
 
     User readByEmailAndPassword(String email, String password);
 
-	User readByFullName(String name, String surname) ;
-
-    void create(User user);
+    User readByFullName(String name, String surname);
 
     void update(User user);
 
     void deleteByPassport(String passport);
 
-	void deleteByFullName(String name, String surname) ;
+    void deleteByFullName(String name, String surname);
 
     List<User> findAllSortedUsers();
 

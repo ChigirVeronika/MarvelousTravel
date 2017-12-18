@@ -13,7 +13,7 @@ public interface GroupDao {
 
     void update(Group group);
 
-    void delete(Group group);
+    void delete(Integer id);
 
     List<Group> readAll();
 

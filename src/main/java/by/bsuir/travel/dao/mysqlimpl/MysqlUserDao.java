@@ -10,13 +10,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("userDao")
-public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao{
+public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao {
     public User readById(Integer id) {
-        return null;
+        return getByKey(id);
     }
 
     public User readByPassport(String passport) {
-        return null;
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("passport", passport));
+        User user = (User) criteria.uniqueResult();
+        return user;
     }
 
     public User readByEmail(String email) {
@@ -27,33 +31,43 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao{
         return user;
     }
 
-    public User readByEmailAndPassword(String email, String password)
-    {
-        return null;
+    public User readByEmailAndPassword(String email, String password) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("email", email));
+        criteria.add(Restrictions.eq("password", password));//TODO do hashing in service
+        User user = (User) criteria.uniqueResult();
+        return user;
     }
 
     public User readByFullName(String name, String surname) {
-        return null;
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("name", name));
+        criteria.add(Restrictions.eq("surname", surname));
+        User user = (User) criteria.uniqueResult();
+        return user;
     }
 
     public void create(User user) {
-
+        persist(user);
     }
 
     public void update(User user) {
-
+        updateEntity(user);
     }
 
     public void deleteByPassport(String passport) {
-
+        User user = readByPassport(passport);
+        delete(user);
     }
 
     public void deleteByFullName(String name, String surname) {
-
+        User user = readByFullName(name, surname);
+        delete(user);
     }
 
     public List<User> findAllSortedUsers() {
-
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List<User> users = criteria.list();
@@ -61,6 +75,15 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao{
     }
 
     public boolean isUserUnique(Integer id, String passport, String name, String surname) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("name", name));
+        criteria.add(Restrictions.eq("surname", surname));
+        criteria.add(Restrictions.eq("passport", passport));
+        User user = (User) criteria.uniqueResult();
+        if (user == null) {
+            return true;
+        }
         return false;
     }
 }

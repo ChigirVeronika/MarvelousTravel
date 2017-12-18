@@ -19,6 +19,6 @@ public interface BookingDao {
     List<Booking> readAll();
 
     Booking read(Tour tour);
-    
+
     Booking read(User user);
 }

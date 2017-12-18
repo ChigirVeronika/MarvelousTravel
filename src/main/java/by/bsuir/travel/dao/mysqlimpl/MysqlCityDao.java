@@ -11,22 +11,23 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("cityDao")
-public class MysqlCityDao extends AbstractDao<Integer,City> implements CityDao{
+public class MysqlCityDao extends AbstractDao<Integer, City> implements CityDao {
 
     public void create(City city) {
-
+        persist(city);
     }
 
     public City read(Integer id) {
-        return null;
+        return getByKey(id);
     }
 
     public void update(City city) {
-
+        updateEntity(city);
     }
 
     public void delete(Integer id) {
-
+        City city = getByKey(id);
+        delete(city);
     }
 
     public List<City> readAll() {
