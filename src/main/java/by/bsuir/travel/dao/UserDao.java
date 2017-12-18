@@ -13,6 +13,8 @@ public interface UserDao {
 
     User readByEmail(String email);
 
+    User readByEmailAndPassword(String email, String password);
+
 	User readByFullName(String name, String surname) ;
 
     void create(User user);

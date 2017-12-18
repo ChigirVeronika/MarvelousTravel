@@ -1,5 +1,6 @@
 package by.bsuir.travel.dao;
 
+import by.bsuir.travel.entity.Country;
 import by.bsuir.travel.entity.Region;
 
 import java.util.List;
@@ -14,4 +15,7 @@ public interface RegionDao {
     void delete(Integer id);
 
     List<Region> readAll();
+
+    Region readForCountry(Country country);
+
 }

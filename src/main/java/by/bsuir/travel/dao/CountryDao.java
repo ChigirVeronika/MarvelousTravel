@@ -6,6 +6,7 @@ import by.bsuir.travel.entity.Region;
 import java.util.List;
 
 public interface CountryDao {
+
     void create(Country country);
 
     Country read(Integer id);

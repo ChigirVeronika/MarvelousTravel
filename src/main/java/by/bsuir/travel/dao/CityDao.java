@@ -6,6 +6,7 @@ import by.bsuir.travel.entity.Country;
 import java.util.List;
 
 public interface CityDao {
+
     void create(City city);
 
     City read(Integer id);

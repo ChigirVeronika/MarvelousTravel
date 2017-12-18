@@ -6,6 +6,7 @@ import by.bsuir.travel.entity.News;
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +27,21 @@ public class MysqlNewsDao extends AbstractDao<Integer, News> implements NewsDao 
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List<News> news = (List<News>)criteria.list();
         return news;
+    }
+
+    public List<News> readAllForName(String name)
+    {
+        return null;
+    }
+
+    public List<News> readAllForDate(Timestamp date)
+    {
+        return null;
+    }
+
+    public List<News> readAllForDatesInRange(Timestamp lowerLimit, Timestamp upperLimit)
+    {
+        return null;
     }
 
     public void update(News news) {

@@ -2,6 +2,7 @@ package by.bsuir.travel.dao.mysqlimpl;
 
 import by.bsuir.travel.dao.AbstractDao;
 import by.bsuir.travel.dao.RegionDao;
+import by.bsuir.travel.entity.Country;
 import by.bsuir.travel.entity.Region;
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
@@ -31,5 +32,10 @@ public class MysqlRegionDao extends AbstractDao<Integer, Region> implements Regi
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List<Region> regions = (List<Region>)criteria.list();
         return regions;
+    }
+
+    public Region readForCountry(Country country)
+    {
+        return null;
     }
 }

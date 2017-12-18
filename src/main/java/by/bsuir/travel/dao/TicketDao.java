@@ -3,10 +3,12 @@ package by.bsuir.travel.dao;
 import by.bsuir.travel.entity.City;
 import by.bsuir.travel.entity.Ticket;
 
+import javax.swing.text.Document;
 import java.sql.Timestamp;
 import java.util.List;
 
 public interface TicketDao {
+
     void create(Ticket ticket);
 
     Ticket read(Integer id);
@@ -19,8 +21,11 @@ public interface TicketDao {
 
     List<Ticket> readAllForTravel(City from, City to);
 
-    List<Ticket> readAllForTravelAndDate(City from, City to, Timestamp date);
+    List<Ticket> readAllForTravel(City from, City to, Timestamp date);
 
-    List<Ticket> readAllForTravelAndDateAndPrice(City from, City to,
-                                                 Timestamp date, Double price);
+    List<Ticket> readAllForTravel(City from, City to, Timestamp date, Double price);
+
+    List<Ticket> readAllForTravel(City from, City to, Timestamp dateFrom, Timestamp dateTo,Double price);
+
+    List<Ticket> readAllForTravel(City from, City to, Timestamp dateFrom, Timestamp dateTo, Double priceFrom, Double priceTo);
 }

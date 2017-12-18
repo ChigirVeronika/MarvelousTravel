@@ -27,6 +27,11 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao{
         return user;
     }
 
+    public User readByEmailAndPassword(String email, String password)
+    {
+        return null;
+    }
+
     public User readByFullName(String name, String surname) {
         return null;
     }

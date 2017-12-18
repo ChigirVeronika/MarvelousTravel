@@ -3,6 +3,7 @@ package by.bsuir.travel.dao.mysqlimpl;
 import by.bsuir.travel.dao.AbstractDao;
 import by.bsuir.travel.dao.GroupDao;
 import by.bsuir.travel.entity.Group;
+import by.bsuir.travel.entity.User;
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,11 @@ public class MysqlGroupDao extends AbstractDao<Integer, Group> implements GroupD
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List<Group> groups = criteria.list();
         return groups;
+    }
+
+    public Group readForUser(User user)
+    {
+        return null;
     }
 
     public Group read(Integer id) {
