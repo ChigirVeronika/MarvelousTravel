@@ -42,8 +42,7 @@ public class GroupServiceImpl implements GroupService{
     }
 
     public void delete(Integer id) {
-        Group group = groupDao.read(id);
-        groupDao.delete(group);
+        groupDao.delete(id);
         //TODO LOGIC --DELETE FROM-- TRAINING FILE!!!
     }
 }
