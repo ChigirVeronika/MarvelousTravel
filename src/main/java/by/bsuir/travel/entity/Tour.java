@@ -1,13 +1,15 @@
 package by.bsuir.travel.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "tour")
-public class Tour {
+public class Tour {//todo change db
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,18 +30,25 @@ public class Tour {
     @JsonBackReference
     private City cityFrom;
 
-    @ManyToOne
-    @JoinColumn(name = "city_to_id")
-    @JsonBackReference
-    private City cityTo;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
+    @JsonManagedReference
+    private Set<City> citiesTo;//todo change db
 
     @Column(name = "price")
     private Double price;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
+    @JsonManagedReference
+    private Set<Ticket> ticket;//todo change db
 
     @ManyToOne
     @JoinColumn(name = "group_id")
     @JsonBackReference
     private Group group;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
+    @JsonManagedReference
+    private Set<Hotel> hotels;//todo change db
 
     public Tour() {
     }
@@ -84,12 +93,20 @@ public class Tour {
         this.cityFrom = cityFrom;
     }
 
-    public City getCityTo() {
-        return cityTo;
+    public Set<City> getCitiesTo() {
+        return citiesTo;
     }
 
-    public void setCityTo(City cityTo) {
-        this.cityTo = cityTo;
+    public void setCitiesTo(Set<City> citiesTo) {
+        this.citiesTo = citiesTo;
+    }
+
+    public Set<Ticket> getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Set<Ticket> ticket) {
+        this.ticket = ticket;
     }
 
     public Double getPrice() {
@@ -106,5 +123,13 @@ public class Tour {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public Set<Hotel> getHotels() {
+        return hotels;
+    }
+
+    public void setHotels(Set<Hotel> hotels) {
+        this.hotels = hotels;
     }
 }

@@ -3,16 +3,19 @@ package by.bsuir.travel.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "ticket")
-public class Ticket {
+public class Ticket {//todo change db
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
+    @Column(name="number")
+    private String number;//todo change db
 
     @ManyToOne
     @JoinColumn(name = "city_from_id")
@@ -24,11 +27,17 @@ public class Ticket {
     @JsonBackReference
     private City cityTo;
 
-    @Column(name = "date_and_time")
-    private Timestamp dateAndTime;
+    @Column(name = "start_date")
+    private Date startDate;//todo change db
+
+    @Column(name = "end_date")
+    private Date endDate;//todo change db
 
     @Column(name = "price")
     private Double price;
+
+    //todo ???
+    private Transport transport;//todo change db
 
     public Ticket(){}
 
@@ -56,12 +65,20 @@ public class Ticket {
         this.cityTo = cityTo;
     }
 
-    public Timestamp getDateAndTime() {
-        return dateAndTime;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDateAndTime(Timestamp dateAndTime) {
-        this.dateAndTime = dateAndTime;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public Double getPrice() {
