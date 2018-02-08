@@ -62,9 +62,9 @@ public class FeedbackServiceImplTest {
     public void findAllForMarksInRange() throws Exception {
         Integer low = feedback.getMark() - 1;
         Integer up = feedback.getMark() + 1;
-        when(feedbackDao.readAllForMarksInRange(low,up)).thenReturn(Arrays.asList(feedback));
+        when(feedbackDao.readAllForMarksInRange(low, up)).thenReturn(Arrays.asList(feedback));
         List<Feedback> result = feedbackService.findAllForMarksInRange(low, up);
-        assertEquals(feedbackDao.readAllForMarksInRange(low,up), result);
+        assertEquals(feedbackDao.readAllForMarksInRange(low, up), result);
         verify(feedbackDao, atLeastOnce()).readAllForMarksInRange(low, up);
     }
 

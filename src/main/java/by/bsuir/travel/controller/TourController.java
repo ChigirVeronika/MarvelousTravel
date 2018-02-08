@@ -44,7 +44,8 @@ public class TourController {
 
     @RequestMapping(value = {"/tour/get/{id}"}, method = RequestMethod.GET)
     public String getTour(@PathVariable Integer id){
-        //TODO add to statistics IMPORTANT!!!
+        //TODO logic
+        //todo add to statistics IMPORTANT!!!
         return "greeting";
     }
 
