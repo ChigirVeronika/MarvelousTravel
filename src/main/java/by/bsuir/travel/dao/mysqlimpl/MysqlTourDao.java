@@ -43,7 +43,7 @@ public class MysqlTourDao extends AbstractDao<Integer, Tour> implements TourDao 
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         criteria.add(Restrictions.eq("cityFrom", tour.getCityFrom()));
-        criteria.add(Restrictions.eq("cityTo", tour.getCityTo()));
+        //criteria.add(Restrictions.eq("cityTo", tour.getCityTo()));
         criteria.add(Restrictions.eq("startDate", tour.getStartDate()));
         criteria.add(Restrictions.eq("endDate", tour.getEndDate()));
         criteria.add(Restrictions.le("price", tour.getPrice()));
