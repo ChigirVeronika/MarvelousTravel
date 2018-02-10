@@ -13,11 +13,13 @@
     <nav>
         <ul class="nav trendhead-nav">
 
-            <li><a href="<c:url value='/main' />"><spring:message code="header.home"/></a></li>
+
 
             <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
 
             <li><a href="<c:url value='/group/list' />">Группы</a></li>
+
+            <li><a href="<c:url value='/group/list' />">Туры</a></li>
 
             <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
 

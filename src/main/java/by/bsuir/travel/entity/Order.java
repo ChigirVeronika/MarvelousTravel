@@ -20,14 +20,6 @@ public class Order {//todo change db
     @JsonBackReference
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
-    @JsonManagedReference
-    private Set<Tour> tours;//todo change tours
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
-    @JsonManagedReference
-    private Set<Ticket> tickets;//todo change tickets
-
     @Column(name = "paid")
     private Boolean paid;
 
@@ -36,6 +28,11 @@ public class Order {//todo change db
 
     @Column(name="billing_time")
     private Date billingTime;
+
+    @ManyToOne
+    @JoinColumn(name = "tour_id")
+    @JsonBackReference
+    private Tour tour;
 
     public Order(){}
 
@@ -53,22 +50,6 @@ public class Order {//todo change db
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Set<Tour> getTours() {
-        return tours;
-    }
-
-    public void setTours(Set<Tour> tours) {
-        this.tours = tours;
-    }
-
-    public Set<Ticket> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(Set<Ticket> tickets) {
-        this.tickets = tickets;
     }
 
     public Boolean getPaid() {
@@ -93,5 +74,13 @@ public class Order {//todo change db
 
     public void setBillingTime(Date billingTime) {
         this.billingTime = billingTime;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 }

@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "ticket")
-public class Ticket {//todo change db
+public class Ticket {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class Ticket {//todo change db
     private Integer id;
 
     @Column(name="number")
-    private String number;//todo change db
+    private String number;
 
     @ManyToOne
     @JoinColumn(name = "city_from_id")
@@ -28,16 +28,23 @@ public class Ticket {//todo change db
     private City cityTo;
 
     @Column(name = "start_date")
-    private Date startDate;//todo change db
+    private Date startDate;
 
     @Column(name = "end_date")
-    private Date endDate;//todo change db
+    private Date endDate;
 
     @Column(name = "price")
     private Double price;
 
-    //todo ???
-    private Transport transport;//todo change db
+    @ManyToOne
+    @JoinColumn(name = "transport_id")
+    @JsonBackReference
+    private Transport transport;
+
+    @ManyToOne
+    @JoinColumn(name = "tour_id")
+    @JsonBackReference
+    private Tour tour;
 
     public Ticket(){}
 
@@ -87,5 +94,29 @@ public class Ticket {//todo change db
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public Transport getTransport() {
+        return transport;
+    }
+
+    public void setTransport(Transport transport) {
+        this.transport = transport;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 }

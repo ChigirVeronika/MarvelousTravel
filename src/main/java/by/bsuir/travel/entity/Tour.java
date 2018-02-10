@@ -30,9 +30,10 @@ public class Tour {//todo change db
     @JsonBackReference
     private City cityFrom;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
-    @JsonManagedReference
-    private Set<City> citiesTo;//todo change db
+    @ManyToOne
+    @JoinColumn(name = "city_to_id")
+    @JsonBackReference
+    private City cityTo;
 
     @Column(name = "price")
     private Double price;
@@ -40,6 +41,11 @@ public class Tour {//todo change db
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
     @JsonManagedReference
     private Set<Ticket> ticket;//todo change db
+
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
+    @JsonManagedReference
+    private Set<Order> orders;//todo change tours
 
     @ManyToOne
     @JoinColumn(name = "group_id")
@@ -49,6 +55,11 @@ public class Tour {//todo change db
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
     @JsonManagedReference
     private Set<Hotel> hotels;//todo change db
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @JsonBackReference
+    private Order order;
 
     public Tour() {
     }
@@ -93,12 +104,20 @@ public class Tour {//todo change db
         this.cityFrom = cityFrom;
     }
 
-    public Set<City> getCitiesTo() {
-        return citiesTo;
+    public City getCityTo() {
+        return cityTo;
     }
 
-    public void setCitiesTo(Set<City> citiesTo) {
-        this.citiesTo = citiesTo;
+    public void setCityTo(City cityTo) {
+        this.cityTo = cityTo;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Set<Ticket> getTicket() {
@@ -109,12 +128,12 @@ public class Tour {//todo change db
         this.ticket = ticket;
     }
 
-    public Double getPrice() {
-        return price;
+    public Set<Order> getOrders() {
+        return orders;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     public Group getGroup() {
@@ -131,5 +150,13 @@ public class Tour {//todo change db
 
     public void setHotels(Set<Hotel> hotels) {
         this.hotels = hotels;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

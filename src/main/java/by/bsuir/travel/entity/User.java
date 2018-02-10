@@ -73,6 +73,10 @@ public class User {
     @JsonManagedReference
     private Set<Booking> bookings;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference
+    private Set<Order> orders;
+
     public User(){}
 
     public Integer getId() {
@@ -217,5 +221,13 @@ public class User {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }

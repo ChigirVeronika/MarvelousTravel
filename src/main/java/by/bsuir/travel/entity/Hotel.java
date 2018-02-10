@@ -23,6 +23,11 @@ public class Hotel {
     @JsonBackReference
     private City city;
 
+    @ManyToOne
+    @JoinColumn(name = "tour_id")
+    @JsonBackReference
+    private Tour tour;
+
     public Hotel(){}
 
     public Integer getId() {
@@ -55,5 +60,13 @@ public class Hotel {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 }
