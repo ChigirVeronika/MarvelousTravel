@@ -60,12 +60,12 @@ public class GroupController {
     public String updateGroup(@Valid GroupDto group, ModelMap model,
                               BindingResult result, @PathVariable Integer id) {
         groupService.update(group);
-        return "redirect:/group-list";
+        return "redirect:/group/list";
     }
 
-    @RequestMapping(value = {"/group/delete/{id}"}, method = RequestMethod.GET)
-    public String deleteGroup(@PathVariable Integer id) {
-        groupService.delete(id);
+    @RequestMapping(value = {"/group/delete/{name}"}, method = RequestMethod.GET)
+    public String deleteGroup(@PathVariable String name) {
+        groupService.delete(name);
         return "redirect:/group/list";
     }
 }

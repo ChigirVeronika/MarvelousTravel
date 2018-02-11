@@ -60,6 +60,11 @@ public class GroupServiceImpl implements GroupService {
         //TODO LOGIC --DELETE FROM-- TRAINING FILE!!!
     }
 
+    public void delete(String name) {
+        groupDao.deleteByName(name);
+        //TODO LOGIC --DELETE FROM-- TRAINING FILE!!!
+    }
+
     private Group convertToEntity(GroupDto dto) {
         Group g = new Group();
         g.setName(dto.getName());

@@ -17,4 +17,6 @@ public interface GroupService {
 
     void delete(Integer id);
 
+    void delete(String name);
+
 }

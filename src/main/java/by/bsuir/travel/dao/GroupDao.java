@@ -15,6 +15,8 @@ public interface GroupDao {
 
     void delete(Integer id);
 
+    void deleteByName(String name);
+
     List<Group> readAll();
 
     Group readForUser(User user);

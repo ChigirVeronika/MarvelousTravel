@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="row">
-                    <form:form method="POST" modelAttribute="group" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="groupDto" class="form-horizontal">
 
                         <form:input type="hidden" path="id" id="id"/>
                         <div class="row">
@@ -37,11 +37,11 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="content">Описание</label>
+                                <label class="col-md-3 control-lable" for="info">Описание</label>
                                 <div class="col-md-7">
-                                    <form:input type="text" path="content" id="content" class="form-control input-sm" />
+                                    <form:input type="text" path="info" id="info" class="form-control input-sm" />
                                     <div class="has-error">
-                                        <form:errors path="content" class="help-inline"/>
+                                        <form:errors path="info" class="help-inline"/>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,8 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="gender">Пол</label>
                                 <div class="col-md-7">
-                                    <form:input type="text" path="gender" id="gender" class="form-control input-sm" />
+                                    <form:radiobutton path="gender" id="gender" value="M" label="M" />
+                                    <form:radiobutton path="gender" id="gender" value="F" label="F" />
                                     <div class="has-error">
                                         <form:errors path="gender" class="help-inline"/>
                                     </div>
@@ -75,7 +76,7 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="maritalStatus">Статус брака</label>
                                 <div class="col-md-7">
-                                    <form:input type="text" path="maritalStatus" id="maritalStatus" class="form-control input-sm" />
+                                    <form:checkbox path="maritalStatus" id="maritalStatus" label="Married" class="form-control input-sm" />
                                     <div class="has-error">
                                         <form:errors path="maritalStatus" class="help-inline"/>
                                     </div>
@@ -99,7 +100,7 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="isParent">Дети</label>
                                 <div class="col-md-7">
-                                    <form:input type="text" path="isParent" id="isParent" class="form-control input-sm" />
+                                    <form:checkbox path="isParent" id="isParent" label="Parent" class="form-control input-sm" />
                                     <div class="has-error">
                                         <form:errors path="isParent" class="help-inline"/>
                                     </div>

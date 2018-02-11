@@ -31,6 +31,15 @@ public class MysqlGroupDao extends AbstractDao<Integer, Group> implements GroupD
         delete(group);
     }
 
+    @Override
+    public void deleteByName(String name) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("name", name));
+        Group g = (Group) criteria.uniqueResult();
+        delete(g);
+    }
+
     public List<Group> readAll() {
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);

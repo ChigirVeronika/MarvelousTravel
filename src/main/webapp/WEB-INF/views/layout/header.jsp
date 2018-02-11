@@ -19,7 +19,7 @@
 
             <li><a href="<c:url value='/group/list' />">Группы</a></li>
 
-            <li><a href="<c:url value='/group/list' />">Туры</a></li>
+            <li><a href="<c:url value='/tour/panel' />">Туры</a></li>
 
             <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
 
