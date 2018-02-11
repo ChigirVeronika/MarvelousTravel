@@ -23,7 +23,7 @@ public class User {
     private String surname;
 
     @Column(name = "birthday")
-    private Timestamp bithday;
+    private Date birthday;
 
     @Column(name = "gender")
     private String gender;//male, female, none
@@ -103,12 +103,12 @@ public class User {
         this.surname = surname;
     }
 
-    public Timestamp getBithday() {
-        return bithday;
+    public Date getBithday() {
+        return birthday;
     }
 
-    public void setBithday(Timestamp bithday) {
-        this.bithday = bithday;
+    public void setBithday(Date bithday) {
+        this.birthday = bithday;
     }
 
     public String getGender() {

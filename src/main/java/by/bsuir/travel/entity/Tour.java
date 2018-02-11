@@ -56,11 +56,6 @@ public class Tour {//todo change db
     @JsonManagedReference
     private Set<Hotel> hotels;//todo change db
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    @JsonBackReference
-    private Order order;
-
     public Tour() {
     }
 
@@ -152,11 +147,4 @@ public class Tour {//todo change db
         this.hotels = hotels;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 }

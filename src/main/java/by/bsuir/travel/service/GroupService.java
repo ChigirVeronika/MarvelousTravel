@@ -1,18 +1,19 @@
 package by.bsuir.travel.service;
 
+import by.bsuir.travel.dto.GroupDto;
 import by.bsuir.travel.entity.Group;
 
 import java.util.List;
 
 public interface GroupService {
 
-    List<Group> findAll();
+    List<GroupDto> findAll();
 
-    Group find(Integer id);
+    GroupDto find(Integer id);
 
-    void save(Group group);
+    void save(GroupDto group);
 
-    void update(Group group);
+    void update(GroupDto group);
 
     void delete(Integer id);
 

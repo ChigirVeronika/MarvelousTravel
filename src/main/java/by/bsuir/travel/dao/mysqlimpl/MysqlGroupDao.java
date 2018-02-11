@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("groupDao")
@@ -33,7 +34,10 @@ public class MysqlGroupDao extends AbstractDao<Integer, Group> implements GroupD
     public List<Group> readAll() {
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        List<Group> groups = criteria.list();
+        List<Group> groups = new ArrayList<>();
+        try{
+            groups = criteria.list();
+        } catch (Exception e){}
         return groups;
     }
 

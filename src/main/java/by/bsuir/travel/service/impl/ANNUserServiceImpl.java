@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.List;
 
 @Service("annService")
-@Transactional
 public class ANNUserServiceImpl implements ANNUserService {
 
     public void retrainANN() {
@@ -40,7 +39,7 @@ public class ANNUserServiceImpl implements ANNUserService {
     }
 
     private String creteResultFile() {
-        String name = "D:\\_D\\MarvelousTravel\\data\\result_" + new Date(0).toString() + ".data";
+        String name = "D:\\_D\\MarvelousTravel\\dto\\result_" + new Date(0).toString() + ".dto";
         File file = new File(name);
         return name;
     }
@@ -48,7 +47,7 @@ public class ANNUserServiceImpl implements ANNUserService {
     private String createTrainingFile(){
 
         //создать файл
-        String name = "D:\\_D\\MarvelousTravel\\data\\training_set_" + new Date(0).toString() + ".data";
+        String name = "D:\\_D\\MarvelousTravel\\dto\\training_set_" + new Date(0).toString() + ".dto";
         File file = new File(name);
 //
 //        List<Group> groups = groupService.findAll();
