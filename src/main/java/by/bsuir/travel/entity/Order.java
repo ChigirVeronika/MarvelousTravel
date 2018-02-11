@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "order")
+@Table(name = "user_order")
 public class Order {//todo change db
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

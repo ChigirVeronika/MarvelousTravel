@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Train ann from data/training_set.data file.
- * Info is in data/fann_training_set.docx
+ * Train ann from dto/training_set.dto file.
+ * Info is in dto/fann_training_set.docx
  */
 public class Training {
 //    public static void main(String[] args) throws InterruptedException {
@@ -31,9 +31,9 @@ public class Training {
 //        /* Проведем обучение взяв уроки из файла, с максимальным колличеством
 //           циклов 100000, показывая отчет каждую 100ю итерацию и добиваемся
 //        ошибки меньше 0.0001 */
-//        trainer.train(new File("D:\\_D\\MarvelousTravel\\data\\training_set.data").getAbsolutePath(),
+//        trainer.train(new File("D:\\_D\\MarvelousTravel\\dto\\training_set.dto").getAbsolutePath(),
 //                100000, 100, 0.0001f);
-//        fann.save("D:\\_D\\MarvelousTravel\\data\\result.data");
+//        fann.save("D:\\_D\\MarvelousTravel\\dto\\result.dto");
 //
 //        float[][] tests = {
 //                {26, 1, 0, 0.5f, 0, 1},//1

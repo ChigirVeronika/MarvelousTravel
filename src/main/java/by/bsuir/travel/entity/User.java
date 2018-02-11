@@ -37,8 +37,10 @@ public class User {
     @Column(name = "marital_status")
     private Boolean maritalStatus;
 
-    @Column(name = "role")
-    private String role;//user, admin
+    @ManyToOne
+    @JoinColumn(name = "user_role_id")
+    @JsonBackReference
+    private UserRole role;
 
     @Column(name = "email")
     private String email;
@@ -159,11 +161,11 @@ public class User {
         this.bookings = bookings;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 

@@ -34,10 +34,11 @@ public class MysqlGroupDao extends AbstractDao<Integer, Group> implements GroupD
     public List<Group> readAll() {
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        List<Group> groups = new ArrayList<>();
-        try{
-            groups = criteria.list();
-        } catch (Exception e){}
+//        List<Group> groups = new ArrayList<>();
+//        try{
+//            groups = criteria.list();
+//        } catch (Exception e){}
+        List<Group> groups = criteria.list();
         return groups;
     }
 

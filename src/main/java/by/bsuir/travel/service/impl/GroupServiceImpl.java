@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Service("groupService")
 @Transactional
-public class GroupServiceImpl implements GroupService{
+public class GroupServiceImpl implements GroupService {
     @Autowired
     private GroupDao groupDao;
 
@@ -31,7 +31,7 @@ public class GroupServiceImpl implements GroupService{
     public List<GroupDto> findAll() {
         List<Group> groups = groupDao.readAll();
         List<GroupDto> dtos = new ArrayList<>();
-        for (Group g: groups) {
+        for (Group g : groups) {
             dtos.add(convertToDto(g));
         }
         return dtos;
@@ -96,13 +96,20 @@ public class GroupServiceImpl implements GroupService{
                 .collect(Collectors.toList());
 
         List<Integer> userAges = birthdays.stream()
-                .map(b -> Integer.valueOf(Years.yearsBetween(new LocalDate(b), LocalDate.now()).toString()))
+                .map(b ->
+                {
+                    Years a = Years.yearsBetween(new LocalDate(b), LocalDate.now());
+                    return a.getYears();
+                })
                 .collect(Collectors.toList());
 
-        Double average = userAges.stream()
-                .mapToInt(a -> a)
-                .average()
-                .getAsDouble();
+        Double average = 0.0;
+        try {
+            average = userAges.stream()
+                    .mapToInt(a -> a)
+                    .average()
+                    .getAsDouble();
+        } catch (Exception e) {}
 
         return average.intValue();
     }

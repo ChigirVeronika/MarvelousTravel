@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tour")
-public class Tour {//todo change db
+public class Tour {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,12 +40,12 @@ public class Tour {//todo change db
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
     @JsonManagedReference
-    private Set<Ticket> ticket;//todo change db
+    private Set<Ticket> ticket;
 
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
     @JsonManagedReference
-    private Set<Order> orders;//todo change tours
+    private Set<Order> orders;
 
     @ManyToOne
     @JoinColumn(name = "group_id")
@@ -54,7 +54,11 @@ public class Tour {//todo change db
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
     @JsonManagedReference
-    private Set<Hotel> hotels;//todo change db
+    private Set<Hotel> hotels;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
+    @JsonManagedReference
+    private Set<Booking> bookings;
 
     public Tour() {
     }
@@ -147,4 +151,11 @@ public class Tour {//todo change db
         this.hotels = hotels;
     }
 
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
 }

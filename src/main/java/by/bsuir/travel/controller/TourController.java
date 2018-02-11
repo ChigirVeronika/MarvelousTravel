@@ -24,8 +24,6 @@ public class TourController {
     @Autowired
     private CityService cityService;
 
-
-
     @RequestMapping(value = {"/tour/panel"}, method = RequestMethod.GET)
     public String getTourPanel(ModelMap model) {
         Tour tour = new Tour();
@@ -36,7 +34,7 @@ public class TourController {
     }
 
     @RequestMapping(value = {"/tour/panel"}, method = RequestMethod.POST)
-    public String getTours(@Valid Tour tour, ModelMap model, @PathVariable Integer id) {
+    public String getTours(@Valid Tour tour, ModelMap model) {
         List<Tour> tours = tourService.findAllForCitiesAndDates(tour);
         model.addAttribute("tours", tours);
         return "tour-list";
@@ -46,6 +44,7 @@ public class TourController {
     public String getTour(@PathVariable Integer id){
         //TODO logic
         //todo add to statistics IMPORTANT!!!
+        //todo add order or booking
         return "greeting";
     }
 

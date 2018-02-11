@@ -17,7 +17,7 @@ public class Check {
         //System.out.println("Is the dll file there:" + file.exists());
         //System.load(file.getAbsolutePath());
 
-        Fann fann = new Fann("D:\\_D\\MarvelousTravel\\data\\result.data");
+        Fann fann = new Fann("D:\\_D\\MarvelousTravel\\dto\\result.dto");
         float[][] tests = {
                 {26, 1, 0, 0.5f, 0, 1},
                 {37, 1, 1, 0.8f, 1, 1},
