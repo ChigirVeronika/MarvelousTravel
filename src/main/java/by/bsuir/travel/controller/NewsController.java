@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,20 +29,20 @@ public class NewsController {
     public String newsList(ModelMap model) {
         List<News> news = newsService.findAll();
         for(News n:news){
-            Timestamp t;
+            Date t;
             try {
                 t = n.getDate();
             }catch (Exception e){
-                t = new Timestamp(0L);
+                t = new Date();
             }
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Timestamp newt = null;
-            try {
-                newt = new Timestamp(dateFormat.parse(dateFormat.format(t)).getTime());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            n.setDate(newt);
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//            Timestamp newt = null;
+//            try {
+//                newt = new Timestamp(dateFormat.parse(dateFormat.format(t)).getTime());
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+            n.setDate(t);
         }
         model.addAttribute("news", news);
         return "news-list";
@@ -55,10 +56,15 @@ public class NewsController {
     }
 
     @RequestMapping(value = {"/news/create"}, method = RequestMethod.POST)
-    public String createNews(@Valid News news, ModelMap model, BindingResult result) {
+    public String createNews(@Valid News news) {
+        news.setDate(new Date());
         newsService.save(news);
         return "redirect:/news/list";
     }
 
-
+    @RequestMapping(value = {"/news/delete/{name}"}, method = RequestMethod.GET)
+    public String deleteNews(@PathVariable String name) {
+        newsService.deleteByName(name);
+        return "redirect:/news/list";
+    }
 }

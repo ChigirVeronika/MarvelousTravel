@@ -9,5 +9,5 @@ public interface NewsService {
 
     void save(News news);
 
-
+    void deleteByName(String name);
 }

@@ -22,30 +22,22 @@
             <div class="col-sm-8">
 
                 <div class="row">
-                    <hr>
-                </div>
-
-                <c:forEach items="${news}" var="lnews">
-                    <div class="row">
-                        <h4 class="trendhead-brand">
-                                ${lnews.name}
-                        </h4>
-                        <h5 class="trendhead-brand">${lnews.date}</h5><br>
-
-                    </div>
-                    <div class="row">
-                        <h5 class="trendhead-brand">${lnews.content}</h5>
-                    </div>
-                    <div class="row">
-                        <hr>
-                    </div>
-                </c:forEach>
-
-                <div class="row">
                     <h3 class="trendhead-brand">
                         <a href="<c:url value='/news/create' />" class="btn btn-success custom-width">Новость</a>
                     </h3>
                 </div>
+
+                <c:forEach items="${news}" var="lnews">
+                    <div class="row">
+                        <h4 class="trendhead-brand">${lnews.name}</h4>
+                        <h5 class="trendhead-brand">${lnews.date}</h5>
+                        <h5 class="trendhead-brand">${lnews.content}</h5>
+                        <h5 class="trendhead-brand">
+                            <a href="<c:url value='/news/delete/${lnews.name}' />" class="btn btn-success custom-width">Удалить</a>
+                        </h5>
+                    </div>
+                </c:forEach>
+
             </div>
             </div>
 

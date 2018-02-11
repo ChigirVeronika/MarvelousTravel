@@ -64,4 +64,13 @@ public class MysqlNewsDao extends AbstractDao<Integer, News> implements NewsDao 
         News news = getByKey(id);
         delete(news);
     }
+
+    @Override
+    public void delete(String name) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("name", name));
+        News news = (News) criteria.uniqueResult();
+        delete(news);
+    }
 }

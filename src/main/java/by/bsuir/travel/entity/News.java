@@ -17,8 +17,8 @@ public class News {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "date")
-    private Timestamp date;
+    @Column(name = "date", columnDefinition="DATE")
+    private Date date;
 
     @Column(name = "content")
     private String content;
@@ -44,11 +44,11 @@ public class News {
         this.name = name;
     }
 
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

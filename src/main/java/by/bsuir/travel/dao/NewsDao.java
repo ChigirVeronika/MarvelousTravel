@@ -17,6 +17,8 @@ public interface NewsDao {
 
     void delete(Integer id);
 
+    void delete(String name);
+
     List<News> readAll();
 
     List<News> readAllForName(String name);
