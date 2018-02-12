@@ -7,9 +7,11 @@ import by.bsuir.travel.entity.Tour;
 import by.bsuir.travel.entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository("orderDao")
 public class MysqlOrderDao extends AbstractDao<Integer, Order> implements OrderDao {
     @Override
     public void create(Order order) {

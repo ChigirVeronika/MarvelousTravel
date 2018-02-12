@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="row">
-                    <form:form method="POST" modelAttribute="feedback" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="feedbackDto" class="form-horizontal">
                         <form:input type="hidden" path="id" id="id"/>
 
                         <div class="row">
@@ -76,7 +76,7 @@
                         <h5 class="trendhead-brand">${feedback.content}</h5>
                     </div>
                     <div class="row">
-                        <hr>
+
                     </div>
                 </c:forEach>
 

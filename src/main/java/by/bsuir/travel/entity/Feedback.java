@@ -3,7 +3,6 @@ package by.bsuir.travel.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -15,7 +14,7 @@ public class Feedback {
     private Integer id;
 
     @Column(name = "date")
-    private Timestamp date;
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -41,11 +40,11 @@ public class Feedback {
         this.id = id;
     }
 
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

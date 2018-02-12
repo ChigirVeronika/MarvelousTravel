@@ -49,19 +49,16 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-md-3"></div>
                         <div class="col-md-2">
                             <!--<button type="submit">Login</button>-->
                             <input type="submit" value="<fmt:message key="login.signin" bundle="${lang}"/>"
                                    class="btn btn-default btn-block"/>
                         </div>
                         <div class="col-md-3">
-                             <a href="<c:url value='/user/create' />" class="btn btn-default btn-block"><fmt:message key="login.signup"
-                                                                                              bundle="${lang}"/></a>
-                             <a href="<c:url value='/main' />" class="btn btn-default btn-block">Главная</a>
-                                                                                                                                                                                            bundle="${lang}"/></a>
+                             <a href="<c:url value='/user/create' />" class="btn btn-default btn-block">
+                                 <fmt:message key="login.signup" bundle="${lang}"/></a>
+                             <a href="<c:url value='/main' />" class="btn btn-default btn-block">Главная</a>                             bundle="${lang}"/></a>
                         </div>
-                        <div class="col-md-4"></div>
                     </div>
                     <br>
                 </form>

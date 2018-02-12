@@ -20,28 +20,39 @@
             </div>
             <div class="col-sm-8">
 
-                    <div class="row">
-                        <h4 class="trendhead-brand">
-                                ${country.name}
-                        </h4>
-                    </div>
+                <div class="row">
+                    <h4 class="trendhead-brand">
+                        ${country.name}
+                    </h4>
+                </div>
 
-                    </br>
+                </br>
 
-                    <div class="row">
-                        <h4  class="trendhead-brand">О стране</h4>
-                        <p><h5>${country.about}</h5></p>
-                    </div>
+                <div class="row">
+                    <h4 class="trendhead-brand">О стране</h4>
+                    <p><h5>${country.about}</h5></p>
+                </div>
 
-                    <div class="row">
-                        <h4  class="trendhead-brand">Климат</h4>
-                        <p><h5>${country.climate}</h5></p>
-                    </div>
+                <div class="row">
+                    <h4 class="trendhead-brand">Климат</h4>
+                    <p><h5>${country.climate}</h5></p>
+                </div>
 
-                    <div class="row">
-                        <h4  class="trendhead-brand">Куда сходить и чем заняться</h4>
-                        <p><h5>${country.activities}</h5></p>
-                    </div>
+                <div class="row">
+                    <h4 class="trendhead-brand">Куда сходить и чем заняться</h4>
+                    <p><h5>${country.activities}</h5></p>
+                </div>
+
+                <div class="row">
+                    <h4 class="trendhead-brand">Города</h4>
+                    <p>
+                    <h5>
+                        <c:forEach items="${country.cities}" var="city">
+                            ${city.name}<br>
+                        </c:forEach>
+                    </h5>
+                    </p>
+                </div>
             </div>
 
             <div class="trendfoot">

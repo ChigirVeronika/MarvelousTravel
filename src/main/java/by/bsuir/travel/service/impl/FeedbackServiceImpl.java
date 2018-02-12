@@ -45,13 +45,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     public void save(Feedback feedback) {
-        Feedback f = feedbackDao.read(feedback.getId());
-        if (f == null) {
-            feedbackDao.create(feedback);
-        } else {
-            feedbackDao.update(feedback);
-        }
-
+        feedbackDao.create(feedback);
     }
 
     @Override
