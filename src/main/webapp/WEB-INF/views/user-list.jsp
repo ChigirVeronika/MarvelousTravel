@@ -22,13 +22,13 @@
 
                     <c:forEach items="${users}" var="user">
 
-                        <div>  ${user.name}  ${user.surname}  Почта: ${user.email}  Группа: ${user.group.getName()}</div>
+                        <div>${user.name} ${user.surname} Почта: ${user.email} Группа: ${user.group.getName()}</div>
 
                     </c:forEach>
 
                     <div class="row">
                         <h3 class="trendhead-brand">
-                            <a href="<c:url value='/group/create' />" class="btn btn-success custom-width">Переобучить нейронную сеть</a>
+                            <a href="<c:url value='/' />" class="btn btn-success custom-width">Переобучить нейронную сеть</a>
                         </h3>
                     </div>
 

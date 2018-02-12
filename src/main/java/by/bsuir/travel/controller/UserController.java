@@ -8,6 +8,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,28 +41,37 @@ public class UserController {
         return "user-list";
     }
 
-    @RequestMapping(value = {"/user-new"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/user/create"}, method = RequestMethod.GET)
+    public String getUserRegisterPage(ModelMap model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "user-create";
+    }
+
+    @RequestMapping(value = {"/user/create"}, method = RequestMethod.POST)
     public String saveUser(@Valid User user, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "user-new";
+            return "user-create";
         }
-//        if (!validateUser(user, result, userService)) {
-//            return "user-new";
-//        }
+        if (!userService.isUserUnique(user.getEmail(), user.getPassword())) {
+            FieldError error = new FieldError("user", "email", "Bad email or password.");
+            result.addError(error);
+            return "user-create";
+        }
         userService.save(user);
-        //model.addAttribute("success", "User " + user.getFirstName() + " " + user.getLastName() + " registered successfully");
+        model.addAttribute("success", "User " + user.getName() + " " + user.getSurname() + " registered successfully");
         return "main";
     }
 
     @RequestMapping(value = {"/user/get"}, method = RequestMethod.POST)
-    public String tasksList(@RequestParam("email") String email, ModelMap model) {
+    public String getUserByEmail(@RequestParam("email") String email, ModelMap model) {
         User user = userService.findByEmail(email);
         model.addAttribute("user", user);
         return "user-get";
     }
 
     @RequestMapping(value = {"/user/get"}, method = RequestMethod.GET)
-    public String tasksList() {
+    public String getUserPage() {
         return "user-get";
     }
 
