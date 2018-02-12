@@ -33,7 +33,7 @@
                         <h5>Маршрут: ${tour.cityFrom} - {tour.cityTo}</h5>
                     </div>
                     <div class="row">
-                        <h5>Цена: ${tour.price} рублей</h5>
+                        <h5>Цена: ${tour.price} BYN</h5>
                     </div>
                     <div class="row">
                         <h3 class="trendhead-brand">
@@ -47,14 +47,14 @@
 
                 <div class="row">
                     <h3 class="trendhead-brand">
-                        <a href="<c:url value='/tour/panel' />" class="btn btn-success custom-width">Заново!</a>
+                        <a href="<c:url value='/tour/panel' />" class="btn btn-success custom-width">Поиск</a>
                     </h3>
                 </div>
 
-                <c:if test="${user != null && user.role == 'ADMIN'}"></c:if>
+
                 <div class="row">
                     <h3 class="trendhead-brand">
-                        <a href="<c:url value='/tour/create' />" class="btn btn-success custom-width">Тур</a>
+                        <a href="<c:url value='/tour/create' />" class="btn btn-success custom-width">Создать тур</a>
                     </h3>
                 </div>
                 <c:if test="${user != null && user.role == 'ADMIN'}"></c:if>

@@ -18,11 +18,17 @@ public class TourServiceImpl implements TourService{
 
     public TourServiceImpl(){}
     public TourServiceImpl(MysqlTourDao dao){this.tourDao = dao;}
+
+    @Override
+    public Tour find(Integer id) {
+        return tourDao.read(id);
+    }
+
     public List<Tour> findAll() {
-        return null;
+        return tourDao.readAll();
     }
 
     public List<Tour> findAllForCitiesAndDates(Tour tour) {
-        return null;
+        return tourDao.readAllForCitiesAndDates(tour);
     }
 }

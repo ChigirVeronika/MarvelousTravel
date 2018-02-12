@@ -19,7 +19,11 @@
                 <jsp:include page="layout/header.jsp"/>
             </div>
             <div class="col-sm-8">
-
+                    <div class="row">
+                        <h5 class="trendhead-brand">
+                            <a href="<c:url value='/tour/list' />" class="btn btn-success custom-width">Показать все туры</a>
+                        </h5>
+                    </div>
                     <div class="row">
 
                     <form:form method="POST" modelAttribute="tour" action="/tour/panel" class="form-horizontal">
@@ -69,10 +73,15 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="cityFrom">Куда</label>
                                 <div class="col-md-7">
-                                    <form:select path="cityTo" id="cityTo" class="form-control input-sm">
+                                    <!--<form:select path="cityTo" id="cityTo" class="form-control input-sm">
                                         <form:option value="--Город--"/>
-                                        <form:options items="${cities}" />
-                                    </form:select>
+                                        <form:options items="${cities}"/>-->
+                                        <select name="city">
+                                            <c:forEach var="city" items="${cities}" >
+                                                <option value="${city}" label="${city.name}"/>
+                                            </c:forEach>
+                                        </select>
+                                    <!--</form:select>-->
                                     <div class="has-error">
                                         <form:errors path="cityTo" class="help-inline"/>
                                     </div>

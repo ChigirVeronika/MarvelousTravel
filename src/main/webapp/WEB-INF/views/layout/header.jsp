@@ -13,7 +13,7 @@
     <nav>
         <ul class="nav trendhead-nav">
 
-
+            <li><a href="<c:url value='/region/map' />">Регионы и страны</a></li>
 
             <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
 
@@ -21,10 +21,11 @@
 
             <li><a href="<c:url value='/tour/panel' />">Туры</a></li>
 
+            <li><a href="<c:url value='/google/map' />">Карта</a></li>
+
             <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
 
             <li><a href="<c:url value='/statistics/list' />"><spring:message code="header.statistics"/></a></li>
-
 
         </ul>
     </nav>

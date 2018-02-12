@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static by.bsuir.travel.service.util.GroupServiceUtil.*;
+
 @Service("groupService")
 @Transactional
 public class GroupServiceImpl implements GroupService {
@@ -83,52 +85,13 @@ public class GroupServiceImpl implements GroupService {
         dto.setInfo(Optional.ofNullable(g.getInfo()).orElse(""));
         dto.setTours(g.getTours());
         dto.setUsers(users);
-
         dto.setAge(getAverageAge(users));
         dto.setGender(getPrevailingGender(users));
-
-        //todo
-        dto.setMaritalStatus(false);
-        dto.setIncome(2000.00);
-        dto.setIsParent(false);
+        dto.setMaritalStatus(getPrevailingMaritalStatus(users));
+        dto.setIncome(getAverageIncome(users));
+        dto.setIsParent(getIsParent(users));
 
         return dto;
     }
 
-    private Integer getAverageAge(Set<User> users) {
-        List<Date> birthdays = users.stream()
-                .map(User::getBithday)
-                .collect(Collectors.toList());
-
-        List<Integer> userAges = birthdays.stream()
-                .map(b ->
-                {
-                    Years a = Years.yearsBetween(new LocalDate(b), LocalDate.now());
-                    return a.getYears();
-                })
-                .collect(Collectors.toList());
-
-        Double average = 0.0;
-        try {
-            average = userAges.stream()
-                    .mapToInt(a -> a)
-                    .average()
-                    .getAsDouble();
-        } catch (Exception e) {}
-
-        return average.intValue();
-    }
-
-    private String getPrevailingGender(Set<User> users) {//todo maybe change logic
-        long genderF = users.stream()
-                .filter(u -> u.getGender().contains("F"))
-                .count();
-        long genderM = users.stream()
-                .filter(u -> u.getGender().contains("M"))
-                .count();
-        if (genderF > genderM) {
-            return "F";
-        }
-        return "M";
-    }
 }

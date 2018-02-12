@@ -1,6 +1,5 @@
 package by.bsuir.travel.controller;
 
-import by.bsuir.travel.entity.Country;
 import by.bsuir.travel.entity.User;
 import by.bsuir.travel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,16 +16,12 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-
 @Controller
 @RequestMapping
 public class UserController {
 
-
-
     @Autowired
     UserService userService;
-
 
     @Autowired
     MessageSource messageSource;
@@ -41,9 +35,7 @@ public class UserController {
 
     @RequestMapping(value = {"/user/list"}, method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
-
         List<User> users = userService.findAllSortedUsers();
-
         model.addAttribute("users", users);
         return "user-list";
     }
