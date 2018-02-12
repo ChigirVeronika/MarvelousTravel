@@ -12,52 +12,60 @@ import java.util.List;
 
 @Service("userService")
 @Transactional
-public class UserServiceImpl  implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
 
-    public UserServiceImpl(){}
-    public UserServiceImpl(MysqlUserDao dao){this.userDao = dao;}
-
-    public User findById(Long id) {
-        return null;
+    public UserServiceImpl() {
     }
 
+    public UserServiceImpl(MysqlUserDao dao) {
+        this.userDao = dao;
+    }
+
+    @Override
+    public void save(User user) {
+        userDao.create(user);
+    }
+
+    @Override
+    public void update(User user) {
+        userDao.update(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userDao.findAllSortedUsers();
+    }
+
+    @Override
+    public User findById(Integer id) {
+        return userDao.readById(id);
+    }
+
+    @Override
     public User findByPassport(String passport) {
-
-        return null;
+        return userDao.readByPassport(passport);
     }
 
+    @Override
     public User findByEmail(String email) {
         return userDao.readByEmail(email);
     }
 
-    public User findByIdNumber(String idNumber) {
-        return null;
+    @Override
+    public User findByEmailAndPassword(String email, String password) {
+        return userDao.readByEmailAndPassword(email, password);
     }
 
-    public void save(User user) {
-
+    @Override
+    public List<User> findByFullName(String name, String surname) {
+        return userDao.readByFullName(name, surname);
     }
 
-    public void update(User user) {
-
-    }
-
-    public void deleteByPassport(String passport) {
-
-    }
-
-    public List<User> findAllSortedUsers() {
-        return userDao.findAllSortedUsers();
-    }
-
-    public boolean isUserUnique(Long id, String passport) {
-        return false;
-    }
-
-    public boolean isUserEmailUnique(Long id, String email) {
-        return false;
+    @Override
+    public boolean isUserUnique(String email, String password) {
+        return isUserUnique(email, password);
     }
 }

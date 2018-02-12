@@ -51,7 +51,6 @@ public class MysqlNewsDao extends AbstractDao<Integer, News> implements NewsDao 
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List<News> news = criteria.list();
-        //TODO check mapping Timestamp java object to MySQL TIMESTAMP
         criteria.add(Restrictions.between("date", lowerLimit, upperLimit));
         return news;
     }

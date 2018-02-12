@@ -21,14 +21,14 @@ public class LoginController {
     @RequestMapping(value = "/index", method = RequestMethod.POST)
     public String loginUser(@RequestParam("email") String email,
                             @RequestParam("password") String password, Model model, HttpSession session) {
-
-        User persistedUser = userService.findByEmail(email);
-        if (persistedUser != null && persistedUser.getPassword().equals(password)) {
+        User persistedUser = userService.findByEmailAndPassword(email, password);
+        if (persistedUser != null) {
             session.setAttribute("user", persistedUser);
             //model.addAttribute("success", "User " + persistedUser.getFirstName() + " "+ persistedUser.getLastName() + " signed in successfully");
+            //model.addAttribute("greeting", "Welcome " + persistedUser.getFirstName() + " "+ persistedUser.getLastName() + "!");
             return "main";
         } else {
-            model.addAttribute("error", "Incorrect username or password, Please try again!");
+            model.addAttribute("error", "Wrong credentials");
             return "index";
         }
 

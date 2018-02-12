@@ -17,17 +17,15 @@ public interface UserDao {
 
     User readByEmailAndPassword(String email, String password);
 
-    User readByFullName(String name, String surname);
+    List<User> readByFullName(String name, String surname);
 
     void update(User user);
 
     void deleteByPassport(String passport);
 
-    void deleteByFullName(String name, String surname);
-
     List<User> findAllSortedUsers();
 
-    boolean isUserUnique(Integer id, String passport, String name, String surname);
+    boolean isUserUnique(String email, String passport);
 
 }
 

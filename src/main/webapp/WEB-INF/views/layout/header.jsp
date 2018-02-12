@@ -23,6 +23,8 @@
 
             <li><a href="<c:url value='/google/map' />">Карта</a></li>
 
+            <li><a href="<c:url value='/' />">Отзывы</a></li>
+
             <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
 
             <li><a href="<c:url value='/statistics/list' />"><spring:message code="header.statistics"/></a></li>

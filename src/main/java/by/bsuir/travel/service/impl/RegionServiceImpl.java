@@ -28,7 +28,7 @@ public class RegionServiceImpl implements RegionService {
 
     public RegionServiceImpl(MysqlRegionDao dao) {
         this.regionDao = dao;
-    }//todo дописать
+    }
 
     public Map<Region, List<Country>> getRegionsWithCountries() {
         Map<Region, List<Country>> map = new HashMap<Region, List<Country>>();

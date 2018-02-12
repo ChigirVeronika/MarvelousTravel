@@ -40,13 +40,13 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao 
         return user;
     }
 
-    public User readByFullName(String name, String surname) {
+    public List<User> readByFullName(String name, String surname) {
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         criteria.add(Restrictions.eq("name", name));
         criteria.add(Restrictions.eq("surname", surname));
-        User user = (User) criteria.uniqueResult();
-        return user;
+        List<User> users = criteria.list();
+        return users;
     }
 
     public void create(User user) {
@@ -62,11 +62,6 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao 
         delete(user);
     }
 
-    public void deleteByFullName(String name, String surname) {
-        User user = readByFullName(name, surname);
-        delete(user);
-    }
-
     public List<User> findAllSortedUsers() {
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
@@ -74,14 +69,19 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao 
         return users;
     }
 
-    public boolean isUserUnique(Integer id, String passport, String name, String surname) {
+    public boolean isUserUnique(String email, String passport) {
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        criteria.add(Restrictions.eq("name", name));
-        criteria.add(Restrictions.eq("surname", surname));
-        criteria.add(Restrictions.eq("passport", passport));
+        criteria.add(Restrictions.eq("email", email));
         User user = (User) criteria.uniqueResult();
         if (user == null) {
+            return true;
+        }
+        Criteria criteria2 = createEntityCriteria();
+        criteria2.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria2.add(Restrictions.eq("passport", passport));
+        User user2 = (User) criteria2.uniqueResult();
+        if (user2 == null) {
             return true;
         }
         return false;
