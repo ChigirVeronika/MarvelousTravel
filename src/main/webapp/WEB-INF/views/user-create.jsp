@@ -20,13 +20,13 @@
             </div>
             <div class="col-sm-8">
                 <div class="row">
-                    <form:form method="POST" modelAttribute="news" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="userDto" class="form-horizontal">
 
                         <form:input type="hidden" path="id" id="id"/>
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="name">Имя</label>
+                                <label class="col-md-3 control-lable" for="name">Name</label>
                                 <div class="col-md-7">
                                     <form:input type="text" path="name" id="name" class="form-control input-sm" />
                                     <div class="has-error">
@@ -38,7 +38,7 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="surname">Название</label>
+                                <label class="col-md-3 control-lable" for="surname">Surname</label>
                                 <div class="col-md-7">
                                     <form:input type="text" path="surname" id="surname" class="form-control input-sm" />
                                     <div class="has-error">
@@ -49,9 +49,136 @@
                         </div>
 
                         <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="birthday">Birthday</label>
+                                <div class="col-md-7">
+                                    <form:input type="date" path="birthday" id="birthday" class="form-control input-sm" pattern="MM/dd/yyyy"/>
+                                    <div class="has-error">
+                                        <form:errors path="birthday" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-3 control-lable" for="gender">Gender</label>
+                              <div class="col-md-7">
+                                  <form:radiobutton path="gender" id="gender" value="M" label="Male" />
+                                  <form:radiobutton path="gender" id="gender" value="F" label="Female" />
+                                  <form:radiobutton path="gender" id="gender" value="O" label="Other" />
+                                  <div class="has-error">
+                                      <form:errors path="gender" class="help-inline"/>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="passport">Passport</label>
+                                <div class="col-md-7">
+                                    <form:input type="text" path="passport" id="passport" class="form-control input-sm" />
+                                    <div class="has-error">
+                                        <form:errors path="passport" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="phone">Phone</label>
+                                <div class="col-md-7">
+                                    <form:input type="text" path="phone" id="phone" class="form-control input-sm" />
+                                    <div class="has-error">
+                                        <form:errors path="phone" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-3 control-lable" for="maritalStatus">Marital status</label>
+                              <div class="col-md-7">
+                                  <form:checkbox path="maritalStatus" id="maritalStatus" label="Married" class="form-control input-sm" />
+                                  <div class="has-error">
+                                      <form:errors path="maritalStatus" class="help-inline"/>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="email">Email</label>
+                                <div class="col-md-7">
+                                    <form:input type="text" path="email" id="email" class="form-control input-sm" />
+                                    <div class="has-error">
+                                        <form:errors path="email" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="password">Password</label>
+                                <div class="col-md-7">
+                                    <form:input type="text" path="password" id="password" class="form-control input-sm" />
+                                    <div class="has-error">
+                                        <form:errors path="password" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-3 control-lable" for="income">Income</label>
+                              <div class="col-md-7">
+                                  <form:input type="text" path="income" id="income" class="form-control input-sm" />
+                                  <div class="has-error">
+                                      <form:errors path="income" class="help-inline"/>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-3 control-lable" for="isParent">Are you a parent?</label>
+                              <div class="col-md-7">
+                                  <form:checkbox path="isParent" id="isParent" label="Parent" class="form-control input-sm" />
+                                  <div class="has-error">
+                                      <form:errors path="isParent" class="help-inline"/>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="home">Home</label>
+                                <div class="col-md-7">
+                                    <form:select path="home" id="home">
+                                        <c:forEach var='city' items='${cities}' varStatus='loop' >
+                                            <form:option value="${city}" label="${city.name}" />
+                                        </c:forEach>
+                                    </form:select>
+                                    <div class="has-error">
+                                        <form:errors path="home" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Зарегистироваться" class="btn btn-success btn-sm"/> или
-                                <input type="submit" value="Очистить" class="btn btn-success btn-sm"/>
+                                <input type="submit" value="Sign up" class="btn btn-success btn-sm"/> or
+                                <input type="submit" value="Clear" class="btn btn-success btn-sm"/>
 
                             </div>
                         </div>

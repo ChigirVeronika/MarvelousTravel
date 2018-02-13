@@ -1,5 +1,6 @@
 package by.bsuir.travel.dto;
 
+import by.bsuir.travel.entity.Tour;
 import org.springframework.stereotype.Component;
 
 @Component("feedbackDto")
@@ -10,6 +11,8 @@ public class FeedbackDto {
     private Integer mark;
 
     private String content;
+
+    private Tour tour;
 
     public FeedbackDto(){}
 
@@ -35,5 +38,13 @@ public class FeedbackDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 }

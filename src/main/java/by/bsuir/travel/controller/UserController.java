@@ -1,5 +1,6 @@
 package by.bsuir.travel.controller;
 
+import by.bsuir.travel.dto.UserDto;
 import by.bsuir.travel.entity.User;
 import by.bsuir.travel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,16 +44,30 @@ public class UserController {
 
     @RequestMapping(value = {"/user/create"}, method = RequestMethod.GET)
     public String getUserRegisterPage(ModelMap model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        UserDto user = new UserDto();
+        model.addAttribute("userDto", user);
         return "user-create";
     }
 
     @RequestMapping(value = {"/user/create"}, method = RequestMethod.POST)
-    public String saveUser(@Valid User user, BindingResult result, ModelMap model) {
+    public String saveUser(@Valid UserDto userDto, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "user-create";
         }
+        User user = new User();
+        user.setName(userDto.getName());
+        user.setSurname(userDto.getSurname());
+        user.setBithday(userDto.getBirthday());
+        user.setGender(userDto.getGender());
+        user.setPassport(userDto.getPassport());
+        user.setPhone(userDto.getPhone());
+        user.setMaritalStatus(userDto.getMaritalStatus());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setIncome(userDto.getIncome());
+        user.setParent(userDto.getParent());
+        user.setHome(userDto.getHome());
+
         if (!userService.isUserUnique(user.getEmail(), user.getPassword())) {
             FieldError error = new FieldError("user", "email", "Bad email or password.");
             result.addError(error);

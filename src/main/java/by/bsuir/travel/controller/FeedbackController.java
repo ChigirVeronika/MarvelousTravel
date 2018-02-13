@@ -2,8 +2,10 @@ package by.bsuir.travel.controller;
 
 import by.bsuir.travel.dto.FeedbackDto;
 import by.bsuir.travel.entity.Feedback;
+import by.bsuir.travel.entity.Tour;
 import by.bsuir.travel.entity.User;
 import by.bsuir.travel.service.FeedbackService;
+import by.bsuir.travel.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,10 +26,16 @@ public class FeedbackController {
     @Autowired
     private FeedbackService feedbackService;
 
+    @Autowired
+    private TourService tourService;
+
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String getList(ModelMap model) {
         FeedbackDto dto = new FeedbackDto();
         model.addAttribute("feedbackDto", dto);
+
+        List<Tour> tours = tourService.findAll();
+        model.addAttribute("tours", tours);
 
         List<Feedback> feedbacks = feedbackService.findAll();
         model.addAttribute("feedbacks", feedbacks);
@@ -45,6 +53,7 @@ public class FeedbackController {
         feedback.setMark(feedbackDto.getMark());
         feedback.setDate(new Date());
         feedback.setUser((User) session.getAttribute("user"));
+        feedback.setTour(feedbackDto.getTour());
 
         feedbackService.save(feedback);
 

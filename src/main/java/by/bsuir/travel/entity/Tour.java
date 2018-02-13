@@ -60,6 +60,10 @@ public class Tour {
     @JsonManagedReference
     private Set<Booking> bookings;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tour")
+    @JsonManagedReference
+    private Set<Feedback> feedbacks;
+
     public Tour() {
     }
 
@@ -157,5 +161,13 @@ public class Tour {
 
     public void setBookings(Set<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public Set<Feedback> getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(Set<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
     }
 }

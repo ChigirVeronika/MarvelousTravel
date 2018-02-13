@@ -25,6 +25,22 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="tour">Tour</label>
+                                <div class="col-md-7">
+                                    <form:select path="tour" id="tour">
+                                        <c:forEach var='tour' items='${tours}' varStatus='loop' >
+                                            <form:option value="${tour}" label="${tour.name}"/>
+                                        </c:forEach>
+                                    </form:select>
+                                    <div class="has-error">
+                                        <form:errors path="tour" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="content">Отзыв</label>
                                 <div class="col-md-7">
                                     <form:input type="text" path="content" id="content" class="form-control input-sm" />
@@ -71,6 +87,9 @@
                     </div>
                     <div class="row">
                         <h5 class="trendhead-brand">Оценка: ${feedback.mark}</h5>
+                    </div>
+                    <div class="row">
+                        <h5 class="trendhead-brand">Tour: ${feedback.tour.name}</h5>
                     </div>
                     <div class="row">
                         <h5 class="trendhead-brand">${feedback.content}</h5>

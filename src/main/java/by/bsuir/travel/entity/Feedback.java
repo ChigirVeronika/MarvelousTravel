@@ -30,6 +30,11 @@ public class Feedback {
     @Column(name = "image")
     private byte[] image;
 
+    @ManyToOne
+    @JoinColumn(name = "tour_id")
+    @JsonBackReference
+    private Tour tour;//todo needed to change db
+
     public Feedback(){}
 
     public Integer getId() {
@@ -78,5 +83,13 @@ public class Feedback {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 }

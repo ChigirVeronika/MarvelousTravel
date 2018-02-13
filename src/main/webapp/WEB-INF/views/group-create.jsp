@@ -63,8 +63,9 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="gender">Пол</label>
                                 <div class="col-md-7">
-                                    <form:radiobutton path="gender" id="gender" value="M" label="M" />
-                                    <form:radiobutton path="gender" id="gender" value="F" label="F" />
+                                    <form:radiobutton path="gender" id="gender" value="M" label="Male" />
+                                    <form:radiobutton path="gender" id="gender" value="F" label="Female" />
+                                    <form:radiobutton path="gender" id="gender" value="O" label="Other" />
                                     <div class="has-error">
                                         <form:errors path="gender" class="help-inline"/>
                                     </div>
