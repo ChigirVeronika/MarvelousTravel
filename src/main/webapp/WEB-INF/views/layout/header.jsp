@@ -27,6 +27,8 @@
 
             <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
 
+            <li><a href="<c:url value='/user/get' />">Find User</a></li>
+
             <li><a href="<c:url value='/statistics/list' />"><spring:message code="header.statistics"/></a></li>
 
         </ul>

@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -54,19 +55,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "user-create";
         }
-        User user = new User();
-        user.setName(userDto.getName());
-        user.setSurname(userDto.getSurname());
-        user.setBithday(userDto.getBirthday());
-        user.setGender(userDto.getGender());
-        user.setPassport(userDto.getPassport());
-        user.setPhone(userDto.getPhone());
-        user.setMaritalStatus(userDto.getMaritalStatus());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-        user.setIncome(userDto.getIncome());
-        user.setParent(userDto.getParent());
-        user.setHome(userDto.getHome());
+        User user = convertToEntity(userDto);
 
         if (!userService.isUserUnique(user.getEmail(), user.getPassword())) {
             FieldError error = new FieldError("user", "email", "Bad email or password.");
@@ -90,4 +79,38 @@ public class UserController {
         return "user-get";
     }
 
+    @RequestMapping(value = {"/user/get"}, method = RequestMethod.GET)
+    public String getUserPersonalPage(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+
+        return "user-personal";
+    }
+
+    @RequestMapping(value = {"/user/get"}, method = RequestMethod.POST)
+    public String updateUser(@Valid UserDto userDto, ModelMap model) {
+        User user = userService.findByEmail(userDto.getEmail());
+        User fromDto = convertToEntity(userDto);
+        fromDto.setId(user.getId());
+        userService.update(fromDto);
+        return "redirect:/user/list";
+    }
+
+    private User convertToEntity(UserDto userDto) {
+        User user = new User();
+        user.setName(userDto.getName());
+        user.setSurname(userDto.getSurname());
+        user.setBithday(userDto.getBirthday());
+        user.setGender(userDto.getGender());
+        user.setPassport(userDto.getPassport());
+        user.setPhone(userDto.getPhone());
+        user.setMaritalStatus(userDto.getMaritalStatus());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setIncome(userDto.getIncome());
+        user.setParent(userDto.getParent());
+        user.setHome(userDto.getHome());
+        //user.setRole();//todo!!!
+        //user.setGroup();
+        return user;
+    }
 }

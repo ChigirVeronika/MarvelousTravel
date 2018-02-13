@@ -45,9 +45,7 @@
                     <h4 class="trendhead-brand">
                         ${user.name} ${user.surname}
                     </h4>
-                </div>
-                </br>
-                <div class="row">
+
                     <h4  class="trendhead-brand">
                         ${user.passport}
                     </h4>
