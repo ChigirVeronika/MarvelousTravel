@@ -1,5 +1,6 @@
 package by.bsuir.travel.dao;
 
+import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public interface UserDao {
     User readByEmail(String email);
 
     User readByEmailAndPassword(String email, String password);
+
+    List<User> readByGroup(Group group);
 
     List<User> readByFullName(String name, String surname);
 

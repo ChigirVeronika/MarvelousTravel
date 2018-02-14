@@ -2,6 +2,7 @@ package by.bsuir.travel.service.impl;
 
 import by.bsuir.travel.dao.UserDao;
 import by.bsuir.travel.dao.mysqlimpl.MysqlUserDao;
+import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
 import by.bsuir.travel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findByFullName(String name, String surname) {
         return userDao.readByFullName(name, surname);
+    }
+
+    @Override
+    public List<User> findByGroup(Group group) {
+        return userDao.readByGroup(group);
     }
 
     @Override

@@ -10,14 +10,14 @@ import java.io.File;
 public class Check {
     public static void main(String[] args) {
 
-        System.setProperty("jna.library.path", "D:\\_D\\MarvelousTravel\\src\\main\\resources\\ann\\");
-        //System.setProperty("fannj.library.path", "C:\\Users\\Veranika\\IdeaProjects\\TravelFANN\\src\\main\\resources\\fannj-0.6.jar\\");
-        //System.out.println( System.getProperty("jna.library.path") ); //maybe the path is malformed
+        System.setProperty("jna.library.path", "D:\\IdeaProjects\\MarvelousTravel\\src\\main\\resources\\ann\\");
+        System.setProperty("fannj.library.path", "D:\\IdeaProjects\\MarvelousTravel\\src\\main\\resources\\ann\\fannj-0.6.jar");
+        System.out.println( System.getProperty("jna.library.path") ); //maybe the path is malformed
         File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
-        //System.out.println("Is the dll file there:" + file.exists());
-        //System.load(file.getAbsolutePath());
+        System.out.println("Is the dll file there:" + file.exists());
+        System.load(file.getAbsolutePath());
 
-        Fann fann = new Fann("D:\\_D\\MarvelousTravel\\dto\\result.dto");
+        Fann fann = new Fann("D:\\IdeaProjects\\MarvelousTravel\\data\\result.dto");
         float[][] tests = {
                 {26, 1, 0, 0.5f, 0, 1},
                 {37, 1, 1, 0.8f, 1, 1},

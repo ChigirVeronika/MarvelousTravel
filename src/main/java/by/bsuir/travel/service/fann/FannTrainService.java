@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface FannTrainService {
 
-    String createTrainingFile(List<User> users, List<Group> groups);
+    String createTrainingFile(List<Group> groups) throws Exception;//all groups
 
-    void trainAndSaveToFile(String resultFileName);
+    void trainANNAndSaveToFile(String resultFileName);
 
     void deleteOldFiles();
 

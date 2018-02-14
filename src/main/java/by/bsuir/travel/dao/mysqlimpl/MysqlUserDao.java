@@ -2,6 +2,7 @@ package by.bsuir.travel.dao.mysqlimpl;
 
 import by.bsuir.travel.dao.AbstractDao;
 import by.bsuir.travel.dao.UserDao;
+import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -38,6 +39,15 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao 
         criteria.add(Restrictions.eq("password", password));//TODO do hashing in service
         User user = (User) criteria.uniqueResult();
         return user;
+    }
+
+    @Override
+    public List<User> readByGroup(Group group) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("group", group));
+        List<User> users = criteria.list();
+        return users;
     }
 
     public List<User> readByFullName(String name, String surname) {

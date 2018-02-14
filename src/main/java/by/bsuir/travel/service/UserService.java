@@ -1,6 +1,7 @@
 package by.bsuir.travel.service;
 
 
+import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
 
 import java.util.List;
@@ -22,7 +23,9 @@ public interface UserService {
 	User findByEmailAndPassword(String email, String password);
 
 	List<User> findByFullName(String name, String surname);
-	
+
+	List<User> findByGroup(Group group);
+
 	boolean isUserUnique(String email, String password);
 
 }
