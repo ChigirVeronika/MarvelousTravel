@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface GroupService {
 
-    List<GroupDto> findAll();
+    List<GroupDto> findAllDtos();
+
+    List<Group> findAll();
 
     GroupDto find(Integer id);
 

@@ -30,7 +30,7 @@ public class GroupServiceImpl implements GroupService {
         this.groupDao = dao;
     }
 
-    public List<GroupDto> findAll() {
+    public List<GroupDto> findAllDtos() {
         List<Group> groups = groupDao.readAll();
         List<GroupDto> dtos = new ArrayList<>();
         for (Group g : groups) {
@@ -38,6 +38,12 @@ public class GroupServiceImpl implements GroupService {
         }
         return dtos;
     }
+
+    @Override
+    public List<Group> findAll() {
+        return groupDao.readAll();
+    }
+
 
     public GroupDto find(Integer id) {
         Group group = groupDao.read(id);

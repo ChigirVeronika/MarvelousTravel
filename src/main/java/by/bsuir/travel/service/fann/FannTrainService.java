@@ -1,15 +1,16 @@
 package by.bsuir.travel.service.fann;
 
 import by.bsuir.travel.entity.Group;
-import by.bsuir.travel.entity.User;
+import com.googlecode.fannj.Fann;
 
 import java.util.List;
 
 public interface FannTrainService {
+    Fann autoTraining() throws Exception;
 
-    String createTrainingFile(List<Group> groups) throws Exception;//all groups
+    String createTrainingFile(List<Group> groups, String trainingFileName) throws Exception;//all groups
 
-    void trainANNAndSaveToFile(String resultFileName);
+    Fann trainANNAndSaveToFile(String trainingFileName, String resultFileName, boolean provideFullPathAndType);
 
     void deleteOldFiles();
 

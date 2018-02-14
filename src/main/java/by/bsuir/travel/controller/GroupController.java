@@ -23,7 +23,7 @@ public class GroupController {
 
     @RequestMapping(value = {"/group/list"}, method = RequestMethod.GET)
     public String showGroupListPage(ModelMap model) {
-        List<GroupDto> groups = groupService.findAll();
+        List<GroupDto> groups = groupService.findAllDtos();
         model.addAttribute("groups", groups);
         return "group-list";
     }
