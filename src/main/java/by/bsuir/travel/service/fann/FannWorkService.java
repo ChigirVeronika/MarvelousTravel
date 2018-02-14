@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface FannWorkService {
 
-    Group autoWork(List<User> users, Fann fann);
+    List<Group> autoWork(List<User> users, Fann fann);
 
     float[] createWorkData(User user);
 
-    Group workAndGetUserGroup(Fann fann, float[] workData);
+    Group getUserGroup(Fann fann, float[] workData);
 
 }

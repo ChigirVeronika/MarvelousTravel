@@ -31,7 +31,7 @@ public class GroupController {
     @RequestMapping(value = {"/group/{id}"}, method = RequestMethod.GET)//todo use
     public String findGroupByIdAndShow(@PathVariable Integer id, ModelMap model) {
 
-        GroupDto group = groupService.find(id);
+        GroupDto group = groupService.findDto(id);
         model.addAttribute("group", group);
         return "group";
     }
@@ -51,7 +51,7 @@ public class GroupController {
 
     @RequestMapping(value = {"/group/edit/{id}"}, method = RequestMethod.GET)//todo use
     public String showGroupEditPage(@PathVariable Integer id, ModelMap model) {
-        GroupDto group = groupService.find(id);
+        GroupDto group = groupService.findDto(id);
         model.addAttribute("group", group);
         return "group-create";
     }

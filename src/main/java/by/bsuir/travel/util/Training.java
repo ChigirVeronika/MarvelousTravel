@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Train ann from dto/training_set.dto file.
- * Info is in dto/fann_training_set.docx
+ * Train ann from training_set.dto file.
+ * Info is in fann_training_set.docx
  */
 public class Training {
     public static void main(String[] args) throws InterruptedException {

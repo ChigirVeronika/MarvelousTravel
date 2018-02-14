@@ -58,7 +58,6 @@ public class FannTrainServiceImpl implements FannTrainService {
 
     @Override
     public void createTrainingFile(List<Group> groups, String trainingFileName) throws Exception {
-
         new File(trainingFileName);
         Path path = Paths.get(trainingFileName);
 
@@ -84,7 +83,6 @@ public class FannTrainServiceImpl implements FannTrainService {
 
         trainer.train(new File(trainingFileName).getAbsolutePath(),
                 100000, 100, 0.0001f);
-
         return fann;
     }
 
@@ -151,13 +149,6 @@ public class FannTrainServiceImpl implements FannTrainService {
             }
         }
         return result;
-    }
-
-    private String createFileName(String path, String name, String type) {
-        LocalDateTime dateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
-        String now = dateTime.format(formatter);
-        return path + name + now + "." + type;
     }
 
     private String createFileName(String path, String name, String type, LocalDateTime dateTime) {

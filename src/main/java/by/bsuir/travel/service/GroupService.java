@@ -11,7 +11,9 @@ public interface GroupService {
 
     List<Group> findAll();
 
-    GroupDto find(Integer id);
+    GroupDto findDto(Integer id);
+
+    Group find(Integer id);
 
     void save(GroupDto group);
 

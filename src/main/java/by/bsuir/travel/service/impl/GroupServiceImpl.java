@@ -45,11 +45,17 @@ public class GroupServiceImpl implements GroupService {
     }
 
 
-    public GroupDto find(Integer id) {
+    public GroupDto findDto(Integer id) {
         Group group = groupDao.read(id);
         GroupDto dto = convertToDto(group);
         return dto;
     }
+
+    @Override
+    public Group find(Integer id) {
+        return groupDao.read(id);
+    }
+
 
     public void save(GroupDto group) {
         Group g = convertToEntity(group);
