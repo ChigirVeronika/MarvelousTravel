@@ -8,9 +8,13 @@ import java.util.List;
 public interface FannTrainService {
     Fann autoTraining() throws Exception;
 
-    String createTrainingFile(List<Group> groups, String trainingFileName) throws Exception;//all groups
+    Fann autoTraining(List<Group> groups) throws Exception;
 
-    Fann trainANNAndSaveToFile(String trainingFileName, String resultFileName, boolean provideFullPathAndType);
+    void createTrainingFile(List<Group> groups, String trainingFileName) throws Exception;//all groups
+
+    Fann createAndTrainAnn(String trainingFileName);
+
+    void saveAnnToResultFile(Fann fann, String resultFileName);
 
     void deleteOldFiles();
 

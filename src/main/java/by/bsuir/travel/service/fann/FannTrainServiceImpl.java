@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.nio.charset.Charset;
-import java.nio.charset.CoderResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -39,38 +38,40 @@ public class FannTrainServiceImpl implements FannTrainService {
 
     @Override
     public Fann autoTraining() throws Exception {
-        createTrainingFile(groupService.findAll(), TRAINING_FILE_NAME);
-        Fann fann = trainANNAndSaveToFile(TRAINING_FILE_NAME, RESULT_FILE_NAME, true);
+        List<Group> groups = groupService.findAll();
+        Fann fann = autoTraining(groups);
         return fann;
     }
 
     @Override
-    public String createTrainingFile(List<Group> groups, String trainingFileName) throws Exception {
+    public Fann autoTraining(List<Group> groups) throws Exception {
+        LocalDateTime dateTime = LocalDateTime.now();
+        String trainingFileName = createFileName(FILE_PATH, TRAINING_FILE_NAME, FILE_TYPE, dateTime);
+        String resultFileName = createFileName(FILE_PATH, RESULT_FILE_NAME, FILE_TYPE, dateTime);
 
-        String fileName = createFileName(FILE_PATH, trainingFileName, FILE_TYPE);
+        createTrainingFile(groups, trainingFileName);
+        Fann fann = createAndTrainAnn(trainingFileName);
+        saveAnnToResultFile(fann, resultFileName);
 
-        new File(fileName);
-        Path path = Paths.get(fileName);
-
-        writeFirstLine(groups, path);
-
-        writeAllLines(groups, path);
-
-        return fileName;
+        return fann;
     }
 
     @Override
-    public Fann trainANNAndSaveToFile(String trainingFileName, String resultFileName, boolean provideFullPathAndType) {
+    public void createTrainingFile(List<Group> groups, String trainingFileName) throws Exception {
+
+        new File(trainingFileName);
+        Path path = Paths.get(trainingFileName);
+
+        writeFirstLine(groups, path);
+        writeAllLines(groups, path);
+    }
+
+    @Override
+    public Fann createAndTrainAnn(String trainingFileName) {
         int groupsNumber = groupService.findAll().size();
 
         System.setProperty("jna.library.path", "D:\\IdeaProjects\\MarvelousTravel\\src\\main\\resources\\ann\\");
         new File(System.getProperty("jna.library.path") + "fannfloat.dll");
-
-        if (provideFullPathAndType) {
-            LocalDateTime dateTime = LocalDateTime.now();
-            trainingFileName = createFileName(FILE_PATH, trainingFileName, FILE_TYPE, dateTime);
-            resultFileName = createFileName(FILE_PATH, resultFileName, FILE_TYPE, dateTime);
-        }
 
         List<Layer> layerList = new ArrayList<>();
         layerList.add(Layer.create(USER_PARAMS_NUMBER, ActivationFunction.FANN_SIGMOID_SYMMETRIC, 0.01f));
@@ -84,16 +85,18 @@ public class FannTrainServiceImpl implements FannTrainService {
         trainer.train(new File(trainingFileName).getAbsolutePath(),
                 100000, 100, 0.0001f);
 
-        fann.save(resultFileName);
-
         return fann;
+    }
+
+    @Override
+    public void saveAnnToResultFile(Fann fann, String resultFileName) {
+        fann.save(resultFileName);
     }
 
     @Override
     public void deleteOldFiles() {
         throw new UnsupportedOperationException();
     }
-
 
     private void writeFirstLine(List<Group> groups, Path path) throws Exception {
         String firstLine = userService.findAll().size() + " " //TODO!!! all users who have groups !!!
