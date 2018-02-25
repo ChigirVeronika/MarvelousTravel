@@ -100,10 +100,11 @@ public class TourController {
     }
 
     @RequestMapping(value = {"/tour/get/{id}"}, method = RequestMethod.GET)
-    public String getTour(@PathVariable Integer id) {
+    public String getTour(@PathVariable Integer id, HttpSession session) {
         //todo add to statistics IMPORTANT!!!
         Tour tour = tourService.find(id);
-        User user = userService.findById(1);//TODO! Get user from session
+        User u = (User) session.getAttribute("user");
+        User user = userService.findById(u.getId());
         orderService.saveOrderByTour(tour, user);
         return "greeting";
     }
