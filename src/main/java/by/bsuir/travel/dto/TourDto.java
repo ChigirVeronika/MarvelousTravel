@@ -1,65 +1,49 @@
 package by.bsuir.travel.dto;
 
-import by.bsuir.travel.entity.City;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 @Component("tourDto")
 public class TourDto {
 
-    private Integer id;
+    private String country;
 
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
-    private Date startDate;
+    private String month;
 
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
-    private Date endDate;
+    private Integer priceTopLimit;
 
-    private City cityFrom;
-
-    private City cityTo;
+    private String cityFrom;
 
     public TourDto(){}
 
-    public Integer getId() {
-        return id;
+    public String getCountry() {
+        return country;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getMonth() {
+        return month;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setMonth(String month) {
+        this.month = month;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Integer getPriceTopLimit() {
+        return priceTopLimit;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setPriceTopLimit(Integer priceTopLimit) {
+        this.priceTopLimit = priceTopLimit;
     }
 
-    public City getCityFrom() {
+    public String getCityFrom() {
         return cityFrom;
     }
 
-    public void setCityFrom(City cityFrom) {
+    public void setCityFrom(String cityFrom) {
         this.cityFrom = cityFrom;
-    }
-
-    public City getCityTo() {
-        return cityTo;
-    }
-
-    public void setCityTo(City cityTo) {
-        this.cityTo = cityTo;
     }
 }

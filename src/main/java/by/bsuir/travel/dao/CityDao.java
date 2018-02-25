@@ -11,6 +11,8 @@ public interface CityDao {
 
     City read(Integer id);
 
+    City readByName(String name);
+
     void update(City city);
 
     void delete(Integer id);

@@ -8,10 +8,12 @@ import by.bsuir.travel.entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository("orderDao")
+@Transactional
 public class MysqlOrderDao extends AbstractDao<Integer, Order> implements OrderDao {
     @Override
     public void create(Order order) {

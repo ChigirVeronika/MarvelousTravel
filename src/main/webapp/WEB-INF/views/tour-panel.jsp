@@ -26,16 +26,18 @@
                     </div>
                     <div class="row">
 
-                    <form:form method="POST" modelAttribute="tourDto" class="form-horizontal">
-                        <form:input type="hidden" path="id" id="id"/>
-
+                    <form:form method="POST" modelAttribute="tourDto" action="/tour/panel" class="form-horizontal">
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="startDate">С</label>
+                                <label class="col-md-3 control-lable" for="country">Страны</label>
                                 <div class="col-md-7">
-                                    <form:input type="date" path="startDate" id="startDate" class="form-control input-sm" />
+                                    <form:select path="country" id="country">
+                                        <c:forEach var='c' items='${countries}'>
+                                            <form:option value="${c}" label="${c}" />
+                                        </c:forEach>
+                                    </form:select>
                                     <div class="has-error">
-                                        <form:errors path="startDate" class="help-inline"/>
+                                        <form:errors path="country" class="help-inline"/>
                                     </div>
                                 </div>
                             </div>
@@ -43,11 +45,15 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="startDate">Дата окончания</label>
+                                <label class="col-md-3 control-lable" for="month">Даты</label>
                                 <div class="col-md-7">
-                                    <form:input type="date" path="endDate" id="endDate" class="form-control input-sm" pattern="MM/dd/yyyy"/>
+                                    <form:select path="month" id="month">
+                                        <c:forEach var='m' items='${months}'>
+                                            <form:option value="${m}" label="${m}" />
+                                        </c:forEach>
+                                    </form:select>
                                     <div class="has-error">
-                                        <form:errors path="endDate" class="help-inline"/>
+                                        <form:errors path="month" class="help-inline"/>
                                     </div>
                                 </div>
                             </div>
@@ -55,32 +61,27 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="cityFrom">Откуда</label>
+                                <label class="col-md-3 control-lable" for="priceTopLimit">Цена до (euro)</label>
                                 <div class="col-md-7">
+                                    <form:input type="number" path="priceTopLimit" id="priceTopLimit" class="form-control input-sm" />
+                                    <div class="has-error">
+                                        <form:errors path="priceTopLimit" class="help-inline"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3 control-lable" for="cityFrom">Из города</label>
+                                <div class="col-md-7">
                                     <form:select path="cityFrom" id="cityFrom">
-                                        <c:forEach var='city' items='${cities}' varStatus='loop' >
-                                            <form:option value="${city}" label="${city.name}" />
+                                        <c:forEach var='city' items='${cities}'>
+                                            <form:option value="${city}" label="${city}" />
                                         </c:forEach>
                                     </form:select>
                                     <div class="has-error">
                                         <form:errors path="cityFrom" class="help-inline"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="cityTo">Куда</label>
-                                <div class="col-md-7">
-                                    <form:select path="cityTo" id="cityTo">
-                                        <c:forEach var='city' items='${cities}' varStatus='loop' >
-                                            <form:option value="${city}" label="${city.name}" />
-                                        </c:forEach>
-                                    </form:select>
-                                    <div class="has-error">
-                                        <form:errors path="cityTo" class="help-inline"/>
                                     </div>
                                 </div>
                             </div>

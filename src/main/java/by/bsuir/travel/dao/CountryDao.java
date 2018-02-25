@@ -11,6 +11,8 @@ public interface CountryDao {
 
     Country read(Integer id);
 
+    Country readByName(String name);
+
     void update(Country country);
 
     void delete(Integer id);

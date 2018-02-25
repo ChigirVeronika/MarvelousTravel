@@ -20,6 +20,15 @@ public class MysqlCountryDao extends AbstractDao<Integer, Country> implements Co
         return getByKey(id);
     }
 
+    @Override
+    public Country readByName(String name) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("name", name));
+        Country country = (Country) criteria.uniqueResult();
+        return country;
+    }
+
     public void update(Country country) {
         updateEntity(country);
     }

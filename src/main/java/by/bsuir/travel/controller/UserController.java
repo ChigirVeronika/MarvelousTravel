@@ -79,14 +79,14 @@ public class UserController {
         return "user-get";
     }
 
-    @RequestMapping(value = {"/user/get"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/user/personal"}, method = RequestMethod.GET)
     public String getUserPersonalPage(HttpSession session) {
         User user = (User) session.getAttribute("user");
 
         return "user-personal";
     }
 
-    @RequestMapping(value = {"/user/get"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/user/personal"}, method = RequestMethod.POST)
     public String updateUser(@Valid UserDto userDto, ModelMap model) {
         User user = userService.findByEmail(userDto.getEmail());
         User fromDto = convertToEntity(userDto);

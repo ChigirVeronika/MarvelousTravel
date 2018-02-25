@@ -21,6 +21,15 @@ public class MysqlCityDao extends AbstractDao<Integer, City> implements CityDao 
         return getByKey(id);
     }
 
+    @Override
+    public City readByName(String name) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("name", name));
+        City city = (City) criteria.uniqueResult();
+        return city;
+    }
+
     public void update(City city) {
         updateEntity(city);
     }

@@ -19,6 +19,11 @@
                 <jsp:include page="layout/header.jsp"/>
             </div>
             <div class="col-sm-8">
+                <div class="row">
+                    <h3 class="trendhead-brand">
+                        <a href="<c:url value='/tour/panel' />" class="btn btn-success custom-width">Поиск</a>
+                    </h3>
+                </div>
 
                 <c:forEach items="${tours}" var="tour">
                     <div class="row">
@@ -27,10 +32,10 @@
                         </h4>
                     </div>
                     <div class="row">
-                        <h5>Даты: ${tour.startDate} - {tour.endDate} // Суток: </h5>
+                        <h5>Даты: ${tour.startDate} - ${tour.endDate} // Суток: </h5>
                     </div>
                     <div class="row">
-                        <h5>Маршрут: ${tour.cityFrom} - {tour.cityTo}</h5>
+                        <h5>Маршрут: ${tour.cityFrom.name} - ${tour.cityTo.name}</h5>
                     </div>
                     <div class="row">
                         <h5>Цена: ${tour.price} BYN</h5>
@@ -44,13 +49,6 @@
                         <hr>
                     </div>
                 </c:forEach>
-
-                <div class="row">
-                    <h3 class="trendhead-brand">
-                        <a href="<c:url value='/tour/panel' />" class="btn btn-success custom-width">Поиск</a>
-                    </h3>
-                </div>
-
 
                 <div class="row">
                     <h3 class="trendhead-brand">
