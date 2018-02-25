@@ -19,7 +19,7 @@
                 <jsp:include page="layout/header.jsp"/>
             </div>
             <div class="inner cover">
-                <form action="index" method="POST">
+                <form action="/user/get" method="POST">
                     <div class="row">
                         <div class="col-md-3"><label for="email"></label></div>
                         <div class="col-md-5">

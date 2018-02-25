@@ -1,9 +1,6 @@
 package by.bsuir.travel.dao;
 
-import by.bsuir.travel.entity.City;
-import by.bsuir.travel.entity.Country;
-import by.bsuir.travel.entity.Ticket;
-import by.bsuir.travel.entity.Tour;
+import by.bsuir.travel.entity.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -20,6 +17,7 @@ public interface TourDao {
     void delete(Integer id);
 
     List<Tour> readAll();
+    List<Tour> readAllForGroup(Group group);
 
     List<Tour> readAllForCitiesAndDates(Tour tour);
 

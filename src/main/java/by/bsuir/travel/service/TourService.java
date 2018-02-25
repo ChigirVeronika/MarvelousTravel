@@ -1,6 +1,7 @@
 package by.bsuir.travel.service;
 
 import by.bsuir.travel.dto.TourDto;
+import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.Tour;
 
 import java.text.ParseException;
@@ -10,6 +11,8 @@ public interface TourService {
     Tour find(Integer id);
 
     List<Tour> findAll();
+
+    List<Tour> findAllForGroup(Group group);
 
     List<Tour> findAllForCitiesAndDates(Tour tour);
 

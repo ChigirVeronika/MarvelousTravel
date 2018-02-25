@@ -3,6 +3,7 @@ package by.bsuir.travel.dao.mysqlimpl;
 import by.bsuir.travel.dao.AbstractDao;
 import by.bsuir.travel.dao.TourDao;
 import by.bsuir.travel.entity.City;
+import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.Tour;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
@@ -37,6 +38,15 @@ public class MysqlTourDao extends AbstractDao<Integer, Tour> implements TourDao 
     public List<Tour> readAll() {
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        List<Tour> tours = criteria.list();
+        return tours;
+    }
+
+    @Override
+    public List<Tour> readAllForGroup(Group group) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        criteria.add(Restrictions.eq("group", group));
         List<Tour> tours = criteria.list();
         return tours;
     }

@@ -24,6 +24,13 @@
                             <a href="<c:url value='/tour/list' />" class="btn btn-success custom-width">Показать все туры</a>
                         </h5>
                     </div>
+
+                    <div class="row">
+                        <h5 class="trendhead-brand">
+                            <a href="<c:url value='/tour/list/group' />" class="btn btn-success custom-width">Показать туры моей группы</a>
+                        </h5>
+                    </div>
+
                     <div class="row">
 
                     <form:form method="POST" modelAttribute="tourDto" action="/tour/panel" class="form-horizontal">

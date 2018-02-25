@@ -90,6 +90,15 @@ public class TourController {
         return "tour-list";
     }
 
+    @RequestMapping(value = {"/tour/list/group"}, method = RequestMethod.GET)
+    public String getAllToursForUserGroup(ModelMap model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        Group group = user.getGroup();
+        List<Tour> tours = tourService.findAllForGroup(group);
+        model.addAttribute("tours", tours);
+        return "tour-list";
+    }
+
     @RequestMapping(value = {"/tour/get/{id}"}, method = RequestMethod.GET)
     public String getTour(@PathVariable Integer id) {
         //todo add to statistics IMPORTANT!!!

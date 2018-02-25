@@ -9,6 +9,7 @@ import by.bsuir.travel.dao.mysqlimpl.MysqlTourDao;
 import by.bsuir.travel.dto.TourDto;
 import by.bsuir.travel.entity.City;
 import by.bsuir.travel.entity.Country;
+import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.Tour;
 import by.bsuir.travel.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,11 @@ public class TourServiceImpl implements TourService {
 
     public List<Tour> findAll() {
         return tourDao.readAll();
+    }
+
+    @Override
+    public List<Tour> findAllForGroup(Group group) {
+        return tourDao.readAllForGroup(group);
     }
 
     public List<Tour> findAllForCitiesAndDates(Tour tour) {
