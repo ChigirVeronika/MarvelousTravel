@@ -27,6 +27,11 @@ public class AnnController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value = {""}, method = RequestMethod.GET)
+    public String showAnnPage(ModelMap model) throws Exception {
+        return "ann";
+    }
+
     @RequestMapping(value = {"/train"}, method = RequestMethod.GET)
     public String train(ModelMap model) throws Exception {
         List<Group> groups = null;//TODO HOW GET NEEDED GROUPS FROM UI
@@ -34,6 +39,12 @@ public class AnnController {
 
         List<User> users = null; //TODO
         List<Group> assignedGroups = fannWorkService.autoWork(users, fann);
+        return "ann";
+    }
+
+    @RequestMapping(value = {"/work"}, method = RequestMethod.GET)
+    public String work(ModelMap model) throws Exception {
+        //todo
         return "ann";
     }
 
