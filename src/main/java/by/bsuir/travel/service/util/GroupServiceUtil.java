@@ -1,5 +1,7 @@
 package by.bsuir.travel.service.util;
 
+import by.bsuir.travel.dto.GroupDto;
+import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
@@ -7,11 +9,36 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component("groupServiceUtil")
 public class GroupServiceUtil {
+
+    public static Group convertToEntity(GroupDto dto) {
+        Group g = new Group();
+        g.setName(dto.getName());
+        g.setInfo(dto.getInfo());
+        return g;
+    }
+
+    public static GroupDto convertToDto(Group g) {
+        GroupDto dto = new GroupDto();
+        Set<User> users = g.getUsers();
+
+        dto.setName(g.getName());
+        dto.setInfo(Optional.ofNullable(g.getInfo()).orElse(""));
+        dto.setTours(g.getTours());
+        dto.setUsers(users);
+        dto.setAge(getAverageAge(users));
+        dto.setGender(getPrevailingGender(users));
+        dto.setMaritalStatus(getPrevailingMaritalStatus(users));
+        dto.setIncome(getAverageIncome(users));
+        dto.setIsParent(getIsParent(users));
+
+        return dto;
+    }
 
     public static Boolean getPrevailingMaritalStatus(Set<User> users) {//todo maybe change logic
         long married = users.stream()

@@ -59,12 +59,14 @@ public class GroupServiceImpl implements GroupService {
 
     public void save(GroupDto group) {
         Group g = convertToEntity(group);
+        //todo recreate training file, retrain ann, reassign users to groups
         groupDao.create(g);
         //TODO LOGIC --ADD TO-- TRAINING FILE!!!
     }
 
     public void update(GroupDto group) {
         Group g = convertToEntity(group);
+        //todo recreate training file, retrain ann, reassign users to groups
         groupDao.update(g);
         //TODO LOGIC --CHANGE-- TRAINING FILE!!!
     }
@@ -77,33 +79,6 @@ public class GroupServiceImpl implements GroupService {
     public void delete(String name) {
         groupDao.deleteByName(name);
         //TODO LOGIC --DELETE FROM-- TRAINING FILE!!!
-    }
-
-    private Group convertToEntity(GroupDto dto) {
-        Group g = new Group();
-        g.setName(dto.getName());
-        g.setInfo(dto.getInfo());
-
-        //TODO!!! Add logic to resign users to groups if new group added
-
-        return g;
-    }
-
-    private GroupDto convertToDto(Group g) {
-        GroupDto dto = new GroupDto();
-        Set<User> users = g.getUsers();
-
-        dto.setName(g.getName());
-        dto.setInfo(Optional.ofNullable(g.getInfo()).orElse(""));
-        dto.setTours(g.getTours());
-        dto.setUsers(users);
-        dto.setAge(getAverageAge(users));
-        dto.setGender(getPrevailingGender(users));
-        dto.setMaritalStatus(getPrevailingMaritalStatus(users));
-        dto.setIncome(getAverageIncome(users));
-        dto.setIsParent(getIsParent(users));
-
-        return dto;
     }
 
 }
