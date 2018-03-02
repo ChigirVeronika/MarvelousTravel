@@ -15,20 +15,20 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping(value = "/group")
 public class GroupController {
 
     @Autowired
     private GroupService groupService;
 
-    @RequestMapping(value = {"/group/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String showGroupListPage(ModelMap model) {
         List<GroupDto> groups = groupService.findAllDtos();
         model.addAttribute("groups", groups);
         return "group-list";
     }
 
-    @RequestMapping(value = {"/group/{id}"}, method = RequestMethod.GET)//todo use
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.GET)//todo use
     public String findGroupByIdAndShow(@PathVariable Integer id, ModelMap model) {
 
         GroupDto group = groupService.findDto(id);
@@ -36,34 +36,34 @@ public class GroupController {
         return "group";
     }
 
-    @RequestMapping(value = {"/group/create"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
     public String showGroupCreatePage(ModelMap model) {
         GroupDto groupDto = new GroupDto();
         model.addAttribute("groupDto", groupDto);
         return "group-create";
     }
 
-    @RequestMapping(value = {"/group/create"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/create"}, method = RequestMethod.POST)
     public String createGroup(@Valid GroupDto group, ModelMap model, BindingResult result) {
         groupService.save(group);
         return "redirect:/group/list";
     }
 
-    @RequestMapping(value = {"/group/edit/{id}"}, method = RequestMethod.GET)//todo use
+    @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)//todo use
     public String showGroupEditPage(@PathVariable Integer id, ModelMap model) {
         GroupDto group = groupService.findDto(id);
         model.addAttribute("group", group);
         return "group-create";
     }
 
-    @RequestMapping(value = {"/group/edit/{id}"}, method = RequestMethod.POST)//todo use
+    @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.POST)//todo use
     public String updateGroup(@Valid GroupDto group, ModelMap model,
                               BindingResult result, @PathVariable Integer id) {
         groupService.update(group);
         return "redirect:/group/list";
     }
 
-    @RequestMapping(value = {"/group/delete/{name}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/delete/{name}"}, method = RequestMethod.GET)
     public String deleteGroup(@PathVariable String name) {
         groupService.delete(name);
         return "redirect:/group/list";

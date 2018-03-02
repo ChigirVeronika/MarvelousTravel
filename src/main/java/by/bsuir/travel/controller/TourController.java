@@ -20,7 +20,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping
+@RequestMapping(value = "/tour")
 public class TourController {
     @Autowired
     private TourService tourService;
@@ -44,7 +44,7 @@ public class TourController {
         binder.registerCustomEditor(java.sql.Date.class, new CustomDateEditor(dateFormat, false));
     }
 
-    @RequestMapping(value = {"/tour/panel"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/panel"}, method = RequestMethod.GET)
     public String getTourPanel(ModelMap model) {
         TourDto dto = new TourDto();
         model.addAttribute("tourDto", dto);
@@ -75,7 +75,7 @@ public class TourController {
         return monthList;
     }
 
-    @RequestMapping(value = {"/tour/panel"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/panel"}, method = RequestMethod.POST)
     public String searchForTours(TourDto tourDto, ModelMap model) throws ParseException {
         List<Tour> tours = tourService.findAllForTourDtoParams(tourDto);
         //List<Tour> tours = tourService.findAll();
@@ -83,14 +83,14 @@ public class TourController {
         return "tour-list";
     }
 
-    @RequestMapping(value = {"/tour/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String getAllTours(ModelMap model) {
         List<Tour> tours = tourService.findAll();
         model.addAttribute("tours", tours);
         return "tour-list";
     }
 
-    @RequestMapping(value = {"/tour/list/group"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list/group"}, method = RequestMethod.GET)
     public String getAllToursForUserGroup(ModelMap model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         Group group = user.getGroup();
@@ -99,7 +99,7 @@ public class TourController {
         return "tour-list";
     }
 
-    @RequestMapping(value = {"/tour/get/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/get/{id}"}, method = RequestMethod.GET)
     public String getTour(@PathVariable Integer id, HttpSession session) {
         //todo add to statistics IMPORTANT!!!
         Tour tour = tourService.find(id);

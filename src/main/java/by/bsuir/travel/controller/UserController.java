@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Autowired
@@ -36,21 +36,21 @@ public class UserController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
-    @RequestMapping(value = {"/user/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
         return "user-list";
     }
 
-    @RequestMapping(value = {"/user/create"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
     public String getUserRegisterPage(ModelMap model) {
         UserDto user = new UserDto();
         model.addAttribute("userDto", user);
         return "user-create";
     }
 
-    @RequestMapping(value = {"/user/create"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/create"}, method = RequestMethod.POST)
     public String saveUser(@Valid UserDto userDto, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "user-create";
@@ -67,26 +67,26 @@ public class UserController {
         return "main";
     }
 
-    @RequestMapping(value = {"/user/get"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/get"}, method = RequestMethod.POST)
     public String getUserByEmail(@RequestParam("email") String email, ModelMap model) {
         User user = userService.findByEmail(email);
         model.addAttribute("user", user);
         return "user-get";
     }
 
-    @RequestMapping(value = {"/user/get"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/get"}, method = RequestMethod.GET)
     public String getUserPage() {
         return "user-get";
     }
 
-    @RequestMapping(value = {"/user/personal"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/personal"}, method = RequestMethod.GET)
     public String getUserPersonalPage(HttpSession session) {
         User user = (User) session.getAttribute("user");
 
         return "user-personal";
     }
 
-    @RequestMapping(value = {"/user/personal"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/personal"}, method = RequestMethod.POST)
     public String updateUser(@Valid UserDto userDto, ModelMap model) {
         User user = userService.findByEmail(userDto.getEmail());
         User fromDto = convertToEntity(userDto);

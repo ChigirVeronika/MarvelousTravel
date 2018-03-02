@@ -14,12 +14,12 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping(value = "/news")
 public class NewsController {
     @Autowired
     private NewsService newsService;
 
-    @RequestMapping(value = {"/news/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String newsList(ModelMap model) {
         List<News> news = newsService.findAll();
         for(News n:news){
@@ -42,21 +42,21 @@ public class NewsController {
         return "news-list";
     }
 
-    @RequestMapping(value = {"/news/create"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
     public String showNewsCreateionPage(ModelMap model) {
         News news = new News();
         model.addAttribute("news",news);
         return "news-create";
     }
 
-    @RequestMapping(value = {"/news/create"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/create"}, method = RequestMethod.POST)
     public String createNews(@Valid News news) {
         news.setDate(new Date());
         newsService.save(news);
         return "redirect:/news/list";
     }
 
-    @RequestMapping(value = {"/news/delete/{name}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/delete/{name}"}, method = RequestMethod.GET)
     public String deleteNews(@PathVariable String name) {
         newsService.deleteByName(name);
         return "redirect:/news/list";
