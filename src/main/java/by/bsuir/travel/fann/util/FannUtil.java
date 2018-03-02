@@ -6,6 +6,7 @@ import com.googlecode.fannj.Fann;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.List;
 
 public class FannUtil {
 
@@ -36,12 +37,12 @@ public class FannUtil {
         return result;
     }
 
-    public static String formGroupNumberString(GroupDto[] groups, GroupDto group) {
-        int groupsNumber = groups.length;
+    public static String formGroupNumberString(List<GroupDto> groups, GroupDto group) {
+        int groupsNumber = groups.size();
         String result = "";
 
         for (int i = 0; i < groupsNumber; i++) {
-            if (i == Arrays.asList(groups).indexOf(group)) {
+            if (i == groups.indexOf(group)) {
                 result += "1 ";
             } else {
                 result += "0 ";

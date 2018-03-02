@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("fannWorkService")
 public class FannWorkServiceImpl implements FannWorkService {
@@ -24,22 +26,25 @@ public class FannWorkServiceImpl implements FannWorkService {
     private GroupService groupService;
 
     @Override
-    public List<Group> autoWork(List<User> users, Fann fann) {
-        List<Group> groups = new ArrayList<>();
+    public Map<User, Group> fullWork(List<User> users, Fann fann) {
+
+        Map<User, Group> resultMap = new HashMap<>();
+
         for (User user : users) {
             float[] data = createWorkData(user);
-            Group group = getUserGroup(fann, data);
-            groups.add(group);
-            //todo add logic is group changed or not
-            //todo get users which groups changed/unchanged
-            user.setGroup(group);
-            userService.update(user);
+            Group oldGroup = user.getGroup();
+            Group newGroup = getUserGroup(fann, data);
+
+            if (oldGroup != newGroup) {
+                user.setGroup(newGroup);
+                userService.update(user);
+                resultMap.put(user, newGroup);
+            }
         }
-        return groups;
+        return resultMap;
     }
 
-    @Override
-    public float[] createWorkData(User user) {
+    private float[] createWorkData(User user) {
         float[] data = new float[USER_PARAMS_NUMBER];
         Years age = Years.yearsBetween(new org.joda.time.LocalDate(user.getBithday()), org.joda.time.LocalDate.now());
         data[0] = age.getYears();
@@ -50,8 +55,7 @@ public class FannWorkServiceImpl implements FannWorkService {
         return data;
     }
 
-    @Override
-    public Group getUserGroup(Fann fann, float[] workData) {
+    private Group getUserGroup(Fann fann, float[] workData) {
         Integer groupNumber = getGroupNumber(fann.run(workData));
         //TODO?????? UPDATE ALL IDS IN USER_ORDER
         Group group = groupService.find(groupNumber);

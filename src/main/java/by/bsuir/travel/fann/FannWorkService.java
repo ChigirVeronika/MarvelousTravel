@@ -5,13 +5,10 @@ import by.bsuir.travel.entity.User;
 import com.googlecode.fannj.Fann;
 
 import java.util.List;
+import java.util.Map;
 
 public interface FannWorkService {
 
-    List<Group> autoWork(List<User> users, Fann fann);
-
-    float[] createWorkData(User user);
-
-    Group getUserGroup(Fann fann, float[] workData);
+    Map<User, Group> fullWork(List<User> users, Fann fann);
 
 }

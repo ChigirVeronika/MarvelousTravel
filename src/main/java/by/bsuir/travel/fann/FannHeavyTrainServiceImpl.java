@@ -3,6 +3,7 @@ package by.bsuir.travel.fann;
 import by.bsuir.travel.dto.GroupDto;
 import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
+import by.bsuir.travel.fann.entity.TrainingParams;
 import by.bsuir.travel.service.GroupService;
 import by.bsuir.travel.service.UserService;
 import com.googlecode.fannj.*;
@@ -26,6 +27,15 @@ import static by.bsuir.travel.fann.util.FannUtil.formGroupParamsString;
 
 @Service("fannTrainService")
 public class FannHeavyTrainServiceImpl implements FannHeavyTrainService {
+    private TrainingParams trainingParams;
+
+    public TrainingParams getTrainingParams() {
+        return trainingParams;
+    }
+
+    public void setTrainingParams(TrainingParams trainingParams) {
+        this.trainingParams = trainingParams;
+    }
 
     private static final String FILE_PATH = "D:\\IdeaProjects\\MarvelousTravel\\data\\";
     private static final String TRAINING_FILE_NAME = "heavy-training-set-";

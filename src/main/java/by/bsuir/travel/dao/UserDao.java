@@ -3,6 +3,7 @@ package by.bsuir.travel.dao;
 import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,6 +28,8 @@ public interface UserDao {
     void deleteByPassport(String passport);
 
     List<User> findAllSortedUsers();
+
+    List<User> readSimilarTo(User user, Date older, Date newer);
 
     boolean isUserUnique(String email, String passport);
 

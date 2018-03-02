@@ -42,7 +42,7 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
     private GroupService groupService;
 
     @Override
-    public Fann fullyTrain(GroupDto[] dtos) throws Exception {
+    public Fann fullyTrain(List<GroupDto> dtos) throws Exception {
 
         LocalDateTime dateTime = LocalDateTime.now();
         String trainingFileName = createFileName(FILE_PATH, TRAINING_FILE_NAME, FILE_TYPE, dateTime);
@@ -55,7 +55,7 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
         return fann;
     }
 
-    private void createTrainingFile(GroupDto[] dtos, String trainingFileName) throws Exception {
+    private void createTrainingFile(List<GroupDto> dtos, String trainingFileName) throws Exception {
         new File(trainingFileName);
         Path path = Paths.get(trainingFileName);
 
@@ -63,13 +63,13 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
         writeAllLines(dtos, path);
     }
 
-    private void writeFirstLine(GroupDto[] dtos, Path path) throws Exception {
-        String firstLine = dtos.length + " "
-                + USER_PARAMS_NUMBER + " " + dtos.length;
+    private void writeFirstLine(List<GroupDto> dtos, Path path) throws Exception {
+        String firstLine = dtos.size() + " "
+                + USER_PARAMS_NUMBER + " " + dtos.size();
         Files.write(path, Arrays.asList(firstLine), Charset.forName("UTF-8"));
     }
 
-    private void writeAllLines(GroupDto[] dtos, Path path) throws Exception {
+    private void writeAllLines(List<GroupDto> dtos, Path path) throws Exception {
         for (GroupDto dto : dtos) {
             String groupParamsString = formGroupParamsString(dto);
             String groupNumberString = formGroupNumberString(dtos, dto);

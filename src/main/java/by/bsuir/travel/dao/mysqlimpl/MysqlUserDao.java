@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository("userDao")
@@ -76,6 +77,23 @@ public class MysqlUserDao extends AbstractDao<Integer, User> implements UserDao 
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List<User> users = criteria.list();
+        return users;
+    }
+
+    @Override
+    public List<User> readSimilarTo(User user, Date older, Date newer) {
+        Criteria criteria = createEntityCriteria();
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
+        criteria.add(Restrictions.between("birthday", newer, older));//todo check correctness
+        System.out.println(user.getBithday().toString());
+        criteria.add(Restrictions.eq("gender", user.getGender()));
+        criteria.add(Restrictions.eq("marital_status", user.getMaritalStatus()));
+        criteria.add(Restrictions.eq("income", user.getIncome()));
+        criteria.add(Restrictions.eq("is_parent", user.getParent()));
+        List<User> users = criteria.list();
+//        if(users.isEmpty() || users.size()<)
+        //todo add other genders
         return users;
     }
 

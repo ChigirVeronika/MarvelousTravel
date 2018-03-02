@@ -34,8 +34,9 @@ public class MysqlNewsDao extends AbstractDao<Integer, News> implements NewsDao 
     public List<News> readAllForName(String name) {
         Criteria criteria = createEntityCriteria();
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        criteria.add(Restrictions.like("name", PERCENT + name + PERCENT));
+        criteria.add(Restrictions.like("name", PERCENT + name + PERCENT));//todo check
         List<News> news = criteria.list();
+        System.out.println(news.size());
         return news;
     }
 

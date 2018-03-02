@@ -1,7 +1,10 @@
 package by.bsuir.travel.controller;
 
+import by.bsuir.travel.dto.GroupDto;
 import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
+import by.bsuir.travel.fann.FannEasyTrainService;
+import by.bsuir.travel.service.GroupService;
 import by.bsuir.travel.service.UserService;
 import by.bsuir.travel.fann.FannHeavyTrainService;
 import by.bsuir.travel.fann.FannWorkService;
@@ -12,7 +15,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/fann")
@@ -22,29 +27,49 @@ public class FannController {
     private FannHeavyTrainService fannHeavyTrainService;
 
     @Autowired
+    private FannEasyTrainService fannEasyTrainService;
+
+    @Autowired
     private FannWorkService fannWorkService;
 
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private GroupService groupService;
+
     @RequestMapping(value = {""}, method = RequestMethod.GET)
-    public String showAnnPage(ModelMap model) throws Exception {
+    public String showFannPage(ModelMap model) throws Exception {
         return "fann";
     }
 
-    @RequestMapping(value = {"/train"}, method = RequestMethod.GET)
-    public String train(ModelMap model) throws Exception {
-        List<Group> groups = null;//TODO HOW GET NEEDED GROUPS FROM UI
-        Fann fann = fannHeavyTrainService.autoTraining(groups);
+    @RequestMapping(value = {"/trainwork/easy"}, method = RequestMethod.GET)
+    public String easyTrainAndWork(@Valid GroupDto dto, ModelMap model) throws Exception {
+        List<GroupDto> dtos = groupService.findAllDtos();
+        dtos.add(dto);
+        Fann fann = fannEasyTrainService.fullyTrain(dtos);
 
-        List<User> users = null; //TODO
-        List<Group> assignedGroups = fannWorkService.autoWork(users, fann);
-        return "fann";
+        //find users close by params to group dto
+        List<User> usersSuspicionOfChange = userService.findSimilarToGroupDto(dto);
+        //recheck group for them
+        Map<User, Group> changedUsers = fannWorkService.fullWork(usersSuspicionOfChange, fann);
+
+        model.addAttribute("changedUsers", changedUsers);
+        return "fann";//todo??? page with statistics
     }
 
-    @RequestMapping(value = {"/work"}, method = RequestMethod.GET)
-    public String work(ModelMap model) throws Exception {
-        //todo
+    @RequestMapping(value = {"/trainwork/heavy"}, method = RequestMethod.GET)
+    public String heavyTrainAndWork(@Valid GroupDto dto, ModelMap model) throws Exception {
+
+        List<Group> groups = groupService.findAll();
+        Fann fann = fannHeavyTrainService.fullyTrain(groups, dto);
+
+        //find users close by params to group dto
+        List<User> usersSuspicionOfChange = userService.findSimilarToGroupDto(dto);
+        //recheck group for them
+        Map<User, Group> changedUsers = fannWorkService.fullWork(usersSuspicionOfChange, fann);
+
+        model.addAttribute("changedUsers", changedUsers);
         return "fann";
     }
 

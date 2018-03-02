@@ -1,12 +1,16 @@
 package by.bsuir.travel.fann.entity;
 
+import java.util.Date;
+
 public class TrainingParams {
 
     private String trainingAlgorithm;
     private String activationFunction;
     private Integer maxEpoch;
     private Float desiredError;
-
+    private String trainingFileName;
+    private String resultFileName;
+    private Date trainigTime;
 
     public TrainingParams(String trainingAlgorithm, String activationFunction) {
         this.trainingAlgorithm = trainingAlgorithm;

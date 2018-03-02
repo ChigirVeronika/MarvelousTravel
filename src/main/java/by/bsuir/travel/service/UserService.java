@@ -1,6 +1,7 @@
 package by.bsuir.travel.service;
 
 
+import by.bsuir.travel.dto.GroupDto;
 import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
 
@@ -13,6 +14,8 @@ public interface UserService {
 	void update(User user);
 
 	List<User> findAll();
+
+	List<User> findSimilarToGroupDto(GroupDto dto);
 
 	User findById(Integer id);
 
