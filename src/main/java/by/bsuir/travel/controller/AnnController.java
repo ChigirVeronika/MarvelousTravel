@@ -1,7 +1,7 @@
 package by.bsuir.travel.controller;
 
 import by.bsuir.travel.service.UserService;
-import by.bsuir.travel.service.fanneasy.FannEasyTrainService;
+import by.bsuir.travel.fann.FannEasyTrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

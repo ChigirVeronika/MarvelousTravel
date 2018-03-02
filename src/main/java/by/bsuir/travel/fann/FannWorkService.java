@@ -1,4 +1,4 @@
-package by.bsuir.travel.service.fann;
+package by.bsuir.travel.fann;
 
 import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;

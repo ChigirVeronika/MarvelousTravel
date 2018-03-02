@@ -1,7 +1,8 @@
-package by.bsuir.travel.service.fanneasy;
+package by.bsuir.travel.fann;
 
 import by.bsuir.travel.dto.GroupDto;
 import by.bsuir.travel.service.GroupService;
+import by.bsuir.travel.fann.entity.TrainingParams;
 import com.googlecode.fannj.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,16 +13,28 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static by.bsuir.travel.fann.util.FannUtil.*;
+
 @Service("annTrainService")
 public class FannEasyTrainServiceImpl implements FannEasyTrainService {
+
+    private TrainingParams trainingParams;
+
+    public TrainingParams getTrainingParams() {
+        return trainingParams;
+    }
+
+    public void setTrainingParams(TrainingParams trainingParams) {
+        this.trainingParams = trainingParams;
+    }
+
     private static final String FILE_PATH = "D:\\IdeaProjects\\MarvelousTravel\\data\\";
-    private static final String TRAINING_FILE_NAME = "training-set-";
-    private static final String RESULT_FILE_NAME = "result-";
+    private static final String TRAINING_FILE_NAME = "easy-training-set-";
+    private static final String RESULT_FILE_NAME = "easy-result-";
     private static final String FILE_TYPE = "data";
     private static final int USER_PARAMS_NUMBER = 5;
 
@@ -29,12 +42,8 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
     private GroupService groupService;
 
     @Override
-    public Fann createTrainingFileAndTrainAndSaveToResultFile(List<GroupDto> groupDtos) throws Exception {
-        Fann fann = train(groupDtos);
-        return fann;
-    }
+    public Fann fullyTrain(GroupDto[] dtos) throws Exception {
 
-    private Fann train(List<GroupDto> dtos) throws Exception {
         LocalDateTime dateTime = LocalDateTime.now();
         String trainingFileName = createFileName(FILE_PATH, TRAINING_FILE_NAME, FILE_TYPE, dateTime);
         String resultFileName = createFileName(FILE_PATH, RESULT_FILE_NAME, FILE_TYPE, dateTime);
@@ -46,7 +55,7 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
         return fann;
     }
 
-    private void createTrainingFile(List<GroupDto> dtos, String trainingFileName) throws Exception {
+    private void createTrainingFile(GroupDto[] dtos, String trainingFileName) throws Exception {
         new File(trainingFileName);
         Path path = Paths.get(trainingFileName);
 
@@ -54,61 +63,21 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
         writeAllLines(dtos, path);
     }
 
-    private void writeFirstLine(List<GroupDto> dtos, Path path) throws Exception {
-        String firstLine = dtos.size() + " "
-                + USER_PARAMS_NUMBER + " " + dtos.size();
+    private void writeFirstLine(GroupDto[] dtos, Path path) throws Exception {
+        String firstLine = dtos.length + " "
+                + USER_PARAMS_NUMBER + " " + dtos.length;
         Files.write(path, Arrays.asList(firstLine), Charset.forName("UTF-8"));
     }
 
-    private void writeAllLines(List<GroupDto> dtos, Path path) throws Exception {
+    private void writeAllLines(GroupDto[] dtos, Path path) throws Exception {
         for (GroupDto dto : dtos) {
+            String groupParamsString = formGroupParamsString(dto);
             String groupNumberString = formGroupNumberString(dtos, dto);
-            String groupParamsString = formGroupParamsString(dto);//form user string
             Files.write(path,
-                    Arrays.asList(groupNumberString, groupParamsString),
+                    Arrays.asList(groupParamsString, groupNumberString),
                     Charset.forName("UTF-8"));//put user & group string
 
         }
-    }
-
-    private String formGroupParamsString(GroupDto dto) {
-        String result = "";
-        result += Integer.valueOf(dto.getAge()).toString();
-        result += " ";
-        String gender = dto.getGender() == "M" ? "1" : "0";
-        result += gender;
-        result += " ";
-        String maritalStatus = dto.getMaritalStatus() ? "1" : "0";
-        result += maritalStatus;
-        result += " ";
-        result += new Double(dto.getIncome() / 1000).toString();
-        result += " ";
-        String isParent = dto.getIsParent() ? "1" : "0";
-        result += isParent;
-        return result;
-    }
-
-    private String formGroupNumberString(List<GroupDto> groups, GroupDto group) {
-        int groupsNumber = groups.size();
-        String result = "";
-
-        for (int i = 0; i < groupsNumber; i++) {
-            if (i == groups.indexOf(group)) {
-                result += "1";
-            } else {
-                result += "0";
-            }
-            if (i != groupsNumber - 1) {
-                result += " ";
-            }
-        }
-        return result;
-    }
-
-    private String createFileName(String path, String name, String type, LocalDateTime dateTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
-        String now = dateTime.format(formatter);
-        return path + name + now + "." + type;
     }
 
     private Fann createAndTrainAnn(String trainingFileName) {
@@ -129,9 +98,5 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
         trainer.train(new File(trainingFileName).getAbsolutePath(),
                 100000, 100, 0.0001f);
         return fann;
-    }
-
-    private void saveAnnToResultFile(Fann fann, String resultFileName) {
-        fann.save(resultFileName);
     }
 }

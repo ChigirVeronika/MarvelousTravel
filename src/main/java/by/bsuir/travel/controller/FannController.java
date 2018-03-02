@@ -3,8 +3,8 @@ package by.bsuir.travel.controller;
 import by.bsuir.travel.entity.Group;
 import by.bsuir.travel.entity.User;
 import by.bsuir.travel.service.UserService;
-import by.bsuir.travel.service.fann.FannTrainService;
-import by.bsuir.travel.service.fann.FannWorkService;
+import by.bsuir.travel.fann.FannHeavyTrainService;
+import by.bsuir.travel.fann.FannWorkService;
 import com.googlecode.fannj.Fann;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.util.List;
 public class FannController {
 
     @Autowired
-    private FannTrainService fannTrainService;
+    private FannHeavyTrainService fannHeavyTrainService;
 
     @Autowired
     private FannWorkService fannWorkService;
@@ -35,7 +35,7 @@ public class FannController {
     @RequestMapping(value = {"/train"}, method = RequestMethod.GET)
     public String train(ModelMap model) throws Exception {
         List<Group> groups = null;//TODO HOW GET NEEDED GROUPS FROM UI
-        Fann fann = fannTrainService.autoTraining(groups);
+        Fann fann = fannHeavyTrainService.autoTraining(groups);
 
         List<User> users = null; //TODO
         List<Group> assignedGroups = fannWorkService.autoWork(users, fann);
