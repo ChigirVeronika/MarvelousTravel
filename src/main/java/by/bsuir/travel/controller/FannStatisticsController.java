@@ -1,9 +1,28 @@
 package by.bsuir.travel.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = "/statistics/fann")
+@RequestMapping(value = "/fann-statistics")
 public class FannStatisticsController {
+
+    @RequestMapping(value = {""}, method = RequestMethod.GET)
+    public String showFannStatPage(ModelMap model) throws Exception {
+        return "fann-statistics";
+    }
+
+    @RequestMapping(value = {"/calculate"}, method = RequestMethod.GET)
+    public String easyTrainAndWork(@RequestParam Boolean increment,
+                                   @RequestParam Boolean batch,
+                                   @RequestParam Boolean rprop,
+                                   ModelMap model) throws Exception {
+
+
+        return "fann-statistics";
+    }
+
 }

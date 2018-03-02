@@ -54,7 +54,7 @@ public class FannController {
         //recheck group for them
         Map<User, Group> changedUsers = fannWorkService.fullWork(usersSuspicionOfChange, fann);
 
-        model.addAttribute("changedUsers", changedUsers);
+        model.addAttribute("changedUsersEasy", changedUsers);
         return "fann";//todo??? page with statistics
     }
 
@@ -69,7 +69,7 @@ public class FannController {
         //recheck group for them
         Map<User, Group> changedUsers = fannWorkService.fullWork(usersSuspicionOfChange, fann);
 
-        model.addAttribute("changedUsers", changedUsers);
+        model.addAttribute("changedUsersHeavy", changedUsers);
         return "fann";
     }
 
