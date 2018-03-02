@@ -66,10 +66,17 @@
                         <div class="row">
                             <div class="form-actions floatRight">
                                 <input type="submit" value="Оставить отзыв" class="btn btn-success btn-sm"/> или
-                                <input type="submit" value="Очистить" class="btn btn-success btn-sm"/>
+                                <input type="submit" value="Очистить" class="btn btn-success btn-sm" onkeydown="clear()"/>
 
                             </div>
                         </div>
+
+                        <script type="text/javascript">
+                        function clear() {
+                            document.getElementById("content").value=""
+                            document.getElementById("mark").value=""
+                        }
+                        </script>
                     </form:form>
                 </div>
             </div>
