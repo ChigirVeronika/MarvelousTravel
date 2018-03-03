@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="row">
-                    <form:form method="POST" modelAttribute="userDto" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="userDto" class="form-horizontal" id="userForm">
 
                         <form:input type="hidden" path="id" id="id"/>
 
@@ -177,11 +177,16 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Sign up" class="btn btn-success btn-sm"/> or
-                                <input type="submit" value="Clear" class="btn btn-success btn-sm"/>
-
+                                <input type="submit" value="Sign up" class="btn btn-success btn-sm"/>
+                                <input type="submit" value="Reset" class="btn btn-warning btn-sm" onclick="return clear();"/>
                             </div>
                         </div>
+
+                        <script type="text/javascript">
+                            function clear() {
+                                document.getElementById("userForm").reset();
+                            }
+                        </script>
                     </form:form>
                 </div>
             </div>

@@ -56,8 +56,11 @@
                         </div>
                         <div class="col-md-3">
                              <a href="<c:url value='/user/create' />" class="btn btn-default btn-block">
-                                 <fmt:message key="login.signup" bundle="${lang}"/></a>
-                             <a href="<c:url value='/main' />" class="btn btn-default btn-block">Главная</a>                             bundle="${lang}"/></a>
+                                 <fmt:message key="login.signup" bundle="${lang}"/>
+                             </a>
+                             <a href="<c:url value='/main' />" class="btn btn-default btn-block">
+                                Главная
+                             </a>
                         </div>
                     </div>
                     <br>

@@ -19,7 +19,7 @@
                 <jsp:include page="layout/header.jsp"/>
             </div>
             <div>
-                <form:form method="GET" action="/fann-statistics/calculate" class="form-horizontal">
+                <form:form method="GET" action="/fann-statistics/calculate" class="form-horizontal" id="fannStatForm">
 
                     <div class="row">
                         <div class="form-group col-md-12">
@@ -59,11 +59,16 @@
 
                     <div class="row">
                         <div class="form-actions floatRight">
-                            <input type="submit" value="Посчитать статистику" class="btn btn-success btn-sm"/> или
-                            <input type="submit" value="Очистить" class="btn btn-success btn-sm"/>
-
+                            <input type="submit" value="Calculate statistics" class="btn btn-success btn-sm"/>
+                            <input type="submit" value="Reset" class="btn btn-warning btn-sm" onclick="return clear();"/>
                         </div>
                     </div>
+
+                    <script type="text/javascript">
+                        function clear() {
+                            document.getElementById("fannStatForm").reset();
+                        }
+                    </script>
                 </form:form>
             </div>
 

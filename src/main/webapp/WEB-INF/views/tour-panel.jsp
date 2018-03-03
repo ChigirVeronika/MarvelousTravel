@@ -33,7 +33,7 @@
 
                     <div class="row">
 
-                    <form:form method="POST" modelAttribute="tourDto" action="/tour/panel" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="tourDto" action="/tour/panel" class="form-horizontal" id="tourPanelForm">
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class="col-md-3 control-lable" for="country">Страны</label>
@@ -96,10 +96,16 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Найти" class="btn btn-success btn-sm"/> или
-                                <input type="submit" value="Очистить" class="btn btn-success btn-sm"/>
+                                <input type="submit" value="Найти" class="btn btn-success btn-sm"/>
+                                <input type="submit" value="Reset" class="btn btn-warning btn-sm" onclick="return clear();"/>
                             </div>
                         </div>
+
+                        <script type="text/javascript">
+                            function clear() {
+                                document.getElementById("tourPanelForm").reset();
+                            }
+                        </script>
                     </form:form>
 
                     </div>

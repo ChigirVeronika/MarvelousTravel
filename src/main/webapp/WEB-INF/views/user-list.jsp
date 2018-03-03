@@ -22,7 +22,7 @@
 
                     <c:forEach items="${users}" var="user">
 
-                        <div>${user.name} ${user.surname} Почта: ${user.email} Группа: ${user.group.getName()}</div>
+                        <div>${user.name} ${user.surname} Пасспорт: ${user.passport} Почта: ${user.email} Группа: ${user.group.getName()}</div>
 
                     </c:forEach>
 

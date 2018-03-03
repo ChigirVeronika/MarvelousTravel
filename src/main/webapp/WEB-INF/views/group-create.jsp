@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="row">
-                    <form:form method="POST" modelAttribute="groupDto" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="groupDto" class="form-horizontal" id="groupForm">
 
                         <form:input type="hidden" path="id" id="id"/>
                         <div class="row">
@@ -111,11 +111,16 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Создать" class="btn btn-success btn-sm"/> или
-                                <input type="submit" value="Очистить" class="btn btn-success btn-sm"/>
-
+                                <input type="submit" value="Создать" class="btn btn-success btn-sm"/>
+                                <input type="submit" value="Reset" class="btn btn-warning btn-sm" onclick="return clear();"/>
                             </div>
                         </div>
+
+                        <script type="text/javascript">
+                            function clear() {
+                                document.getElementById("groupForm").reset();
+                            }
+                        </script>
                     </form:form>
                 </div>
             </div>

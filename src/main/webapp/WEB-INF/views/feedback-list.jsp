@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="row">
-                    <form:form method="POST" modelAttribute="feedbackDto" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="feedbackDto" class="form-horizontal" id="feedbackForm">
                         <form:input type="hidden" path="id" id="id"/>
 
                         <div class="row">
@@ -65,17 +65,15 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Оставить отзыв" class="btn btn-success btn-sm"/> или
-                                <input type="submit" value="Очистить" class="btn btn-success btn-sm" onkeydown="clear()"/>
-
+                                <input type="submit" value="Leave feedback" class="btn btn-success btn-sm"/>
+                                <input type="submit" value="Reset" class="btn btn-warning btn-sm" onclick="return clear();"/>
                             </div>
                         </div>
 
                         <script type="text/javascript">
-                        function clear() {
-                            document.getElementById("content").value=""
-                            document.getElementById("mark").value=""
-                        }
+                            function clear() {
+                                document.getElementById("feedbackForm").reset();
+                            }
                         </script>
                     </form:form>
                 </div>
