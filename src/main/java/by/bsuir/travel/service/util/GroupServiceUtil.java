@@ -55,10 +55,10 @@ public class GroupServiceUtil {
 
     public static Boolean getIsParent(Set<User> users) {//todo maybe change logic
         long parent = users.stream()
-                .filter(u -> u.getParent().equals(true))
+                .filter(u -> u.getIsParent().equals(true))
                 .count();
         long no = users.stream()
-                .filter(u -> u.getParent().equals(false))
+                .filter(u -> u.getIsParent().equals(false))
                 .count();
         if (parent > no) {
             return true;
@@ -68,7 +68,7 @@ public class GroupServiceUtil {
 
     public static Integer getAverageAge(Set<User> users) {
         List<Date> birthdays = users.stream()
-                .map(User::getBithday)
+                .map(User::getBirthday)
                 .collect(Collectors.toList());
 
         List<Integer> userAges = birthdays.stream()

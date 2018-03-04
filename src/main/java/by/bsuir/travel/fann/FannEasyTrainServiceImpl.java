@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,7 +34,7 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
         this.trainingParams = trainingParams;
     }
 
-    private static final String FILE_PATH = "D:\\IdeaProjects\\MarvelousTravel\\data\\";
+    private static final String FILE_PATH = "D:\\_D\\MarvelousTravel\\data\\";
     private static final String TRAINING_FILE_NAME = "easy-training-set-";
     private static final String RESULT_FILE_NAME = "easy-result-";
     private static final String FILE_TYPE = "data";
@@ -56,35 +58,35 @@ public class FannEasyTrainServiceImpl implements FannEasyTrainService {
     }
 
     private void createTrainingFile(List<GroupDto> dtos, String trainingFileName) throws Exception {
-        new File(trainingFileName);
-        Path path = Paths.get(trainingFileName);
-
-        writeFirstLine(dtos, path);
-        writeAllLines(dtos, path);
+        File f = new File(trainingFileName);
+        f.getParentFile().mkdirs();
+        f.createNewFile();
+        PrintWriter out = new PrintWriter(new FileWriter(f, true));
+        writeFirstLine(dtos, out);
+        writeAllLines(dtos, out);
+        out.close();
     }
 
-    private void writeFirstLine(List<GroupDto> dtos, Path path) throws Exception {
+    private void writeFirstLine(List<GroupDto> dtos, PrintWriter out) throws Exception {
         String firstLine = dtos.size() + " "
                 + USER_PARAMS_NUMBER + " " + dtos.size();
-        Files.write(path, Arrays.asList(firstLine), Charset.forName("UTF-8"));
+        out.append(firstLine+"\n");
     }
 
-    private void writeAllLines(List<GroupDto> dtos, Path path) throws Exception {
+    private void writeAllLines(List<GroupDto> dtos, PrintWriter out) throws Exception {
         for (GroupDto dto : dtos) {
             String groupParamsString = formGroupParamsString(dto);
             String groupNumberString = formGroupNumberString(dtos, dto);
-            Files.write(path,
-                    Arrays.asList(groupParamsString, groupNumberString),
-                    Charset.forName("UTF-8"));//put user & group string
-
+            out.append(groupParamsString + "\n");
+            out.append(groupNumberString + "\n");
         }
     }
 
     private Fann createAndTrainAnn(String trainingFileName) {
         int groupsNumber = groupService.findAll().size();
 
-        System.setProperty("jna.library.path", "D:\\IdeaProjects\\MarvelousTravel\\src\\main\\resources\\ann\\");
-        new File(System.getProperty("jna.library.path") + "fannfloat.dll");
+        System.setProperty("jna.library.path", "C:\\Users\\Veranika\\IdeaProjects\\TravelFANN\\src\\main\\resources\\");
+        File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
 
         List<Layer> layerList = new ArrayList<>();
         layerList.add(Layer.create(USER_PARAMS_NUMBER, ActivationFunction.FANN_SIGMOID_SYMMETRIC, 0.01f));

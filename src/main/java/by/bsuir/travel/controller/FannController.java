@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/fann")
@@ -46,7 +47,10 @@ public class FannController {
     @RequestMapping(value = {"/trainwork/easy"}, method = RequestMethod.GET)
     public String easyTrainAndWork(@Valid GroupDto dto, ModelMap model) throws Exception {
         List<GroupDto> dtos = groupService.findAllDtos();
-        dtos.add(dto);
+        //dtos.add(dto); TODO UNCOMMENT
+
+        normaliseIncomeValues(dtos);
+
         Fann fann = fannEasyTrainService.fullyTrain(dtos);
 
         //find users close by params to group dto
@@ -56,6 +60,20 @@ public class FannController {
 
         model.addAttribute("changedUsersEasy", changedUsers);
         return "fann";//todo??? page with statistics
+    }
+
+    private void normaliseIncomeValues(List<GroupDto> dtos) {
+        List<Double> incomes = dtos.stream()
+                .map(GroupDto::getIncome)
+                .collect(Collectors.toList());
+        Double maxIncome = incomes.stream()
+                .mapToDouble(a -> a)
+                .max()
+                .getAsDouble();
+        for (GroupDto d : dtos) {
+            Double newIncome = d.getIncome() / maxIncome;
+            d.setIncome(newIncome);
+        }
     }
 
     @RequestMapping(value = {"/trainwork/heavy"}, method = RequestMethod.GET)

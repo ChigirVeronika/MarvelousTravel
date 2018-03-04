@@ -37,7 +37,7 @@ public class FannWorkServiceImpl implements FannWorkService {
 
             if (oldGroup != newGroup) {
                 user.setGroup(newGroup);
-                userService.update(user);
+                //userService.update(user); todo 1 - test, 2- uncomment
                 resultMap.put(user, newGroup);
             }
         }
@@ -46,12 +46,12 @@ public class FannWorkServiceImpl implements FannWorkService {
 
     private float[] createWorkData(User user) {
         float[] data = new float[USER_PARAMS_NUMBER];
-        Years age = Years.yearsBetween(new org.joda.time.LocalDate(user.getBithday()), org.joda.time.LocalDate.now());
+        Years age = Years.yearsBetween(new org.joda.time.LocalDate(user.getBirthday()), org.joda.time.LocalDate.now());
         data[0] = age.getYears();
         data[1] = user.getGender() == "M" ? 1 : 0;
         data[2] = user.getMaritalStatus() ? 1 : 0;
         data[3] = (float) (user.getIncome() / 1000);
-        data[4] = user.getParent() ? 1 : 0;
+        data[4] = user.getIsParent() ? 1 : 0;
         return data;
     }
 

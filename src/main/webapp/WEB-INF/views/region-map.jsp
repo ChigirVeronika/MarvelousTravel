@@ -29,7 +29,7 @@
                         </tr>
                         <tr>
                             <c:forEach items="${mapElement.value}" var="listElement">
-                                <td><h6><a href="<c:url value='/country/get/${listElement.getId()}' />">${listElement.getName()}</a></h6></td>
+                                <td><a href="<c:url value='/country/get/${listElement.getId()}' />">${listElement.getName()}</a></td>
                             </c:forEach>
 
                         </tr>
@@ -39,7 +39,7 @@
 
                 <div class="row">
                     <h3 class="trendhead-brand">
-                        <a href="<c:url value='' />" class="btn btn-success custom-width">Регион</a>
+                        <a href="<c:url value='' />" class="btn btn-success custom-width">New region</a>
                     </h3>
                 </div>
             </div>

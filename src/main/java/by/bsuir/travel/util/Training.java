@@ -13,9 +13,7 @@ import java.util.List;
  */
 public class Training {
     public static void main(String[] args) throws InterruptedException {
-        //org.apache.log4j.Logger log = Logger.getLogger(LogClass.class);
-
-        System.setProperty("jna.library.path", "D:\\_D\\MarvelousTravel\\src\\main\\resources\\ann\\");
+        System.setProperty("jna.library.path", "C:\\Users\\Veranika\\IdeaProjects\\TravelFANN\\src\\main\\resources\\");
         File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
 
         //Для сборки новой ИНС необходимо создасть список слоев
@@ -25,15 +23,15 @@ public class Training {
         layerList.add(Layer.create(7, ActivationFunction.FANN_SIGMOID_SYMMETRIC, 0.01f));
 
         Fann fann = new Fann(layerList);
-        //Создаем тренера и определяем алгоритм обучения
+
         Trainer trainer = new Trainer(fann);
         trainer.setTrainingAlgorithm(TrainingAlgorithm.FANN_TRAIN_RPROP);
         /* Проведем обучение взяв уроки из файла, с максимальным колличеством
            циклов 100000, показывая отчет каждую 100ю итерацию и добиваемся
         ошибки меньше 0.0001 */
-        trainer.train(new File("D:\\_D\\MarvelousTravel\\dto\\training_set.dto").getAbsolutePath(),
+        trainer.train(new File("D:\\_D\\MarvelousTravel\\data\\training_set.data").getAbsolutePath(),
                 100000, 100, 0.0001f);
-        fann.save("D:\\_D\\MarvelousTravel\\dto\\result.dto");
+        fann.save("D:\\_D\\MarvelousTravel\\data\\result.dto");
 
         float[][] tests = {
                 {26, 1, 0, 0.5f, 0, 1},//1

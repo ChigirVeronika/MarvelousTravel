@@ -99,7 +99,7 @@ public class UserController {
         User user = new User();
         user.setName(userDto.getName());
         user.setSurname(userDto.getSurname());
-        user.setBithday(userDto.getBirthday());
+        user.setBirthday(userDto.getBirthday());
         user.setGender(userDto.getGender());
         user.setPassport(userDto.getPassport());
         user.setPhone(userDto.getPhone());
@@ -107,7 +107,7 @@ public class UserController {
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setIncome(userDto.getIncome());
-        user.setParent(userDto.getParent());
+        user.setIsParent(userDto.getParent());
         user.setHome(userDto.getHome());
         //user.setRole();//todo!!!
         //user.setGroup();

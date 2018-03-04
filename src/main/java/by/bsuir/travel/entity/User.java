@@ -105,12 +105,12 @@ public class User {
         this.surname = surname;
     }
 
-    public Date getBithday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBithday(Date bithday) {
-        this.birthday = bithday;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public String getGender() {
@@ -193,11 +193,11 @@ public class User {
         this.income = income;
     }
 
-    public Boolean getParent() {
+    public Boolean getIsParent() {
         return isParent;
     }
 
-    public void setParent(Boolean parent) {
+    public void setIsParent(Boolean parent) {
         isParent = parent;
     }
 

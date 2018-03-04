@@ -18,7 +18,19 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.googlecode.fannj/fannj -->
+        <dependency>
+            <groupId>com.googlecode.fannj</groupId>
+            <artifactId>fannj</artifactId>
+            <version>0.6</version>
+        </dependency>
 
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>4.1.0</version>
+        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -180,19 +192,6 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>4.1.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.googlecode.fannj/fannj -->
-        <dependency>
-            <groupId>com.googlecode.fannj</groupId>
-            <artifactId>fannj</artifactId>
-            <version>0.6</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
         <dependency>

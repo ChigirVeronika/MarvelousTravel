@@ -30,6 +30,7 @@ INSERT INTO `marvelous_travel`.`country` (`id`, `name`, `region_id`, `about`, `c
 INSERT INTO `marvelous_travel`.`country` (`id`, `name`, `region_id`, `about`, `climate`, `temperature`, `best_start_date`, `best_end_date`, `activities`) VALUES (10, 'Грузия', 5, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `marvelous_travel`.`country` (`id`, `name`, `region_id`, `about`, `climate`, `temperature`, `best_start_date`, `best_end_date`, `activities`) VALUES (11, 'Куба', 6, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `marvelous_travel`.`country` (`id`, `name`, `region_id`, `about`, `climate`, `temperature`, `best_start_date`, `best_end_date`, `activities`) VALUES (12, 'Мексика', 6, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `marvelous_travel`.`country` (`id`, `name`, `region_id`, `about`, `climate`, `temperature`, `best_start_date`, `best_end_date`, `activities`) VALUES (13, 'Беларусь', 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 
@@ -41,6 +42,24 @@ START TRANSACTION;
 USE `marvelous_travel`;
 INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (1, 'City1', 1);
 INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (2, 'City2', 2);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (3, 'City3', 2);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (4, 'Minsk', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (5, 'Grodno', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (6, 'Brest', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (7, 'Gomel', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (8, 'Vitebsk', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (9, 'Mogilev', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (10, 'Lida', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (11, 'City11', 1);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (12, 'City22', 2);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (13, 'Novogrudok', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (14, 'Zodino', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (15, 'Borisov', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (16, 'Polotsk', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (17, 'Bobruisk', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (18, 'Baranovichi', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (19, 'Mozyr', 13);
+INSERT INTO `marvelous_travel`.`city` (`id`, `name`, `country_id`) VALUES (20, 'Slutsk', 13);
 
 COMMIT;
 

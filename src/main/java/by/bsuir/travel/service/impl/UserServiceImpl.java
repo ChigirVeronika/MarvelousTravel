@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         cal.setTime(now);
         cal.add(Calendar.YEAR, -dto.getAge());
         Date dateOfBirth = cal.getTime();
-        user.setBithday(dateOfBirth);
+        user.setBirthday(dateOfBirth);
 
         cal.add(Calendar.YEAR, -10);
         Date older = cal.getTime();
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
         user.setGender(dto.getGender());
         user.setMaritalStatus(dto.getMaritalStatus());
         user.setIncome(dto.getIncome());
-        user.setParent(dto.getIsParent());
+        user.setIsParent(dto.getIsParent());
 
         return userDao.readSimilarTo(user, older, newer);
     }

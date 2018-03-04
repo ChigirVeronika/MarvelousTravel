@@ -24,21 +24,38 @@
                         <a href="<c:url value='/group/create' />" class="btn btn-success custom-width">Создать</a>
                     </h3>
                 </div>
-
-                <c:forEach items="${groups}" var="group">
-                    <div class="row">
-                        <h4 class="trendhead-brand">${group.name}</h4>
-                        <h5 class="trendhead-brand">${group.age}</h5>
-                        <h5 class="trendhead-brand">${group.gender}</h5>
-                        <h5 class="trendhead-brand">${group.maritalStatus}</h5>
-                        <h5 class="trendhead-brand">${group.income}</h5>
-                        <h5 class="trendhead-brand">${group.isParent}</h5>
-                        <h5 class="trendhead-brand">${group.info}</h5>
-                        <h5 class="trendhead-brand">
-                            <a href="<c:url value='/group/delete/${group.name}' />" class="btn btn-success custom-width">Удалить</a>
-                        </h5>
-                    </div>
-                </c:forEach>
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td>Name</td>
+                            <td>Age</td>
+                            <td>Gender</td>
+                            <td>Marital status</td>
+                            <td>Income</td>
+                            <td>Is parent</td>
+                            <td>Info</td>
+                            <td>Delete</td>
+                        </tr>
+                        <c:forEach items="${groups}" var="group">
+                            <tr>
+                                <td><h4 class="trendhead-brand">${group.name}</h4></td>
+                                <td><h5 class="trendhead-brand">${group.age}</h5></td>
+                                <td><h5 class="trendhead-brand">${group.gender}</h5></td>
+                                <td><h5 class="trendhead-brand">${group.maritalStatus}</h5></td>
+                                <td><h5 class="trendhead-brand">${group.income}</h5></td>
+                                <td><h5 class="trendhead-brand">${group.isParent}</h5></td>
+                                <td><h5 class="trendhead-brand">${group.info}</h5></td>
+                                <td>
+                                    <h5 class="trendhead-brand">
+                                        <a href="<c:url value='/group/delete/${group.name}' />"
+                                           class="btn btn-success custom-width">Delete
+                                        </a>
+                                    </h5>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

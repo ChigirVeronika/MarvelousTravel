@@ -37,7 +37,7 @@ public class FannHeavyTrainServiceImpl implements FannHeavyTrainService {
         this.trainingParams = trainingParams;
     }
 
-    private static final String FILE_PATH = "D:\\IdeaProjects\\MarvelousTravel\\data\\";
+    private static final String FILE_PATH = "D:\\_D\\MarvelousTravel\\data\\";
     private static final String TRAINING_FILE_NAME = "heavy-training-set-";
     private static final String RESULT_FILE_NAME = "heavy-result-";
     private static final String FILE_TYPE = "data";
@@ -74,8 +74,8 @@ public class FannHeavyTrainServiceImpl implements FannHeavyTrainService {
     private Fann createAndTrainAnn(String trainingFileName) {
         int groupsNumber = groupService.findAll().size();
 
-        System.setProperty("jna.library.path", "D:\\IdeaProjects\\MarvelousTravel\\src\\main\\resources\\ann\\");
-        new File(System.getProperty("jna.library.path") + "fannfloat.dll");
+        System.setProperty("jna.library.path", "C:\\Users\\Veranika\\IdeaProjects\\TravelFANN\\src\\main\\resources\\");
+        File file = new File(System.getProperty("jna.library.path") + "fannfloat.dll");
 
         List<Layer> layerList = new ArrayList<>();
         layerList.add(Layer.create(USER_PARAMS_NUMBER, ActivationFunction.FANN_SIGMOID_SYMMETRIC, 0.01f));
@@ -128,7 +128,7 @@ public class FannHeavyTrainServiceImpl implements FannHeavyTrainService {
 
     private String formUserString(User u) {
         String result = "";
-        Years a = Years.yearsBetween(new org.joda.time.LocalDate(u.getBithday()), org.joda.time.LocalDate.now());
+        Years a = Years.yearsBetween(new org.joda.time.LocalDate(u.getBirthday()), org.joda.time.LocalDate.now());
         result += String.valueOf(a.getYears());
         result += " ";
         String gender = u.getGender() == "M" ? "1" : "0";
@@ -139,7 +139,7 @@ public class FannHeavyTrainServiceImpl implements FannHeavyTrainService {
         result += " ";
         result += String.valueOf(new Double(u.getIncome() / 1000));
         result += " ";
-        String isParent = u.getParent() ? "1" : "0";
+        String isParent = u.getIsParent() ? "1" : "0";
         result += isParent;
         return result;
     }

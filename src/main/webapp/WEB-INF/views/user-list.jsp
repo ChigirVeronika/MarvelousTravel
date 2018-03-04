@@ -19,18 +19,49 @@
                 <jsp:include page="layout/header.jsp"/>
             </div>
             <div>
+                <table>
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                        <td>Surname</td>
+                        <td>Birthday</td>
+                        <td>Gender</td>
+                        <td>Passport</td>
+                        <td>Phone</td>
+                        <td>Marital Status</td>
+                        <td>Role</td>
+                        <td>Email</td>
+                        <td>Income</td>
+                        <td>Is Parent</td>
+                        <td>Group</td>
+                        <td>Home city</td>
+                    </tr>
 
                     <c:forEach items="${users}" var="user">
-
-                        <div>${user.name} ${user.surname} Пасспорт: ${user.passport} Почта: ${user.email} Группа: ${user.group.getName()}</div>
-
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.name}</td>
+                            <td>${user.surname}</td>
+                            <td>${user.birthday}</td>
+                            <td>${user.gender}</td>
+                            <td>${user.passport}</td>
+                            <td>${user.phone}</td>
+                            <td>${user.maritalStatus}</td>
+                            <td>${user.role.name}</td>
+                            <td>${user.email}</td>
+                            <td>${user.income}</td>
+                            <td>${user.isParent}</td>
+                            <td>${user.group.getName()}</td>
+                            <td>${user.home.getName()}</td>
+                        </tr>
                     </c:forEach>
-
-                    <div class="row">
-                        <h3 class="trendhead-brand">
-                            <a href="<c:url value='/' />" class="btn btn-success custom-width">Переобучить нейронную сеть</a>
-                        </h3>
+                </table>
+                <div class="row">
+                    <div class="trendhead-brand">
+                        <a href="<c:url value='/' />" class="btn btn-success custom-width">Переобучить нейронную
+                            сеть</a>
                     </div>
+                </div>
 
             </div>
 

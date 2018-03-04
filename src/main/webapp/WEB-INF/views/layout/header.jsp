@@ -29,9 +29,9 @@
 
             <li><a href="<c:url value='/user/get' />">Find User</a></li>
 
-            <li><a href="<c:url value='/ann' />">Ann</a></li>
+            <li><a href="<c:url value='/fann/' />">Ann</a></li>
 
-            <li><a href="<c:url value='/statistics/list' />"><spring:message code="header.statistics"/></a></li>
+            <li><a href="<c:url value='/fann-statistics/' />"><spring:message code="header.statistics"/></a></li>
 
         </ul>
     </nav>

@@ -10,22 +10,12 @@
     <jsp:include page="layout/resources.jsp"/>
 </head>
 
-<body onkeydown="return Disable()">
+<body>
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
         <div class="cover-container">
-
             <div class="trendhead clearfix">
-                <div class="inner">
-                    <h3 class="trendhead-brand">
-                        <fmt:message key="header.title" bundle="${lang}"/>
-                    </h3>
-                    <nav>
-                        <ul class="nav trendhead-nav">
-                            <li></li>
-                        </ul>
-                    </nav>
-                </div>
+                <jsp:include page="layout/header.jsp"/>
             </div>
 
             <div class="inner cover">
