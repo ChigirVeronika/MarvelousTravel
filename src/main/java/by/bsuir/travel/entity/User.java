@@ -79,6 +79,10 @@ public class User {
     @JsonManagedReference
     private Set<Order> orders;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference
+    private UserTravelParams userTravelParams;
+
     public User(){}
 
     public Integer getId() {
@@ -231,5 +235,21 @@ public class User {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    public Boolean getParent() {
+        return isParent;
+    }
+
+    public void setParent(Boolean parent) {
+        isParent = parent;
+    }
+
+    public UserTravelParams getUserTravelParams() {
+        return userTravelParams;
+    }
+
+    public void setUserTravelParams(UserTravelParams userTravelParams) {
+        this.userTravelParams = userTravelParams;
     }
 }

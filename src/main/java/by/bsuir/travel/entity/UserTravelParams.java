@@ -1,24 +1,63 @@
 package by.bsuir.travel.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "user_travel_params")
 public class UserTravelParams {
 
-    private Integer user_id;
+    @GenericGenerator(name = "generator", strategy = "foreign",
+            parameters = @Parameter(name = "property", value = "user"))
+    @Id
+    @GeneratedValue(generator = "generator")
+    @Column(name = "user_id", unique = true, nullable = false)
+    private Integer userId;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
+    @JsonBackReference
+    private User user;
+
+    @Column(name = "favorite_seasons")
     private List<String> favoriteSeasons;//winter, spring, summer, fall
+
+    @Column(name = "favourite_regions")
     private List<Region> favoriteRegions;
+
+    @Column(name = "favorite_countries")
+    private List<Country> favoriteCountries;
+
+    @Column(name = "comfort_level")
     private String comfortLevel;//low, medium, high
+
+    @Column(name = "nature_or_city")
     private String natureOrCity;//nature, city, both
-    private String travelAgencyOrOwn;//agency, own, both //???is it needed
 
-    public UserTravelParams(){}
+    @Column(name = "service_type")
+    private String serviceType;//travel_agency, own, both //???is it needed
 
-    public Integer getUser_id() {
-        return user_id;
+    public UserTravelParams() {
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<String> getFavoriteSeasons() {
@@ -37,6 +76,14 @@ public class UserTravelParams {
         this.favoriteRegions = favoriteRegions;
     }
 
+    public List<Country> getFavoriteCountries() {
+        return favoriteCountries;
+    }
+
+    public void setFavoriteCountries(List<Country> favoriteCountries) {
+        this.favoriteCountries = favoriteCountries;
+    }
+
     public String getComfortLevel() {
         return comfortLevel;
     }
@@ -53,11 +100,11 @@ public class UserTravelParams {
         this.natureOrCity = natureOrCity;
     }
 
-    public String getTravelAgencyOrOwn() {
-        return travelAgencyOrOwn;
+    public String getServiceType() {
+        return serviceType;
     }
 
-    public void setTravelAgencyOrOwn(String travelAgencyOrOwn) {
-        this.travelAgencyOrOwn = travelAgencyOrOwn;
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
     }
 }
