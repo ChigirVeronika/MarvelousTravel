@@ -13,14 +13,49 @@
 
 <body onkeydown="return Disable()">
 <div class="site-wrapper">
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fannStatEasyForm').hide();
+            $('#fannStatHeavyForm').hide();
+            $('#fannStatBothForm').hide();
+
+            $('input[type="radio"]').click(function() {
+                if($(this).attr('id') == 'fannStatCalcTypeEasy') {
+                    $('#fannStatEasyForm').show();
+                } else {
+                    $('#fannStatEasyForm').hide();
+                }
+
+                if($(this).attr('id') == 'fannStatCalcTypeHeavy') {
+                    $('#fannStatHeavyForm').show();
+                } else {
+                    $('#fannStatHeavyForm').hide();
+                }
+
+                if($(this).attr('id') == 'fannStatCalcTypeBoth') {
+                    $('#fannStatBothForm').show();
+                } else {
+                    $('#fannStatBothForm').hide();
+                }
+           });
+        });
+    </script>
+
     <div class="site-wrapper-inner">
         <div class="cover-container">
             <div class="trendhead clearfix">
                 <jsp:include page="layout/header.jsp"/>
             </div>
-            <div>
-                <form:form method="GET" action="/fann-statistics/calculate" class="form-horizontal" id="fannStatForm">
 
+            <div>
+                <input type="radio" name="fannStatCalcType" id="fannStatCalcTypeEasy" value="easy"> Easy<br>
+                <input type="radio" name="fannStatCalcType" id="fannStatCalcTypeHeavy" value="heavy"> Heavy<br>
+                <input type="radio" name="fannStatCalcType" id="fannStatCalcTypeBoth" value="both"> Both
+            </div>
+
+            <div>
+                <form:form method="GET" action="/fann-statistics/calculate/easy" class="form-horizontal" id="fannStatEasyForm">
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-md-3 control-lable" for="increment">increment</label>
@@ -32,7 +67,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-md-3 control-lable" for="batch">batch</label>
@@ -44,7 +78,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-md-3 control-lable" for="rprop">rprop</label>
@@ -56,19 +89,66 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="form-actions floatRight">
-                            <input type="submit" value="Calculate statistics" class="btn btn-success btn-sm"/>
-                            <input type="submit" value="Reset" class="btn btn-warning btn-sm" onclick="return clear();"/>
+                            <input type="submit" value="Calculate easy statistics" class="btn btn-success btn-sm"/>
+                            <input type="reset" value="Reset" class="btn btn-warning btn-sm"/>
                         </div>
                     </div>
+                </form:form>
+            </div>
 
-                    <script type="text/javascript">
-                        function clear() {
-                            document.getElementById("fannStatForm").reset();
-                        }
-                    </script>
+            <div>
+                <form:form method="GET" action="/fann-statistics/calculate/heavy" class="form-horizontal" id="fannStatHeavyForm">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-lable" for="increment">increment</label>
+                            <div class="col-md-7">
+                                <form:checkbox path="increment" id="increment" label="increment" class="form-control input-sm" />
+                                <div class="has-error">
+                                    <form:errors path="increment" class="help-inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-lable" for="batch">batch</label>
+                            <div class="col-md-7">
+                                <form:checkbox path="batch" id="batch" label="batch" class="form-control input-sm" />
+                                <div class="has-error">
+                                    <form:errors path="batch" class="help-inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-lable" for="rprop">rprop</label>
+                            <div class="col-md-7">
+                                <form:checkbox path="rprop" id="rprop" label="rprop" class="form-control input-sm" />
+                                <div class="has-error">
+                                    <form:errors path="rprop" class="help-inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-actions floatRight">
+                            <input type="submit" value="Calculate heavy statistics" class="btn btn-success btn-sm"/>
+                            <input type="reset" value="Reset" class="btn btn-warning btn-sm"/>
+                        </div>
+                    </div>
+                </form:form>
+            </div>
+
+            <div>
+                <form:form method="GET" action="/fann-statistics/calculate/both" class="form-horizontal" id="fannStatBothForm">
+                    <div class="row">
+                        <div class="form-actions floatRight">
+                            <input type="submit" value="Calculate both statistics" class="btn btn-success btn-sm"/>
+                        </div>
+                    </div>
                 </form:form>
             </div>
 
