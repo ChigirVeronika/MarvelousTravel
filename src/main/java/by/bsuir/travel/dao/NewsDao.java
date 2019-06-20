@@ -2,10 +2,8 @@ package by.bsuir.travel.dao;
 
 import by.bsuir.travel.entity.News;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 
 public interface NewsDao {
 

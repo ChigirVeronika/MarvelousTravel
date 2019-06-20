@@ -1,8 +1,5 @@
 package by.bsuir.travel.service.impl;
 
-import by.bsuir.travel.dao.FeedbackDao;
-import by.bsuir.travel.entity.Feedback;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +11,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)

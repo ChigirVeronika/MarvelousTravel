@@ -37,38 +37,38 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
-    public String listUsers(ModelMap model) {
+    public String list(ModelMap model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
         return "user-list";
     }
 
     @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
-    public String getUserRegisterPage(ModelMap model) {
+    public String getRegisterPage(ModelMap model) {
         UserDto user = new UserDto();
         model.addAttribute("userDto", user);
         return "user-create";
     }
 
     @RequestMapping(value = {"/create"}, method = RequestMethod.POST)
-    public String saveUser(@Valid UserDto userDto, BindingResult result, ModelMap model) {
+    public String save(@Valid UserDto userDto, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "user-create";
         }
-        User user = convertToEntity(userDto);
-
-        if (!userService.isUserUnique(user.getEmail(), user.getPassword())) {
-            FieldError error = new FieldError("user", "email", "Bad email or password.");
-            result.addError(error);
-            return "user-create";
-        }
-        userService.save(user);
-        model.addAttribute("success", "User " + user.getName() + " " + user.getSurname() + " registered successfully");
+//        User user = convertToEntity(userDto);
+//
+//        if (!userService.isUserUnique(user.getEmail(), user.getPassword())) {
+//            FieldError error = new FieldError("user", "email", "Bad email or password.");
+//            result.addError(error);
+//            return "user-create";
+//        }
+//        userService.save(user);
+//        model.addAttribute("success", "User " + user.getName() + " " + user.getSurname() + " registered successfully");
         return "main";
     }
 
     @RequestMapping(value = {"/get"}, method = RequestMethod.POST)
-    public String getUserByEmail(@RequestParam("email") String email, ModelMap model) {
+    public String getByEmail(@RequestParam("email") String email, ModelMap model) {
         User user = userService.findByEmail(email);
         model.addAttribute("user", user);
         return "user-get";
@@ -80,37 +80,16 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/personal"}, method = RequestMethod.GET)
-    public String getUserPersonalPage(HttpSession session) {
+    public String getPersonalPage(HttpSession session) {
         User user = (User) session.getAttribute("user");
 
         return "user-personal";
     }
 
     @RequestMapping(value = {"/personal"}, method = RequestMethod.POST)
-    public String updateUser(@Valid UserDto userDto, ModelMap model) {
+    public String update(@Valid UserDto userDto, ModelMap model) {
         User user = userService.findByEmail(userDto.getEmail());
-        User fromDto = convertToEntity(userDto);
-        fromDto.setId(user.getId());
-        userService.update(fromDto);
+        userService.update(user);
         return "redirect:/user/list";
-    }
-
-    private User convertToEntity(UserDto userDto) {
-        User user = new User();
-        user.setName(userDto.getName());
-        user.setSurname(userDto.getSurname());
-        user.setBirthday(userDto.getBirthday());
-        user.setGender(userDto.getGender());
-        user.setPassport(userDto.getPassport());
-        user.setPhone(userDto.getPhone());
-        user.setMaritalStatus(userDto.getMaritalStatus());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-        user.setIncome(userDto.getIncome());
-        user.setIsParent(userDto.getParent());
-        user.setHome(userDto.getHome());
-        //user.setRole();//todo!!!
-        //user.setGroup();
-        return user;
     }
 }

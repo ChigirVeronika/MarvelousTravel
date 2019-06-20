@@ -2,7 +2,6 @@ package by.bsuir.travel.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name = "news")
@@ -17,14 +16,11 @@ public class News {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "date", columnDefinition="DATE")
-    private Date date;
+    @Column(name = "datetime", columnDefinition="DATE")
+    private Timestamp datetime;
 
-    @Column(name = "content")
-    private String content;
-
-    @Column(name = "image")
-    private String image;
+    @Column(name = "about")
+    private String about;
 
     public News(){}
 
@@ -44,27 +40,19 @@ public class News {
         this.name = name;
     }
 
-    public Date getDate() {
-        return date;
+    public Timestamp getDatetime() {
+        return datetime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDatetime(Timestamp datetime) {
+        this.datetime = datetime;
     }
 
-    public String getContent() {
-        return content;
+    public String getAbout() {
+        return about;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setAbout(String about) {
+        this.about = about;
     }
 }

@@ -1,7 +1,5 @@
 package by.bsuir.travel.controller;
 
-import by.bsuir.travel.entity.Feedback;
-import by.bsuir.travel.service.FeedbackService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

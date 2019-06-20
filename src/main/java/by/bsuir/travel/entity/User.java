@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,25 +21,20 @@ public class User {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "birthday")
-    private Date birthday;
+    @Column(name = "age")
+    private Integer age;
 
     @Column(name = "gender")
-    private String gender;//male, female, none
-
-    @Column(name = "passport")
-    private String passport;
-
-    @Column(name = "phone")
-    private String phone;
+    private String gender;//male, female, other
 
     @Column(name = "marital_status")
     private Boolean maritalStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "user_role_id")
-    @JsonBackReference
-    private UserRole role;
+    @Column(name = "children")
+    private Integer children;
+
+    @Column(name="income")
+    private String income;
 
     @Column(name = "email")
     private String email;
@@ -48,40 +42,18 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name="income")
-    private Double income;
-
-    @Column(name="is_parent")
-    private Boolean isParent;
-
-    @Column(name="favourite_activity")
-    private String favouriteActivity;
-
     @ManyToOne
-    @JoinColumn(name = "group_id")
+    @JoinColumn(name = "user_role_id")
     @JsonBackReference
-    private Group group;
-
-    @ManyToOne
-    @JoinColumn(name = "home_id")
-    @JsonBackReference
-    private City home;
+    private UserRole role;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     @JsonManagedReference
-    private Set<Feedback> feedbacks;
+    private Set<Recommendation> recommendations;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     @JsonManagedReference
-    private Set<Booking> bookings;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
-    @JsonManagedReference
-    private Set<Order> orders;
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
-    @JsonManagedReference
-    private UserTravelParams userTravelParams;
+    private Set<Rating> ratings;
 
     public User(){}
 
@@ -109,12 +81,12 @@ public class User {
         this.surname = surname;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getGender() {
@@ -125,22 +97,6 @@ public class User {
         this.gender = gender;
     }
 
-    public String getPassport() {
-        return passport;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public Boolean getMaritalStatus() {
         return maritalStatus;
     }
@@ -149,28 +105,20 @@ public class User {
         this.maritalStatus = maritalStatus;
     }
 
-    public Set<Feedback> getFeedbacks() {
-        return feedbacks;
+    public Integer getChildren() {
+        return children;
     }
 
-    public void setFeedbacks(Set<Feedback> feedbacks) {
-        this.feedbacks = feedbacks;
+    public void setChildren(Integer children) {
+        this.children = children;
     }
 
-    public Set<Booking> getBookings() {
-        return bookings;
+    public String getIncome() {
+        return income;
     }
 
-    public void setBookings(Set<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
+    public void setIncome(String income) {
+        this.income = income;
     }
 
     public String getEmail() {
@@ -189,67 +137,27 @@ public class User {
         this.password = password;
     }
 
-    public Double getIncome() {
-        return income;
+    public UserRole getRole() {
+        return role;
     }
 
-    public void setIncome(Double income) {
-        this.income = income;
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
-    public Boolean getIsParent() {
-        return isParent;
+    public Set<Recommendation> getRecommendations() {
+        return recommendations;
     }
 
-    public void setIsParent(Boolean parent) {
-        isParent = parent;
+    public void setRecommendations(Set<Recommendation> recommendations) {
+        this.recommendations = recommendations;
     }
 
-    public City getHome() {
-        return home;
+    public Set<Rating> getRatings() {
+        return ratings;
     }
 
-    public void setHome(City home) {
-        this.home = home;
-    }
-
-    public String getFavouriteActivity() {
-        return favouriteActivity;
-    }
-
-    public void setFavouriteActivity(String favouriteActivity) {
-        this.favouriteActivity = favouriteActivity;
-    }
-
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
-    public Set<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
-
-    public Boolean getParent() {
-        return isParent;
-    }
-
-    public void setParent(Boolean parent) {
-        isParent = parent;
-    }
-
-    public UserTravelParams getUserTravelParams() {
-        return userTravelParams;
-    }
-
-    public void setUserTravelParams(UserTravelParams userTravelParams) {
-        this.userTravelParams = userTravelParams;
+    public void setRatings(Set<Rating> ratings) {
+        this.ratings = ratings;
     }
 }

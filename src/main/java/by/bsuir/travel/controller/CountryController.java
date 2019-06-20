@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/country")
 public class CountryController {
@@ -17,9 +19,16 @@ public class CountryController {
     private CountryService countryService;
 
     @RequestMapping(value = {"/get/{id}"}, method = RequestMethod.GET)
-    public String getTour(@PathVariable Integer id, ModelMap model) {
+    public String get(@PathVariable Integer id, ModelMap model) {
         Country country = countryService.find(id);
         model.addAttribute("country", country);
         return "country";
+    }
+
+    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
+    public String list(ModelMap model) {
+        List<Country> countries = countryService.findAll();
+        model.addAttribute("countries", countries);
+        return "country-list";
     }
 }

@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <fmt:setLocale value="ru"/>
 <fmt:setBundle basename="i18n.marvelous_travel" var="lang"/>
 
@@ -62,9 +61,7 @@
                             сеть</a>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>

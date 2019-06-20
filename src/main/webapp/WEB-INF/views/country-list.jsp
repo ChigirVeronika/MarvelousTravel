@@ -8,7 +8,7 @@
 
 <html lang="${language}">
 <head>
-    <jsp:include page="layout/resources.jsp" />
+    <jsp:include page="layout/resources.jsp"/>
 </head>
 
 <body onkeydown="return Disable()">
@@ -16,14 +16,23 @@
     <div class="site-wrapper-inner">
         <div class="cover-container">
             <div class="trendhead clearfix">
-                <jsp:include page="layout/header.jsp" />
+                <jsp:include page="layout/header.jsp"/>
+            </div>
+            <div class="inner cover">
+            <div class="col-sm-8">
+
+                <table>
+                    <c:forEach items="${countries}" var="country">
+                    <div class="row">
+                        <tr>
+                        <td><a href="<c:url value='/country/get/${country.getId()}' />">${country.getName()}</a></td>
+                        </tr>
+                    </div>
+                    </c:forEach>
+                </table>
+            </div>
             </div>
 
-            <div>
-                <h1 class="cover-heading"><fmt:message key="index.welcome" bundle="${lang}"/></h1>
-                <p class="lead"><a href="<c:url value='/tour/panel' />"><fmt:message key="index.start" bundle="${lang}"/></a></p>
-            </div>
-            <br><br><br><br>
 
         </div>
     </div>

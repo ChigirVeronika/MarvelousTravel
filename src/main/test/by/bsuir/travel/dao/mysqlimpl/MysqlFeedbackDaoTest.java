@@ -1,12 +1,8 @@
 package by.bsuir.travel.dao.mysqlimpl;
 
-import by.bsuir.travel.entity.Feedback;
 import by.bsuir.travel.entity.User;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.service.spi.InjectService;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +13,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.sql.Timestamp;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)

@@ -13,7 +13,7 @@
     <nav>
         <ul class="nav trendhead-nav">
 
-            <li><a href="<c:url value='/region/map' />">Регионы и страны</a></li>
+            <li><a href="<c:url value='/country/list' />">Countries</a></li>
 
             <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
 

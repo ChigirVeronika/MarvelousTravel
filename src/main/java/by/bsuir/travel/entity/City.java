@@ -9,13 +9,17 @@ import java.util.Set;
 @Entity
 @Table(name = "city")
 public class City {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "about")
+    private String about;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -24,21 +28,10 @@ public class City {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "city")
     @JsonManagedReference
-    private Set<Hotel> hotels;
+    private Set<Place> places;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cityFrom")
-    @JsonManagedReference
-    private Set<Ticket> ticketsFrom;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cityTo")
-    @JsonManagedReference
-    private Set<Ticket> ticketsTo;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "home")
-    @JsonManagedReference
-    private Set<User> citizens;
-
-    public City(){}
+    public City() {
+    }
 
     public Integer getId() {
         return id;
@@ -56,6 +49,14 @@ public class City {
         this.name = name;
     }
 
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
     public Country getCountry() {
         return country;
     }
@@ -64,35 +65,11 @@ public class City {
         this.country = country;
     }
 
-    public Set<Hotel> getHotels() {
-        return hotels;
+    public Set<Place> getPlaces() {
+        return places;
     }
 
-    public void setHotels(Set<Hotel> hotels) {
-        this.hotels = hotels;
-    }
-
-    public Set<Ticket> getTicketsFrom() {
-        return ticketsFrom;
-    }
-
-    public void setTicketsFrom(Set<Ticket> ticketsFrom) {
-        this.ticketsFrom = ticketsFrom;
-    }
-
-    public Set<Ticket> getTicketsTo() {
-        return ticketsTo;
-    }
-
-    public void setTicketsTo(Set<Ticket> ticketsTo) {
-        this.ticketsTo = ticketsTo;
-    }
-
-    public Set<User> getCitizens() {
-        return citizens;
-    }
-
-    public void setCitizens(Set<User> citizens) {
-        this.citizens = citizens;
+    public void setPlaces(Set<Place> places) {
+        this.places = places;
     }
 }
