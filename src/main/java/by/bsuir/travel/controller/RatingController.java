@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(value = "/rating")
 public class RatingController {
 
     @Autowired
@@ -29,7 +28,7 @@ public class RatingController {
     @Autowired
     private PlaceService placeService;
 
-    @RequestMapping(value = {"/create"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/rate"}, method = RequestMethod.POST)
     public String create(@RequestParam("placeId") Integer placeId,
                          @RequestParam("mark") Integer mark,
                          ModelMap model, HttpSession session) {
@@ -59,7 +58,7 @@ public class RatingController {
 //
 //        List<Rating> ratings = ratingService.findAll();
 //        model.addAttribute("ratings", ratings);
-//        return "feedback-list";
+//        return "rating-list";
 //    }
 
 //    @RequestMapping(value = {"/list"}, method = RequestMethod.POST)

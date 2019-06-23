@@ -23,17 +23,13 @@
                         <td>Id</td>
                         <td>Name</td>
                         <td>Surname</td>
-                        <td>Birthday</td>
+                        <td>Age</td>
                         <td>Gender</td>
-                        <td>Passport</td>
-                        <td>Phone</td>
-                        <td>Marital Status</td>
-                        <td>Role</td>
-                        <td>Email</td>
+                        <td>Marital status</td>
+                        <td>Children</td>
                         <td>Income</td>
-                        <td>Is Parent</td>
-                        <td>Group</td>
-                        <td>Home city</td>
+                        <td>Email</td>
+                        <td>Role</td>
                     </tr>
 
                     <c:forEach items="${users}" var="user">
@@ -41,24 +37,19 @@
                             <td>${user.id}</td>
                             <td>${user.name}</td>
                             <td>${user.surname}</td>
-                            <td>${user.birthday}</td>
+                            <td>${user.age}</td>
                             <td>${user.gender}</td>
-                            <td>${user.passport}</td>
-                            <td>${user.phone}</td>
                             <td>${user.maritalStatus}</td>
-                            <td>${user.role.name}</td>
-                            <td>${user.email}</td>
+                            <td>${user.children}</td>
                             <td>${user.income}</td>
-                            <td>${user.isParent}</td>
-                            <td>${user.group.getName()}</td>
-                            <td>${user.home.getName()}</td>
+                            <td>${user.email}</td>
+                            <td>${user.role.name}</td>
                         </tr>
                     </c:forEach>
                 </table>
                 <div class="row">
                     <div class="trendhead-brand">
-                        <a href="<c:url value='/' />" class="btn btn-success custom-width">Переобучить нейронную
-                            сеть</a>
+
                     </div>
                 </div>
             </div>

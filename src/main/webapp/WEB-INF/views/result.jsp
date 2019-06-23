@@ -22,10 +22,10 @@
             <div class="col-sm-8">
 
                 <table>
-                    <c:forEach items="${countries}" var="country">
+                    <c:forEach items="${results}" var="result">
                         <div class="row">
                             <tr>
-                                <td><a href="<c:url value='/country/get/${country.getId()}' />">${country.getName()}</a></td>
+                                <td>${result.getName()}, ${result.getCity().getName()}, ${result.getCity().getCountry().getName()}</td>
                             </tr>
                         </div>
                     </c:forEach>

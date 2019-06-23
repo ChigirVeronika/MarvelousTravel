@@ -20,7 +20,7 @@
             </div>
 
             <div>
-                <h1 class="cover-heading">Спасибо за ваш выбор!</h1>
+                <h1 class="cover-heading">Thanks!</h1>
             </div>
 
             <br><br><br><br>

@@ -20,19 +20,19 @@
             </div>
             <div class="inner cover">
             <div class="col-sm-8">
+                <c:forEach items="${news}" var="lnews">
+                    <div class="row">
+                        <h4 class="trendhead-brand">${lnews.name}</h4>
+                        <h5 class="trendhead-brand">${lnews.datetime}</h5>
+                        <h5 class="trendhead-brand">${lnews.about}</h5>
+                        <h5 class="trendhead-brand">
+                            <a href="<c:url value='/news/delete/${lnews.name}' />" class="btn btn-success custom-width">Delete</a>
+                        </h5>
+                    </div>
+                </c:forEach>
 
-                <table>
-                    <c:forEach items="${countries}" var="country">
-                        <div class="row">
-                            <tr>
-                                <td><a href="<c:url value='/country/get/${country.getId()}' />">${country.getName()}</a></td>
-                            </tr>
-                        </div>
-                    </c:forEach>
-                </table>
             </div>
             </div>
-
 
         </div>
     </div>

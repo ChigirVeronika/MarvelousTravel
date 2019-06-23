@@ -64,7 +64,7 @@ public class UserController {
 //        }
 //        userService.save(user);
 //        model.addAttribute("success", "User " + user.getName() + " " + user.getSurname() + " registered successfully");
-        return "main";
+        return "index";
     }
 
     @RequestMapping(value = {"/get"}, method = RequestMethod.POST)

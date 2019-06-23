@@ -13,12 +13,16 @@ import java.util.Set;
 
 @Service("newsService")
 @Transactional
-public class NewsServiceImpl implements NewsService{
+public class NewsServiceImpl implements NewsService {
     @Autowired
     private NewsDao newsDao;
 
-    public NewsServiceImpl(){}
-    public NewsServiceImpl(MysqlNewsDao dao){ this.newsDao = dao;}
+    public NewsServiceImpl() {
+    }
+
+    public NewsServiceImpl(MysqlNewsDao dao) {
+        this.newsDao = dao;
+    }
 
     public List<News> findAll() {
         return newsDao.readAll();

@@ -8,31 +8,18 @@
 
 <div class="inner">
     <h3 class="trendhead-brand">
-        <fmt:message key="header.title" bundle="${lang}"/>
+        Marvelous Travel
     </h3>
     <nav>
         <ul class="nav trendhead-nav">
-
+            <li><a href="<c:url value='/main' />">Recommendations</a></li>
             <li><a href="<c:url value='/country/list' />">Countries</a></li>
-
-            <li><a href="<c:url value='/news/list' />"><spring:message code="header.news"/></a></li>
-
-            <li><a href="<c:url value='/group/list' />">Группы</a></li>
-
-            <li><a href="<c:url value='/tour/panel' />">Туры</a></li>
-
-            <li><a href="<c:url value='/google/map' />">Карта</a></li>
-
-            <li><a href="<c:url value='/feedback/list' />">Отзывы</a></li>
-
-            <li><a href="<c:url value='/user/list' />"><spring:message code="header.users"/></a></li>
-
+            <li><a href="<c:url value='/place/list' />">Places</a></li>
+            <li><a href="<c:url value='/news/list' />">News</a></li>
+            <li><a href="<c:url value='/google/map' />">Map</a></li>
+            <li><a href="<c:url value='/user/list' />">Users</a></li>
             <li><a href="<c:url value='/user/get' />">Find User</a></li>
-
-            <li><a href="<c:url value='/fann/' />">Ann</a></li>
-
-            <li><a href="<c:url value='/fann-statistics/' />"><spring:message code="header.statistics"/></a></li>
-
+            <li><a href="<c:url value='/statistics/list' />">Statistics</a></li>
         </ul>
     </nav>
 </div>

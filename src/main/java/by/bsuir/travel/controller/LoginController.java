@@ -18,7 +18,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginUser(@RequestParam("email") String email,
                             @RequestParam("password") String password, Model model, HttpSession session) {
         User persistedUser = userService.findByEmailAndPassword(email, password);
@@ -31,5 +31,10 @@ public class LoginController {
             model.addAttribute("error", "Wrong credentials");
             return "index";
         }
+    }
+
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String loginPage() {
+        return "login";
     }
 }

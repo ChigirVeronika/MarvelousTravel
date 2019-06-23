@@ -23,17 +23,17 @@
 
                 <div class="row">
                     <h3 class="trendhead-brand">
-                        <a href="<c:url value='/news/create' />" class="btn btn-success custom-width">Новость</a>
+                        <a href="<c:url value='/news/create' />" class="btn btn-success custom-width">Create</a>
                     </h3>
                 </div>
 
                 <c:forEach items="${news}" var="lnews">
                     <div class="row">
                         <h4 class="trendhead-brand">${lnews.name}</h4>
-                        <h5 class="trendhead-brand">${lnews.date}</h5>
-                        <h5 class="trendhead-brand">${lnews.content}</h5>
+                        <h5 class="trendhead-brand">${lnews.datetime}</h5>
+                        <h5 class="trendhead-brand">${lnews.about}</h5>
                         <h5 class="trendhead-brand">
-                            <a href="<c:url value='/news/delete/${lnews.name}' />" class="btn btn-success custom-width">Удалить</a>
+                            <a href="<c:url value='/news/delete/${lnews.name}' />" class="btn btn-success custom-width">Delete</a>
                         </h5>
                     </div>
                 </c:forEach>

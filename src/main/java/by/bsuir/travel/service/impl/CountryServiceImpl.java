@@ -12,12 +12,16 @@ import java.util.List;
 
 @Service("countryService")
 @Transactional
-public class CountryServiceImpl implements CountryService{
+public class CountryServiceImpl implements CountryService {
     @Autowired
     private CountryDao countryDao;
 
-    public CountryServiceImpl(){}
-    public CountryServiceImpl(MysqlCountryDao dao){this.countryDao = dao;}
+    public CountryServiceImpl() {
+    }
+
+    public CountryServiceImpl(MysqlCountryDao dao) {
+        this.countryDao = dao;
+    }
 
     public Country find(Integer id) {
         return countryDao.read(id);

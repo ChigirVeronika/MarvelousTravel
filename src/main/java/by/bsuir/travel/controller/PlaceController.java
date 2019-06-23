@@ -1,5 +1,7 @@
 package by.bsuir.travel.controller;
 
+import by.bsuir.travel.dto.PlaceDto;
+import by.bsuir.travel.dto.RatedPlaceDto;
 import by.bsuir.travel.entity.City;
 import by.bsuir.travel.entity.Place;
 import by.bsuir.travel.entity.Rating;
@@ -39,7 +41,9 @@ public class PlaceController {
     }
 
     @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
-    public String showCreationPage() {
+    public String showCreationPage(ModelMap model) {
+        PlaceDto place = new PlaceDto();
+        model.addAttribute("place", place);
         return "place-create";
     }
 
@@ -53,21 +57,35 @@ public class PlaceController {
         return "redirect:/place/list";
     }
 
-    @RequestMapping(value = {"/find"}, method = RequestMethod.POST)
-    public String create(@RequestParam("name") String name, Model model) {
-        Place place = placeService.find(name);
-        model.addAttribute("place", place);
+    @RequestMapping(value = {"/panel"}, method = RequestMethod.POST)
+    public String find(@RequestParam("about") String about,
+                       Model model) {
+        List<Place> rowPlaces = placeService.findLike(about);
 
-        List<Rating> ratings = new ArrayList<>();
-        ratings.addAll(place.getRatings());
-        List<Integer> l = ratings.stream()
-                .map(Rating::getMark)
-                .collect(Collectors.toList());
-        Double average = l.stream()
+        List<RatedPlaceDto> places = new ArrayList<>();
+        for (Place p : rowPlaces) {
+            RatedPlaceDto place = new RatedPlaceDto(p.getName(), p.getAbout(), p.getCity().getName());
+            List<Rating> ratings = new ArrayList<>();
+            ratings.addAll(p.getRatings());
+            List<Integer> l = ratings.stream()
+                    .map(Rating::getMark)
+                    .collect(Collectors.toList());
+            Double average = l.stream()
                     .mapToInt(a -> a)
                     .average()
                     .getAsDouble();
-        model.addAttribute("mark", average);
-        return "place";
+            place.setRating(average);
+            places.add(place);
+        }
+
+        model.addAttribute("places", places);
+        return "place-panel";
+    }
+
+    @RequestMapping(value = {"/panel"}, method = RequestMethod.GET)
+    public String panel(ModelMap model) {
+        PlaceDto place = new PlaceDto();
+        model.addAttribute("place", place);
+        return "place-panel";
     }
 }

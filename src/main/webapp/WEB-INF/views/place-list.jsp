@@ -21,28 +21,22 @@
             <div class="col-sm-8">
                 <div class="row">
                     <h3 class="trendhead-brand">
-                        <a href="<c:url value='/tour/panel' />" class="btn btn-success custom-width">Поиск</a>
+                        <a href="<c:url value='/place/panel' />" class="btn btn-success custom-width">Search for places</a>
                     </h3>
                 </div>
 
-                <c:forEach items="${tours}" var="tour">
+                <c:forEach items="${places}" var="place">
                     <div class="row">
                         <h4 class="trendhead-brand">
-                            ${tour.name}
+                            ${place.getName()}, ${place.getCity().getName()}, ${place.getCity().getCountry().getName()}
                         </h4>
-                    </div>
-                    <div class="row">
-                        <h5>Даты: ${tour.startDate} - ${tour.endDate} // Суток: </h5>
-                    </div>
-                    <div class="row">
-                        <h5>Маршрут: ${tour.cityFrom.name} - ${tour.cityTo.name}</h5>
-                    </div>
-                    <div class="row">
-                        <h5>Цена: ${tour.price} BYN</h5>
+                        <h3 class="trendhead-brand">
+                            ${place.getAbout()}
+                        </h3>
                     </div>
                     <div class="row">
                         <h3 class="trendhead-brand">
-                            <a href="<c:url value='/tour/get/${tour.id}' />" class="btn btn-success custom-width">Беру!</a>
+                            <a href="<c:url value='/greeting' />" class="btn btn-success custom-width">Take!</a>
                         </h3>
                     </div>
                     <div class="row">
@@ -52,10 +46,11 @@
 
                 <div class="row">
                     <h3 class="trendhead-brand">
-                        <a href="<c:url value='/tour/create' />" class="btn btn-success custom-width">Создать тур</a>
+                        <a href="<c:url value='/place/create' />" class="btn btn-success custom-width">Create place</a>
                     </h3>
                 </div>
-                <c:if test="${user != null && user.role == 'ADMIN'}"></c:if>
+                <c:if test="${user != null && user.role == 'ADMIN'}">AAAAA</c:if>
+                ${user}
             </div>
 
             <div class="trendfoot">

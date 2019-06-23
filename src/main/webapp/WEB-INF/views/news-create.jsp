@@ -25,7 +25,7 @@
                         <form:input type="hidden" path="id" id="id"/>
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="name">Название</label>
+                                <label class="col-md-3 control-lable" for="name">Name</label>
                                 <div class="col-md-7">
                                     <form:input type="text" path="name" id="name" class="form-control input-sm" />
                                     <div class="has-error">
@@ -37,11 +37,11 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="content">Контент</label>
+                                <label class="col-md-3 control-lable" for="about">About</label>
                                 <div class="col-md-7">
-                                    <form:input type="text" path="content" id="content" class="form-control input-sm" />
+                                    <form:input type="text" path="about" id="about" class="form-control input-sm" />
                                     <div class="has-error">
-                                        <form:errors path="content" class="help-inline"/>
+                                        <form:errors path="about" class="help-inline"/>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Создать новость" class="btn btn-success btn-sm"/>
+                                <input type="submit" value="Create" class="btn btn-success btn-sm"/>
                                 <input type="submit" value="Reset" class="btn btn-warning btn-sm" onclick="return clear();"/>
                             </div>
                         </div>

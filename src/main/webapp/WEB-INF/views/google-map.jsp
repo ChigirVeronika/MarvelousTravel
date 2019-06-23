@@ -8,8 +8,7 @@
 <html lang="${language}">
 <head>
     <jsp:include page="layout/resources.jsp" />
-    <script
-            src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
         var map;
         function initialize() {

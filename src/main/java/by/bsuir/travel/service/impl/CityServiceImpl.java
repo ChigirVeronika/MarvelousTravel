@@ -12,15 +12,25 @@ import java.util.List;
 
 @Service("cityService")
 @Transactional
-public class CityServiceImpl implements CityService{
+public class CityServiceImpl implements CityService {
+
     @Autowired
     private CityDao cityDao;
 
-    public CityServiceImpl(){}
-    public CityServiceImpl(MysqlCityDao dao){this.cityDao = dao;}
+    public CityServiceImpl() {
+    }
+
+    public CityServiceImpl(MysqlCityDao dao) {
+        this.cityDao = dao;
+    }
 
     public List<City> findAll() {
         return cityDao.readAll();
+    }
+
+    @Override
+    public City findByName(String name) {
+        return cityDao.readByName(name);
     }
 
 }

@@ -24,19 +24,11 @@
                 </div>
                 </br>
                 <div class="row">
-                    <h4 class="trendhead-brand">О стране</h4>
+                    <h4 class="trendhead-brand">About</h4>
                     <p><h5>${country.about}</h5></p>
                 </div>
                 <div class="row">
-                    <h4 class="trendhead-brand">Климат</h4>
-                    <p><h5>${country.climate}</h5></p>
-                </div>
-                <div class="row">
-                    <h4 class="trendhead-brand">Куда сходить и чем заняться</h4>
-                    <p><h5>${country.activities}</h5></p>
-                </div>
-                <div class="row">
-                    <h4 class="trendhead-brand">Города</h4>
+                    <h4 class="trendhead-brand">Cities</h4>
                     <p>
                     <h5>
                         <c:forEach items="${country.cities}" var="city">

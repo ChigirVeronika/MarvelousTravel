@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <fmt:setLocale value="ru"/>
@@ -20,9 +21,30 @@
             </div>
 
             <div>
-                <h1 class="cover-heading"><fmt:message key="index.welcome" bundle="${lang}"/></h1>
-                <p class="lead"><a href="<c:url value='/tour/panel' />"><fmt:message key="index.start" bundle="${lang}"/></a></p>
+                <form action="addMain" method="POST">
+                    <table>
+                        <tr>
+                            <td>Choose places you like:</td>
+                            <c:forEach var="place" items="${places}">
+                                <td><input type="checkbox" name="placeIds" value="${place.id}" checked="checked" /> <c:out value = "${place.name}" /></td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td>Choose tags you like:</td>
+                            <c:forEach var="tag" items="${tags}">
+                                <td><input type="checkbox" name="tagIds" value="${tag.id}" checked="checked" /> <c:out value = "${tag.name}" /></td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" name="submit" value="Submit"></td>
+                        </tr>
+                        <tr>
+                    </table>
+                </form>
+
+
             </div>
+
             <br><br><br><br>
 
         </div>

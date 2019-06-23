@@ -9,4 +9,6 @@ public interface TagService {
     List<Tag> findAll();
 
     Tag find(Integer id);
+
+    Tag find(String name);
 }

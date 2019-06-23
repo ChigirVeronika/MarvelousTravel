@@ -34,7 +34,7 @@ public class Place {
     @JsonManagedReference
     private Set<Rating> ratings;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinTable(name = "place_has_tag",
             joinColumns = {@JoinColumn(name = "place_id")},
             inverseJoinColumns = {@JoinColumn(name = "tag_id")})
